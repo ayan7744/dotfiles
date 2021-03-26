@@ -2,8 +2,13 @@
 
 # Written by ayan7744
 
-cacheFile=/tmp/bspscratchpad.id.${USER}
-counterFile=/tmp/bspscratchpad.counter.${USER}
+cacheFile=/tmp/bspscratchpad.id
+counterFile=/tmp/bspscratchpad.counter
+
+# for drop down terminal
+termStatus="/tmp/dropdownterm.status"
+termIdFile="/tmp/dropdownterm.id"
+termId="$(< $termIdFile)"
 
 toggle_scratchpad_flag() {
 idFocusedWin="$(bspc query -N -n "focused")"
@@ -12,8 +17,8 @@ if grep "$idFocusedWin" "$cacheFile" &>/dev/null; then
     # remove occurences of $idFocusedWin from $cacheFile ( -v switch is for inverse searching)
     bspc node "$idFocusedWin" -g sticky=off
     bspc node "$idFocusedWin" -t tiled
-    grep -v "$idFocusedWin" "$cacheFile" > /tmp/bspscratchpad.id.${USER}.tmp
-    mv /tmp/bspscratchpad.id.${USER}.tmp "$cacheFile"
+    grep -v "$idFocusedWin" "$cacheFile" > /tmp/bspscratchpad.id.tmp
+    mv /tmp/bspscratchpad.id.tmp "$cacheFile"
     wc -l < "$cacheFile" > "$counterFile"
     [ "$(< "counterFile")" -eq "0" ] && echo 1 > "$counterFile"
 else 
@@ -54,8 +59,19 @@ cycle_scratchpad() {
 
 remove_from_scratchpad() {
     id="$(bspc query -N -n "focused")"
-    grep -v "$id" "$cacheFile" > /tmp/bspscratchpad.id.remove_from_scratchpad.${USER}.tmp
-    mv /tmp/bspscratchpad.id.remove_from_scratchpad.${USER}.tmp "$cacheFile"
+    grep -v "$id" "$cacheFile" > /tmp/bspscratchpad.id.remove_from_scratchpad.tmp
+    mv /tmp/bspscratchpad.id.remove_from_scratchpad.tmp "$cacheFile"
+}
+
+term_toggle() {
+    currentStatus="$(< $termStatus)"
+    if [ "$currentStatus" = "1" ]; then
+        bspc node "$termId" -g hidden=on
+        echo "0" > $termStatus
+    else 
+        bspc node "$termId" -g hidden=off
+        echo "1" > $termStatus
+    fi
 }
 
 case "$1" in 
@@ -68,9 +84,12 @@ case "$1" in
     "--remove")
         remove_from_scratchpad
         ;;
+    "--toggle-term")
+        term_toggle
+        ;;
     *)
     /usr/bin/cat << 'EOF'
-Usage: bspscratchpad --[toggle|cycle|remove]
+Usage: bspscratchpad [--toggle|--cycle|--remove|--toggle-term]
 
     --toggle
         Put focused window into scratchpad or remove it from scratchpad.
@@ -80,6 +99,9 @@ Usage: bspscratchpad --[toggle|cycle|remove]
 
     --remove
         Remove focused window from scratchpad
+
+    --toggle-term
+        Toggle visibility of drop down terminal
 EOF
     exit 0
     ;;

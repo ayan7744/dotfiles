@@ -2,6 +2,12 @@
 # VERSION: 3.0
 SETUVAR --export BROWSER:firefox
 SETUVAR --export EDITOR:nvim
+SETUVAR FZF_DEFAULT_OPTS:\x2d\x2dheight\x2040\x25
+SETUVAR FZF_DISABLE_KEYBINDINGS:0
+SETUVAR FZF_LEGACY_KEYBINDINGS:1
+SETUVAR FZF_PREVIEW_DIR_CMD:ls
+SETUVAR FZF_PREVIEW_FILE_CMD:head\x20\x2dn\x2010
+SETUVAR FZF_TMUX_HEIGHT:40\x25
 SETUVAR --export IMAGE:feh
 SETUVAR --export MOD:mod1
 SETUVAR --export READER:zathura
@@ -9,40 +15,41 @@ SETUVAR --export TERM:linux
 SETUVAR --export TERMINAL:alacritty
 SETUVAR --export VISUAL:nvim
 SETUVAR __fish_initialized:3100
-SETUVAR _fish_abbr_abbrconf:\x24EDITOR\x20\x7e/\x2econfig/shell\x2dconfig/source\x2donce/abbr
-SETUVAR _fish_abbr_alacrittyconf:\x24EDITOR\x20\x7e/\x2econfig/alacritty/alacritty\x2eyml
-SETUVAR _fish_abbr_aliasconf:\x24EDITOR\x20\x7e/\x2econfig/shell\x2dconfig/source\x2dmultiple/aliases
-SETUVAR _fish_abbr_bspconf:\x24EDITOR\x20\x7e/\x2econfig/bspwm/bspwmrc
-SETUVAR _fish_abbr_bsplayoutconf:\x24EDITOR\x20\x7e/\x2econfig/bsp\x2dlayout/layoutrc
+SETUVAR _fish_abbr_abbrconf:\x24EDITOR\x20\x24XDG_CONFIG_HOME/shell\x2dconfig/source\x2donce/abbr
+SETUVAR _fish_abbr_alacrittyconf:\x24EDITOR\x20\x24XDG_CONFIG_HOME/alacritty/alacritty\x2eyml
+SETUVAR _fish_abbr_aliasconf:\x24EDITOR\x20\x24XDG_CONFIG_HOME/shell\x2dconfig/source\x2dmultiple/aliases
+SETUVAR _fish_abbr_bspconf:\x24EDITOR\x20\x24XDG_CONFIG_HOME/bspwm/bspwmrc
+SETUVAR _fish_abbr_bsplayoutconf:\x24EDITOR\x20\x24XDG_CONFIG_HOME/bsp\x2dlayout/layoutrc
 SETUVAR _fish_abbr_cmdlineconf:sudo\x20\x2de\x20/boot/loader/entries/arch\x2econf
 SETUVAR _fish_abbr_dmesg:sudo\x20dmesg
-SETUVAR _fish_abbr_envconf:\x24EDITOR\x20\x7e/\x2econfig/shell\x2dconfig/source\x2donce/env
+SETUVAR _fish_abbr_envconf:\x24EDITOR\x20\x24XDG_CONFIG_HOME/shell\x2dconfig/source\x2donce/env
 SETUVAR _fish_abbr_find:sudo\x20find
-SETUVAR _fish_abbr_fishconf:\x24EDITOR\x20\x7e/\x2econfig/fish/config\x2efish
+SETUVAR _fish_abbr_fishconf:\x24EDITOR\x20\x24XDG_CONFIG_HOME/fish/config\x2efish
 SETUVAR _fish_abbr_fishfuncconf:cd\x20\x7e/\x2econfig/fish/functions
-SETUVAR _fish_abbr_greenclipconf:\x24EDITOR\x20\x7e/\x2econfig/greenclip\x2ecfg
-SETUVAR _fish_abbr_gtk3conf:c\x20\x7e/\x2econfig/gtk\x2d3\x2e0
-SETUVAR _fish_abbr_i3conf:\x24EDITOR\x20\x7e/\x2econfig/i3/config
+SETUVAR _fish_abbr_greenclipconf:\x24EDITOR\x20\x24XDG_CONFIG_HOME/greenclip\x2ecfg
+SETUVAR _fish_abbr_gtk3conf:c\x20\x24XDG_CONFIG_HOME/gtk\x2d3\x2e0
+SETUVAR _fish_abbr_i3conf:\x24EDITOR\x20\x24XDG_CONFIG_HOME/i3/config
+SETUVAR _fish_abbr_jctlwarn:sudo\x20journalctl\x20\x2dxb\x20\x2dp\x204
 SETUVAR _fish_abbr_journalctl:sudo\x20journalctl
-SETUVAR _fish_abbr_myfunctionconf:\x24EDITOR\x20\x7e/\x2econfig/shell\x2dconfig/source\x2dmultiple/myfunctions
-SETUVAR _fish_abbr_neofetchdumpconf:\x24EDITOR\x20\x7e/\x2econfig/fish/neofetch\x2edump
+SETUVAR _fish_abbr_myfunctionconf:\x24EDITOR\x20\x24XDG_CONFIG_HOME/shell\x2dconfig/source\x2dmultiple/myfunctions
+SETUVAR _fish_abbr_neofetchdumpconf:\x24EDITOR\x20\x24XDG_CONFIG_HOME/fish/neofetch\x2edump
 SETUVAR _fish_abbr_nmwifi:nmcli\x20device\x20wifi
-SETUVAR _fish_abbr_nvimconf:\x24EDITOR\x20\x7e/\x2econfig/\x24EDITOR/init\x2evim
-SETUVAR _fish_abbr_picomconf:\x24EDITOR\x20\x7e/\x2econfig/picom/picom\x2econf
-SETUVAR _fish_abbr_polybspconf:\x24EDITOR\x20\x7e/\x2econfig/polybar/config\x2dbsp
-SETUVAR _fish_abbr_polyconf:c\x20\x7e/\x2econfig/polybar
+SETUVAR _fish_abbr_nvimconf:\x24EDITOR\x20\x24XDG_CONFIG_HOME/\x24EDITOR/init\x2evim
+SETUVAR _fish_abbr_picomconf:\x24EDITOR\x20\x24XDG_CONFIG_HOME/picom/picom\x2econf
+SETUVAR _fish_abbr_polybspconf:\x24EDITOR\x20\x24XDG_CONFIG_HOME/polybar/config\x2dbsp
+SETUVAR _fish_abbr_polyconf:c\x20\x24XDG_CONFIG_HOME/polybar
 SETUVAR _fish_abbr_powertop:sudo\x20powertop
-SETUVAR _fish_abbr_quicktexconf:\x24EDITOR\x20\x7e/\x2econfig/\x24EDITOR/plugged/quicktex/ftplugin/tex\x2evim
-SETUVAR _fish_abbr_shellconf:c\x20\x7e/\x2econfig/shell\x2dconfig
+SETUVAR _fish_abbr_quicktexconf:\x24EDITOR\x20\x24XDG_CONFIG_HOME/\x24EDITOR/plugged/quicktex/ftplugin/tex\x2evim
+SETUVAR _fish_abbr_shellconf:c\x20\x24XDG_CONFIG_HOME/shell\x2dconfig
 SETUVAR _fish_abbr_showkey:sudo\x20showkey
-SETUVAR _fish_abbr_sxhkdconf:\x24EDITOR\x20\x7e/\x2econfig/sxhkd/sxhkdrc
-SETUVAR _fish_abbr_texconf:\x24EDITOR\x20\x7e/\x2econfig/shell\x2dconfig/source\x2dmultiple/tex
-SETUVAR _fish_abbr_tgconf:\x24EDITOR\x20\x7e/\x2econfig/tg/conf\x2epy
+SETUVAR _fish_abbr_sxhkdconf:\x24EDITOR\x20\x24XDG_CONFIG_HOME/sxhkd/sxhkdrc
+SETUVAR _fish_abbr_texconf:\x24EDITOR\x20\x24XDG_CONFIG_HOME/shell\x2dconfig/source\x2dmultiple/tex
+SETUVAR _fish_abbr_tgconf:\x24EDITOR\x20\x24XDG_CONFIG_HOME/tg/conf\x2epy
 SETUVAR _fish_abbr_tlp_2D_stat:sudo\x20tlp\x2dstat
 SETUVAR _fish_abbr_tlpconf:sudo\x20\x2de\x20/etc/tlp\x2econf
 SETUVAR _fish_abbr_xbindkeysconf:nvim\x20\x7e/\x2exbindkeysrc
-SETUVAR _fish_abbr_xinitrcconf:\x24EDITOR\x20\x7e/\x2exinitrc
-SETUVAR _fish_abbr_zathuraconf:\x24EDITOR\x20\x7e/\x2econfig/zathura/zathurarc
+SETUVAR _fish_abbr_xinitrcconf:\x24EDITOR\x20\x24HOME/\x2exinitrc
+SETUVAR _fish_abbr_zathuraconf:\x24EDITOR\x20\x24XDG_CONFIG_HOME/zathura/zathurarc
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:005fd7

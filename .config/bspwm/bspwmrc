@@ -64,8 +64,8 @@ bspc rule -a scratchpad-terminal sticky=on state=floating hidden=on
 bspc rule -a Pulseaudio-equalizer-gtk state=floating
 bspc rule -a Zathura state=tiled split_ratio=0.6
 
-# start drop down terminal and initialise bspscratchpad
+# Initialise drop-down terminal and ~/bin/bspscratchpad
 $TERMINAL --class drop-down-term,drop-down-term & disown 
 sleep 0.2
-echo "$(printf 0x00%X "$(xdotool search --classname drop-down-term)")" >> /tmp/bspscratchpad.id.${USER}
-echo "1" > /tmp/bspscratchpad.counter.${USER}
+echo "$(printf 0x00%X "$(xdotool search --classname drop-down-term)")" > /tmp/dropdownterm.id
+echo "0" > /tmp/dropdownterm.status

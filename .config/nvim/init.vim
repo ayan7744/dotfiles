@@ -86,6 +86,8 @@ highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
 " # vim: ft=<filetype>
 set modeline
 
+" don't warn when editing a read-only file [DOESN'T WORK FOR SOME REASON]
+set noro
 "*****************************************************************************
 "" Abbreviations
 "*****************************************************************************
@@ -104,6 +106,9 @@ cnoreabbrev Qall qall
 " Suda.vim
 cnoreabbrev w!! SudaWrite
 cnoreabbre r!! SudaRead
+
+" Insert timestamp
+iab <expr> ddt strftime("[%e-%b-%Y %I:%M:%S %p]")
 
 "*****************************************************************************
 "" Commands

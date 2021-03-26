@@ -36,6 +36,7 @@ abbr nmwifi 'nmcli device wifi'
 
 # prefix sudo
 abbr journalctl 'sudo journalctl'
+abbr jctlwarn 'sudo journalctl -xb -p 4'
 abbr dmesg 'sudo dmesg'
 abbr powertop 'sudo powertop'
 abbr find 'sudo find'

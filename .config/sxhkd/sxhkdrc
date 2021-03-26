@@ -214,3 +214,7 @@ mod1 + shift + w
 
 mod1 + w 
     bspscratchpad --cycle
+
+# Drop-down terminal
+mod1 + e
+    bspscratchpad --toggle-term
