@@ -1,0 +1,81 @@
+#!/bin/bash
+
+# Written by Ayan
+# Battery sysfs dir
+_bat=$(echo /sys/class/power_supply/BAT?)
+
+batcap() {
+    ! [ -f ${_bat}/charge_control_end_threshold ] && echo "${_bat}/charge_control_end_threshold doesn't exist. Exiting..." && exit 1
+    if [ "$(id -u)" != "0" ]; then
+       echo "Must be run as root, exiting..." 1>&2
+       exit 1
+    fi
+
+    # check if command line argument is empty or not present
+    if [ -z $1 ]; then
+            echo "No arguments"
+            exit 1
+    fi
+
+    txt="[Unit]
+Description=Set the battery charge threshold
+After=multi-user.target
+StartLimitBurst=0
+
+[Service]
+Type=oneshot
+Restart=on-failure
+ExecStart=/bin/sh -c 'echo $1 > ${_bat}/charge_control_end_threshold'
+
+[Install]
+WantedBy=multi-user.target"
+
+    echo "$txt" > /etc/systemd/system/battery-charge-threshold.service 
+
+    # add script to /usr/lib/systemd/system-sleep to be executed post and pre suspend
+
+    script="#!/bin/sh
+    # batctl: echo $1 in /sys/class/power_supply/charge_control_end_threshold pre-suspend and post-suspend.
+
+    echo $1 > ${_bat}/charge_control_end_threshold"
+
+    echo "$script" > /usr/lib/systemd/system-sleep/battery-charge-threshold
+
+    # enable and start the services
+    systemctl daemon-reload
+    systemctl restart battery-charge-threshold.service
+}
+
+time_remaining_discharge() {
+    echo "$(< ${_bat}/energy_now)/$(< ${_bat}/power_now)"| bc -l| head -c 4
+}
+
+show_stat() {
+    echo "Charge = "$(< ${_bat}/capacity)"%"
+    [ -f ${_bat}/charge_control_end_threshold ] && echo "Charge end threshold = "$(< ${_bat}/charge_control_end_threshold)"%"
+    echo "Status = "$(< ${_bat}/status)"" 
+    [ "$(< ${_bat}/status)" = "Discharging" ] && echo "Remaining time to discharge = $(time_remaining_discharge) hour(s)"
+    echo "Battery health = "$(echo 100\*$(< ${_bat}/energy_full)/$(< ${_bat}/energy_full_design)| bc -l| head -c 5)"%"
+    echo "Technology = "$(< ${_bat}/technology)""
+    echo "Manufacterer = "$(< ${_bat}/manufacturer)""
+}
+
+case $1 in 
+    "--info")
+        show_stat
+        ;;
+    "--cap")
+        batcap "$2"
+        ;;
+    "--time-remaining-discharge")
+        time_remaining_discharge
+        ;;
+    *)
+        /usr/bin/cat << 'EOF'
+Script to view battery stats and set battery charge end threshold permanently with the help of a systemd service.
+
+Usage: 
+    batctl [--cap CHARGE_THRESHOLD | --info | --time-remaining-discharge]
+EOF
+        ;;
+esac

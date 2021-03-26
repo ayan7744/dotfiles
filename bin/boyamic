@@ -1,0 +1,11 @@
+#!/bin/bash
+pactl set-source-port 1 analog-input-headset-mic
+if [ $# -eq 0 ]; then 
+    pacmd set-source-volume 1 20000
+    echo "Source 1 volume set to 20000"
+else
+    pacmd set-source-volume 1 "$1"
+    echo "Source 1 volume set to $1"
+fi
+v4l2-ctl --set-ctrl=brightness=150 --device=/dev/video2
+v4l2-ctl --set-ctrl=contrast=35 --device=/dev/video2

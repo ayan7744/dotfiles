@@ -1,0 +1,60 @@
+###############################################################
+# Aliases
+##############################################################
+
+# navigation
+alias ,='cd -'
+alias ..='c ..' 
+alias ...='c ../..'
+alias .3='c ../../..'
+alias .4='c ../../../..'
+alias .5='c ../../../../..'
+alias c='cs'    #cs defined in $HOME/.config/shell-config/source-multiple/my-functions
+
+# interactive 
+alias cp='cp -ir'
+alias mv='mv -i'
+
+# Change "ls" to "exa"
+alias ls='exa --color=always --group-directories-first' 
+alias sl='exa --color=always --group-directories-first' # when you type sl instead of ls
+alias la='exa -lah --color=always --group-directories-first'  # all files and dirs
+alias laa='exa -ah --color=always --group-directories-first'  # long format
+alias ll='exa -lh --color=always --group-directories-first'  # long format
+alias lll='exa -lh --color=always --group-directories-first'  # long format
+
+# Improvements
+alias ip='ip --color=auto'
+alias less='bat --pager="less -R"'
+alias cat='bat'
+alias dog='/bin/cat'
+alias fd='fd -H'
+alias grep='rg'
+alias ttx='$HOME/bin/tt -showwpm -noskip'
+
+# size of directories
+alias dirsize='sudo du -sh * 2>/dev/null; sudo du -sh .* 2>/dev/null'
+
+# others
+alias goo='cd /home/"$USER"; startx'
+# alias sniff='plocate'
+alias vim='nvim'
+alias za='zathura'
+alias jctlvacuum='sudo journalctl --vacuum-time=5d'
+alias clip='xclip -selection clipboard'
+alias pat='/usr/bin/cat $XDG_CONFIG_HOME/git/PAT | /usr/bin/xclip -selection clipboard'
+alias a=$TERMINAL
+
+# dotfiles
+alias dfpri='/usr/bin/git --git-dir=$HOME/.gitbare/dotfiles-private/ --work-tree=/'
+alias dfpub='/usr/bin/git --git-dir=$HOME/.gitbare/dotfiles-public/ --work-tree=$HOME'
+
+# trash-cli 
+alias trash='trash-put'
+# alias rm='echo "This is not the command you are looking for."; false'
+
+# fun
+alias fml='echo HAHAHAHAHA!'
+alias fuck='echo "fu"'
+alias thnx="echo 'You\'re welcome.'"
+alias asdf='echo lmao noob qwerty user'

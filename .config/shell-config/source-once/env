@@ -1,0 +1,52 @@
+# vi: ft=sh
+############################################################
+# Exports
+############################################################
+
+# Path
+set PATH $PATH $HOME/bin $HOME/.local/bin
+
+# XDG paths
+set -x XDG_CONFIG_HOME $HOME/.config
+set -x XDG_CACHE_HOME $HOME/.cache
+set -x XDG_DATA_HOME $HOME/.local/share
+
+# Default Apps
+set -Ux TERMINAL alacritty
+set -Ux EDITOR nvim
+set -Ux VISUAL nvim
+set -Ux BROWSER firefox
+set -Ux IMAGE feh
+set -Ux READER zathura
+
+# App Specific
+# https://github.com/skywind3000/z.lua
+set -x _ZL_MATCH_MODE 1
+set -x _ZL_DATA "$XDG_DATA_HOME/zlua"
+set -x _ZL_CD "cs"
+set -x _ZL_HYPHEN 1
+set -x SXHKD_SHELL "/bin/sh"
+# https://github.com/sharkdp/bat
+set -x BAT_THEME "Monokai Extended"
+# firefox
+# export MOZ_LOG="PlatformDecoderModule:5"
+# export MOZ_LOG_FILE=/tmp/ff.log
+
+# Disable files
+set -x LESSHISTFILE -
+
+# fixing paths
+# set -x XINITRC $XDG_CONFIG_HOME/X11/xinitrc
+# set -x XSERVERRC $XDG_CONFIG_HOME/X11/xserverrc
+set -x CARGO_HOME $XDG_DATA_HOME/cargo
+set -x GNUPGHOME $XDG_DATA_HOME/gnupg
+set -x IPYTHONDIR $XDG_CONFIG_HOME/ipython
+set -x JUPYTER_CONFIG_DIR $XDG_CONFIG_HOME/jupyter
+set -x MAXIMA_USERDIR $XDG_CONFIG_HOME/maxima
+set -x DOT_SAGE $XDG_CONFIG_HOME/sage
+set -x TEXMFHOME $HOME/tex/source_files
+
+# Others
+set -x WALLPAPER $HOME/Pictures/Wallpapers/arch-win.jpg
+# manpage colourizer
+set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"

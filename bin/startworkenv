@@ -1,0 +1,11 @@
+#!/bin/bash
+
+alacritty &
+alacritty --class alacritty-ws3,alacritty-ws3 &
+dropbox &
+firefox &
+flatpak run --branch=stable --arch=x86_64 --command=discord com.discordapp.Discord &
+alacritty --class alacritty-social,alacritty-social -e tg &
+sleep 1
+i3-msg "[class = alacritty-ws3]" move container to workspace number 3 
+flatpak run --branch=stable --arch=x86_64 --command=spotify --file-forwarding com.spotify.Client @@u %U @@ &

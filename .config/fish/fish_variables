@@ -1,0 +1,74 @@
+# This file contains fish universal variable definitions.
+# VERSION: 3.0
+SETUVAR --export BROWSER:firefox
+SETUVAR --export EDITOR:nvim
+SETUVAR --export IMAGE:feh
+SETUVAR --export MOD:mod1
+SETUVAR --export READER:zathura
+SETUVAR --export TERM:linux
+SETUVAR --export TERMINAL:alacritty
+SETUVAR --export VISUAL:nvim
+SETUVAR __fish_initialized:3100
+SETUVAR _fish_abbr_abbrconf:\x24EDITOR\x20\x7e/\x2econfig/shell\x2dconfig/source\x2donce/abbr
+SETUVAR _fish_abbr_alacrittyconf:\x24EDITOR\x20\x7e/\x2econfig/alacritty/alacritty\x2eyml
+SETUVAR _fish_abbr_aliasconf:\x24EDITOR\x20\x7e/\x2econfig/shell\x2dconfig/source\x2dmultiple/aliases
+SETUVAR _fish_abbr_bspconf:\x24EDITOR\x20\x7e/\x2econfig/bspwm/bspwmrc
+SETUVAR _fish_abbr_bsplayoutconf:\x24EDITOR\x20\x7e/\x2econfig/bsp\x2dlayout/layoutrc
+SETUVAR _fish_abbr_cmdlineconf:sudo\x20\x2de\x20/boot/loader/entries/arch\x2econf
+SETUVAR _fish_abbr_dmesg:sudo\x20dmesg
+SETUVAR _fish_abbr_envconf:\x24EDITOR\x20\x7e/\x2econfig/shell\x2dconfig/source\x2donce/env
+SETUVAR _fish_abbr_find:sudo\x20find
+SETUVAR _fish_abbr_fishconf:\x24EDITOR\x20\x7e/\x2econfig/fish/config\x2efish
+SETUVAR _fish_abbr_fishfuncconf:cd\x20\x7e/\x2econfig/fish/functions
+SETUVAR _fish_abbr_greenclipconf:\x24EDITOR\x20\x7e/\x2econfig/greenclip\x2ecfg
+SETUVAR _fish_abbr_gtk3conf:c\x20\x7e/\x2econfig/gtk\x2d3\x2e0
+SETUVAR _fish_abbr_i3conf:\x24EDITOR\x20\x7e/\x2econfig/i3/config
+SETUVAR _fish_abbr_journalctl:sudo\x20journalctl
+SETUVAR _fish_abbr_myfunctionconf:\x24EDITOR\x20\x7e/\x2econfig/shell\x2dconfig/source\x2dmultiple/myfunctions
+SETUVAR _fish_abbr_neofetchdumpconf:\x24EDITOR\x20\x7e/\x2econfig/fish/neofetch\x2edump
+SETUVAR _fish_abbr_nmwifi:nmcli\x20device\x20wifi
+SETUVAR _fish_abbr_nvimconf:\x24EDITOR\x20\x7e/\x2econfig/\x24EDITOR/init\x2evim
+SETUVAR _fish_abbr_picomconf:\x24EDITOR\x20\x7e/\x2econfig/picom/picom\x2econf
+SETUVAR _fish_abbr_polybspconf:\x24EDITOR\x20\x7e/\x2econfig/polybar/config\x2dbsp
+SETUVAR _fish_abbr_polyconf:c\x20\x7e/\x2econfig/polybar
+SETUVAR _fish_abbr_powertop:sudo\x20powertop
+SETUVAR _fish_abbr_quicktexconf:\x24EDITOR\x20\x7e/\x2econfig/\x24EDITOR/plugged/quicktex/ftplugin/tex\x2evim
+SETUVAR _fish_abbr_shellconf:c\x20\x7e/\x2econfig/shell\x2dconfig
+SETUVAR _fish_abbr_showkey:sudo\x20showkey
+SETUVAR _fish_abbr_sxhkdconf:\x24EDITOR\x20\x7e/\x2econfig/sxhkd/sxhkdrc
+SETUVAR _fish_abbr_texconf:\x24EDITOR\x20\x7e/\x2econfig/shell\x2dconfig/source\x2dmultiple/tex
+SETUVAR _fish_abbr_tgconf:\x24EDITOR\x20\x7e/\x2econfig/tg/conf\x2epy
+SETUVAR _fish_abbr_tlp_2D_stat:sudo\x20tlp\x2dstat
+SETUVAR _fish_abbr_tlpconf:sudo\x20\x2de\x20/etc/tlp\x2econf
+SETUVAR _fish_abbr_xbindkeysconf:nvim\x20\x7e/\x2exbindkeysrc
+SETUVAR _fish_abbr_xinitrcconf:\x24EDITOR\x20\x7e/\x2exinitrc
+SETUVAR _fish_abbr_zathuraconf:\x24EDITOR\x20\x7e/\x2econfig/zathura/zathurarc
+SETUVAR fish_color_autosuggestion:555\x1ebrblack
+SETUVAR fish_color_cancel:\x2dr
+SETUVAR fish_color_command:005fd7
+SETUVAR fish_color_comment:990000
+SETUVAR fish_color_cwd:green
+SETUVAR fish_color_cwd_root:red
+SETUVAR fish_color_end:009900
+SETUVAR fish_color_error:ff0000
+SETUVAR fish_color_escape:00a6b2
+SETUVAR fish_color_history_current:\x2d\x2dbold
+SETUVAR fish_color_host:normal
+SETUVAR fish_color_host_remote:yellow
+SETUVAR fish_color_match:\x2d\x2dbackground\x3dbrblue
+SETUVAR fish_color_normal:normal
+SETUVAR fish_color_operator:00a6b2
+SETUVAR fish_color_param:00afff
+SETUVAR fish_color_quote:999900
+SETUVAR fish_color_redirection:00afff
+SETUVAR fish_color_search_match:bryellow\x1e\x2d\x2dbackground\x3dbrblack
+SETUVAR fish_color_selection:white\x1e\x2d\x2dbold\x1e\x2d\x2dbackground\x3dbrblack
+SETUVAR fish_color_status:red
+SETUVAR fish_color_user:brgreen
+SETUVAR fish_color_valid_path:\x2d\x2dunderline
+SETUVAR fish_greeting:\x1d
+SETUVAR fish_key_bindings:fish_vi_key_bindings
+SETUVAR fish_pager_color_completion:\x1d
+SETUVAR fish_pager_color_description:B3A06D\x1eyellow
+SETUVAR fish_pager_color_prefix:white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
+SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan

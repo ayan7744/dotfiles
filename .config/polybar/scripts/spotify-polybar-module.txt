@@ -1,0 +1,7 @@
+Github : https://github.com/mihirlad55/polybar-spotify-module
+
+The binaries spotifyctl and spotify-listener are placed in ~/bin (in $PATH).
+
+The concerned modules are spotify, playpause, next, previous.
+
+

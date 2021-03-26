@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# ping google once with timeout of 1 seconds
+ping -q -w1 -c 1 8.8.8.8  &> /dev/null

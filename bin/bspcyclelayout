@@ -1,0 +1,7 @@
+#!/bin/bash
+nodeCount=$(bspc query -N -d -n .window.\!hidden| wc -l)
+if [ $nodeCount -eq 4 ]; then
+    bsp-layout cycle --layouts tall,tiled,grid
+else
+    bsp-layout cycle --layouts tall,tiled
+fi

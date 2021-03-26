@@ -1,0 +1,31 @@
+#!/bin/bash
+
+declare -a files
+declare -a files_exclude
+
+currentDate="$(date '+%d-%m-%Y')"
+
+files=( 
+	'/boot/loader' 
+	'/etc'
+	'/usr/lib/systemd/system-sleep'
+	'/usr/lib/udev/rules.d'
+	'/home/ayan/.config'
+	'/home/ayan/.xinitrc'
+	'/home/ayan/.latexmkrc.bak'
+	'/home/ayan/.bashrc'
+	'/home/ayan/bin'
+	'/home/ayan/.local/share/applications'
+    '/home/ayan/coding'
+)
+
+files_exclude=(
+    # dummy dir
+    '/tmp'
+    '/home/ayan/coding/cpp'
+    '/home/ayan/coding/java'
+)
+sudo tar -cf - --exclude="${files_exclude[@]}" "${files[@]}" | xz -9 -c - > /tmp/configs-"${currentDate}".bak.tar.xz
+trash-put /home/ayan/Dropbox/backups/configs/configs-*.xz
+mv /tmp/configs-"${currentDate}".bak.tar.xz /home/ayan/Dropbox/backups/configs/
+sudo chown ayan:ayan /home/ayan/Dropbox/backups/configs/configs-"${currentDate}".bak.tar.xz

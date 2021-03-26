@@ -1,0 +1,23 @@
+#!/bin/sh
+
+_mount() {
+    [ -d /tmp/win ] || mkdir /tmp/win
+    mount /dev/nvme0n1p4 /tmp/win    
+}
+
+_unmount() {
+    umount /tmp/win
+    [ -d /tmp/win ] && rmdir /tmp/win
+}
+
+case "$1" in 
+    "--mount")
+        _mount
+        ;;
+    "--umount")
+        _unmount
+        ;;
+    *)
+    exit 0
+    ;;
+esac

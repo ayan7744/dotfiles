@@ -1,0 +1,31 @@
+####################################################################
+# LaTeX
+###################################################################
+# new tex file
+function newtex --argument name
+	mkdir $HOME/tex/$name
+	cp $HOME/tex/dummy/main.tex $HOME/tex/$name
+	cd $HOME/tex/$name
+	nvim $HOME/tex/$name/main.tex
+end
+
+# open existing tex file
+function opentex --argument name
+	cd $HOME/tex/$name
+	nvim $HOME/tex/$name/main.tex
+end
+
+# copy main.pdf to ~/Dropbox
+function droppdf --argument name
+	if test -f $name	# test the existence of $name
+		set texname (basename (pwd))
+		cp main.pdf $HOME/Dropbox/{$texname}.pdf
+	else 
+		cp $HOME/tex/$name/main.pdf $HOME/Dropbox/{$name}.pdf
+	end
+end
+
+# backup all the tex files to ~/Dropbox
+function baktex 
+	cp -r $HOME/tex $HOME/Dropbox/backups/
+end

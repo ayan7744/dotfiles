@@ -1,0 +1,4 @@
+#!/bin/bash
+
+filename="$1"
+mv -i "$filename" "${filename::-4}"

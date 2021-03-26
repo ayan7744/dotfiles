@@ -1,0 +1,15 @@
+#!/bin/bash
+#loading and unloading microphone and webcam drivers, namely, uvcvideo and ??
+
+isNotLoaded="$(lsmod | grep -q uvcvideo; echo $?)"  #this returns the exit code for grep, 0=succesful, 1=failure, -q swtich stands for quiet, i.e. no output. 
+#echo $isNotLoaded
+if [ "$isNotLoaded" == "0" ]
+then
+  sudo modprobe -r -f uvcvideo 
+  notify-send --hint int:transient:1 "Webcam disabled" "uvcvideo module unloaded"
+#  echo "modules were loaded"
+else
+  sudo modprobe uvcvideo
+  notify-send --hint int:transient:1 "Webcam enabled" "uvcvideo module loaded"
+#  echo "modules were not loaded"
+fi

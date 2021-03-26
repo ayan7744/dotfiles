@@ -1,0 +1,86 @@
+#!/bin/bash
+
+# Written by Ayan
+
+cacheFile=/tmp/bspscratchpad.id.${USER}
+counterFile=/tmp/bspscratchpad.counter.${USER}
+
+toggle_scratchpad_flag() {
+idFocusedWin="$(bspc query -N -n "focused")"
+# check if the focused window is in scratchpad
+if grep "$idFocusedWin" "$cacheFile" &>/dev/null; then
+    # remove occurences of $idFocusedWin from $cacheFile ( -v switch is for inverse searching)
+    bspc node "$idFocusedWin" -g sticky=off
+    bspc node "$idFocusedWin" -t tiled
+    grep -v "$idFocusedWin" "$cacheFile" > /tmp/bspscratchpad.id.${USER}.tmp
+    mv /tmp/bspscratchpad.id.${USER}.tmp "$cacheFile"
+    wc -l < "$cacheFile" > "$counterFile"
+    [ "$(< "counterFile")" -eq "0" ] && echo 1 > "$counterFile"
+else 
+    # enable floating
+    bspc node "$idFocusedWin" -g hidden
+    bspc node "$idFocusedWin" -t floating
+    bspc node "$idFocusedWin" -g sticky
+    # append $idFocusedWin to $cacheFile
+    echo "$idFocusedWin" >> "$cacheFile"
+    wc -l < "$cacheFile" > "$counterFile"
+fi
+}
+
+cycle_scratchpad() {
+    idFocusedWin="$(bspc query -N -n "focused")"
+    # first check if there is a window, this makes it work for empty desktops
+    if [ "$idFocusedWin" = "" ]; then
+        winCount=$(wc -l < "$cacheFile")
+        counter="$(< "$counterFile")"
+        nodeId=$(sed "${counter}q;d" "$cacheFile")
+        bspc node $nodeId -g hidden=off  
+        bspc node $nodeId -f
+        echo $(($counter + 1)) > "$counterFile"
+        [ $(($(< "$counterFile"))) -gt $winCount ] && echo 1 > "$counterFile"
+    # check if the focused window is in scratchpad
+    elif grep "$idFocusedWin" "$cacheFile" &>/dev/null; then
+        bspc node "$idFocusedWin" -g hidden
+    else
+        winCount=$(wc -l < "$cacheFile")
+        counter="$(< "$counterFile")"
+        nodeId=$(sed "${counter}q;d" "$cacheFile")
+        bspc node $nodeId -g hidden=off  
+        bspc node $nodeId -f
+        echo $(($counter + 1)) > "$counterFile"
+        [ $(($(< "$counterFile"))) -gt $winCount ] && echo 1 > "$counterFile"
+    fi
+}
+
+remove_from_scratchpad() {
+    id="$(bspc query -N -n "focused")"
+    grep -v "$id" "$cacheFile" > /tmp/bspscratchpad.id.remove_from_scratchpad.${USER}.tmp
+    mv /tmp/bspscratchpad.id.remove_from_scratchpad.${USER}.tmp "$cacheFile"
+}
+
+case "$1" in 
+    "--toggle")
+        toggle_scratchpad_flag
+        ;;
+    "--cycle")
+        cycle_scratchpad
+        ;;
+    "--remove")
+        remove_from_scratchpad
+        ;;
+    *)
+    /usr/bin/cat << 'EOF'
+Usage: bspscratchpad --[toggle|cycle|remove]
+
+    --toggle
+        Put focused window into scratchpad or remove it from scratchpad.
+
+    --cycle 
+        Cycle through windows in scratchpad
+
+    --remove
+        Remove focused window from scratchpad
+EOF
+    exit 0
+    ;;
+esac

@@ -1,0 +1,29 @@
+#!/bin/sh
+
+gpu_hwmon="$(echo /sys/class/drm/card0/device/hwmon/hwmon?)"
+usage=$(< /sys/class/drm/card0/device/gpu_busy_percent)
+mem_total=$(echo "$(< /sys/class/drm/card0/device/mem_info_vram_total)/1000000" | bc)
+mem_used=$(echo "$(< /sys/class/drm/card0/device/mem_info_vram_used)/1000000" | bc)
+temp=$(echo "$(< $gpu_hwmon/temp1_input)/1000" | bc)
+in1_input=$(< $gpu_hwmon/in1_input)
+in0_input=$(< $gpu_hwmon/in0_input)
+in0_label=$(< $gpu_hwmon/in0_label)
+in1_label=$(< $gpu_hwmon/in1_label)
+power_avg=$(echo "$(< $gpu_hwmon/power1_average)/1000000" | bc)
+uevent=$(< /sys/class/drm/card0/device/uevent)
+power_level_file="/sys/class/drm/card0/device/power_dpm_force_performance_level"
+
+_show() {
+echo "GPU Usage: ${usage}%"
+echo "Total VRAM: ${mem_total} MB"
+echo "Used VRAM: ${mem_used} MB"
+echo "Temperature: ${temp}°C"
+echo "${in0_label}: ${in0_input} mV"
+echo "${in1_label}: ${in1_input} mv"
+echo "Power Avg: ${power_avg} W"
+echo "Power Level: $(< $power_level_file)"
+
+echo "$uevent"
+}
+
+_show
