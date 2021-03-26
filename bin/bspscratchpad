@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Written by Ayan
+# Written by ayan7744
 
 cacheFile=/tmp/bspscratchpad.id.${USER}
 counterFile=/tmp/bspscratchpad.counter.${USER}

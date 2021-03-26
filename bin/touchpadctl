@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Written by Ayan
+# Written by ayan7744
 id="$(xinput list | grep -Eo 'Touchpad.*id=[0-9]*' | grep -Eo '[0-9]*')"
 
 sensitivity() {

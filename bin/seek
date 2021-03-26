@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Made by Ayan Nath 
 # seek: Uses plocate to find files and cd to the directory containing them. It can also open the file using $EDITOR
 # Usage: seek [options] filename
 # Available options are :   -i (case insensitive), -no (don't open the file), -l (limit), -e (to open with a different editor), -h (help)

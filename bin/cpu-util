@@ -1,6 +1,6 @@
 #!/bin/sh 
 
-# Written by Ayan
+# Written by ayan7744
 # Accompanying udev rule: 
 udev_rule_txt='
 # set scaling governor to powersave when running on battery.

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Written by Ayan
+# Written by ayan7744
 # Battery sysfs dir
 _bat=$(echo /sys/class/power_supply/BAT?)
 
