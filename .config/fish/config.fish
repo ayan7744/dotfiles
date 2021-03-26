@@ -26,7 +26,7 @@ function fish_greeting
     	echo ""
 	    systemd-analyze
         echo ""
-    else if ! xprop -id (bspc query -N -n focused) WM_CLASS | grep "Alacritty" > /dev/null
+    else if ! xprop -id (printf 0x00%X (xdotool getactivewindow)) WM_CLASS | grep "Alacritty" > /dev/null
         # do nothing if classname is not Alacritty
         :   
     else
