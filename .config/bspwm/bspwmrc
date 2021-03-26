@@ -59,7 +59,7 @@ bspc rule -a TelegramDesktop desktop=^10
 bspc rule -a firefox desktop=^2
 bspc rule -a feh state=floating
 bspc rule -a floating-term state=floating rectangle=946x558+478+258
-bspc rule -a drop-down-term state=floating rectangle=1912x423+1+23 hidden=on sticky=on locked=on
+bspc rule -a drop-down-term state=floating rectangle=1912x350+2+23 hidden=on sticky=on locked=on
 bspc rule -a scratchpad-terminal sticky=on state=floating hidden=on
 bspc rule -a Pulseaudio-equalizer-gtk state=floating
 bspc rule -a Zathura state=tiled split_ratio=0.6
