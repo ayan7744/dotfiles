@@ -35,9 +35,9 @@ WantedBy=multi-user.target"
     # add script to /usr/lib/systemd/system-sleep to be executed post and pre suspend
 
     script="#!/bin/sh
-    # batctl: echo $1 in /sys/class/power_supply/charge_control_end_threshold pre-suspend and post-suspend.
+# batctl: echo $1 in /sys/class/power_supply/charge_control_end_threshold pre-suspend and post-suspend.
 
-    echo $1 > ${_bat}/charge_control_end_threshold"
+echo $1 | tee ${_bat}/charge_control_end_threshold"
 
     echo "$script" > /usr/lib/systemd/system-sleep/battery-charge-threshold
 
