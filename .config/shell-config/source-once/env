@@ -4,7 +4,7 @@
 ############################################################
 
 # Path
-set PATH $PATH $HOME/bin $HOME/.local/bin
+set PATH $PATH $HOME/bin $HOME/bin/scripts $HOME/.local/bin
 
 # XDG paths
 set -x XDG_CONFIG_HOME $HOME/.config

@@ -12,7 +12,7 @@ function cs
 end
 
 function opensh --argument name
-	/usr/bin/nvim $HOME/bin/$name
+	/usr/bin/nvim $HOME/bin/scripts/$name
 end
 
 function dfupdate --argument msg
