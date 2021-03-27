@@ -14,3 +14,8 @@ end
 function opensh --argument name
 	/usr/bin/nvim $HOME/bin/$name
 end
+
+function dfupdate --argument msg
+    dfpub add -u && dfpub commit -m "$msg" && dfpub push
+    dfpri add -u && dfpri commit -m "$msg" && dfpri push
+end
