@@ -1,0 +1,121 @@
+#!/bin/bash
+
+# seek: Uses plocate to find files and cd to the directory containing them. It can also open the file using $EDITOR
+# Usage: seek [options] filename
+# Available options are :   -i (case insensitive), -no (don't open the file), -l (limit), -e (to open with a different editor), -h (help)
+
+# put all the arguments in an array
+args=($@)
+
+# fetch the last argument, last argument must be the filename 
+filename=${!#}
+
+# check if an argument is prevent, if present, echo its position
+function isArgPresent () {
+	for i in 0 1 2 3 4 5; do
+		if [[ ${args[i]} = "$1" ]]; then
+			echo $i
+			return 0
+		fi
+	done
+	return 1
+}
+
+# help
+function help () {
+	printf "seek: Uses plocate to find files and cd to the directory containing them. It can also open the file using \$EDITOR\n\n"
+	printf "Usage : seek [options] filename\n\n" 
+	printf "Available options are :   -i (case insensitive), -no (don't open the file), -l (limit), -e (to open with a different editor), -h (help)\n\n"
+	printf "Needs plocate. Use 'sudo pacman -S plocate' to install\n"
+
+
+}
+
+# handle case sensitiveness
+function isCaseIgnore () {
+	if isArgPresent "-i" &>/dev/null; then
+		echo "-i"
+		return 0
+	else 
+		return 1
+	fi
+}
+
+# handle output limit specification 
+function isLimit () {
+	if isArgPresent "-l" &>/dev/null; then
+		echo "-l ${args[$(($(isArgPresent "-l")+1))]}"
+		return 0
+	else 
+		return 1
+	fi
+}
+
+# find editor to open the file with and define the variable $editor
+function editor () {
+	if isArgPresent "-e" &>/dev/null; then
+		editor="${args[$(($(isArgPresent "-e")+1))]}"
+		return 0
+	else 
+		editor=$EDITOR
+	fi
+}
+
+# change dir 
+function cd2 () {
+	cd "$1"
+}
+
+# check if help is needed
+if isArgPresent "-h" &> /dev/null; then 
+	help
+fi
+
+# parse all the plocate output into an array
+mapfile -t pathArr < <( plocate "$(isCaseIgnore)" "$(isLimit)" "$filename")
+
+# print all the paths along with index
+i=0
+while [[ $i -le $((${#pathArr[@]}-1)) ]]; do
+	printf "%s: ${pathArr[i]}\n" "$i"
+	i=$((i+1))
+done
+
+# gap
+printf "\n"
+
+# read user input for entry index
+read -p "Entry: " index
+
+# find filetype
+ft=$(file ${pathArr[$index]})
+
+# do the final thing, cd to dir, open filename using $editor
+if [[ "$ft" = *"directory"* ]]; then
+ 	cmd="${pathArr[$index]}"
+	function cd2 () {
+		cd "$cmd"
+	}
+	cd2
+else
+	cd2 "$(dirname ${pathArr[$index]})"
+	editor
+	command="$editor ${pathArr[$index]}"
+	eval $command
+fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

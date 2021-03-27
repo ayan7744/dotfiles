@@ -1,0 +1,13 @@
+#!/bin/sh
+layout=$(bsp-layout get $(bspc query -D -d focused --names))
+if [ "$layout" = "tiled" ]; then
+    echo ""
+elif [ "$layout" = "tall" ]; then
+    echo ""
+else
+    echo ""
+fi
+# elif [ "$layout" = "grid" ]; then
+#    echo ""
+# else 
+#     echo ""

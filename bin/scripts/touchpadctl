@@ -1,0 +1,51 @@
+#!/bin/sh
+
+# Written by ayan7744
+id="$(xinput list | grep -Eo 'Touchpad.*id=[0-9]*' | grep -Eo '[0-9]*')"
+
+sensitivity() {
+    xinput set-prop "$id" 157 "$1", 0, 0, 0, "$1", 0, 0, 0, 1
+}
+
+accel() {
+    xinput set-prop "$id" 299 "$1"
+}
+
+toggle() {
+    if [ $(xinput list $id | grep -Ec "disabled") -eq 1 ]; then
+        xinput enable $id
+    #    DISPLAY=:0 notify-send --urgency=critical --icon=/usr/share/icons/gnome/256x256/status/user-available.png "Touchpad enabled"
+    else
+        xinput disable $id
+    #    DISPLAY=:0 notify-send --urgency=critical --icon=/usr/share/icons/gnome/256x256/status/user-busy.png "Touchpad disabled"
+    fi
+}
+
+_help() {
+    /usr/bin/cat << 'EOF'
+Script to configure touchpad sensitivity and acceleration.
+
+Usage:  touchpadctl [ --sensitivity S_PARAMETER | --accel A_PARAMETER | --toggle | --default ]
+
+Here, S_PARAMETER and A_PARAMETER are positive real numbers. The "--default" option sets sensitivity to 2.1 and acceleration to 0.07.
+EOF
+}
+
+case "$1" in 
+    "--sensitivity")
+        sensitivity $2
+        ;;
+    "--accel")
+        accel $2
+        ;;
+    "--toggle")
+        toggle
+        ;;
+    "--default")
+        sensitivity 2.1
+        accel 0.07
+        ;;
+    *)
+        _help
+        ;;
+esac

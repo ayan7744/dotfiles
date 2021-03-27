@@ -1,0 +1,15 @@
+#!/bin/bash
+
+
+device_id=8	#device id of webcam xinput
+
+if [[ $(xinput list $device_id | grep -Ec "disabled") -eq 1 ]]; then
+    xinput enable $device_id
+    notify-send --urgency=critical --hint int:transient:1 "Webcam enabled" "Webcam enabled via xinput"
+else
+    xinput disable $device_id
+    notify-send --urgency=critical --hint int:transient:1 "Webcam disabled" "Webcam disabled via xinput"
+fi
+
+exit 0
+
