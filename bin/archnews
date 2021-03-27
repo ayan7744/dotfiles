@@ -37,7 +37,7 @@ show_news() {
 }
 
 isonline() {
-    ping -q -w2 -c 1 8.8.8.8  &> /dev/null
+    ping -q -w2 -c 1 8.8.8.8  >/dev/null 2>&1
 }
 
 _help() {

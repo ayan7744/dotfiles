@@ -26,7 +26,9 @@ SETUVAR _fish_abbr_envconf:\x24EDITOR\x20\x24XDG_CONFIG_HOME/shell\x2dconfig/sou
 SETUVAR _fish_abbr_find:sudo\x20find
 SETUVAR _fish_abbr_fishconf:\x24EDITOR\x20\x24XDG_CONFIG_HOME/fish/config\x2efish
 SETUVAR _fish_abbr_fishfuncconf:cd\x20\x7e/\x2econfig/fish/functions
+SETUVAR _fish_abbr_gitignoreconf:\x24EDITOR\x20\x24XDG_CONFIG_HOME/git/ignore
 SETUVAR _fish_abbr_greenclipconf:\x24EDITOR\x20\x24XDG_CONFIG_HOME/greenclip\x2ecfg
+SETUVAR _fish_abbr_greetingconf:\x24EDITOR\x20\x24XDG_CONFIG_HOME/fish/greeting
 SETUVAR _fish_abbr_gtk3conf:c\x20\x24XDG_CONFIG_HOME/gtk\x2d3\x2e0
 SETUVAR _fish_abbr_i3conf:\x24EDITOR\x20\x24XDG_CONFIG_HOME/i3/config
 SETUVAR _fish_abbr_jctlwarn:sudo\x20journalctl\x20\x2dxb\x20\x2dp\x204
@@ -34,12 +36,12 @@ SETUVAR _fish_abbr_journalctl:sudo\x20journalctl
 SETUVAR _fish_abbr_myfunctionconf:\x24EDITOR\x20\x24XDG_CONFIG_HOME/shell\x2dconfig/source\x2dmultiple/myfunctions
 SETUVAR _fish_abbr_neofetchdumpconf:\x24EDITOR\x20\x24XDG_CONFIG_HOME/fish/neofetch\x2edump
 SETUVAR _fish_abbr_nmwifi:nmcli\x20device\x20wifi
-SETUVAR _fish_abbr_nvimconf:\x24EDITOR\x20\x24XDG_CONFIG_HOME/\x24EDITOR/init\x2evim
+SETUVAR _fish_abbr_nvimconf:\x24EDITOR\x20\x24XDG_CONFIG_HOME/nvim/init\x2evim
 SETUVAR _fish_abbr_picomconf:\x24EDITOR\x20\x24XDG_CONFIG_HOME/picom/picom\x2econf
 SETUVAR _fish_abbr_polybspconf:\x24EDITOR\x20\x24XDG_CONFIG_HOME/polybar/config\x2dbsp
 SETUVAR _fish_abbr_polyconf:c\x20\x24XDG_CONFIG_HOME/polybar
 SETUVAR _fish_abbr_powertop:sudo\x20powertop
-SETUVAR _fish_abbr_quicktexconf:\x24EDITOR\x20\x24XDG_CONFIG_HOME/\x24EDITOR/plugged/quicktex/ftplugin/tex\x2evim
+SETUVAR _fish_abbr_quicktexconf:\x24EDITOR\x20\x24XDG_CONFIG_HOME/nvim/quicktex\x2evim
 SETUVAR _fish_abbr_shellconf:c\x20\x24XDG_CONFIG_HOME/shell\x2dconfig
 SETUVAR _fish_abbr_showkey:sudo\x20showkey
 SETUVAR _fish_abbr_sxhkdconf:\x24EDITOR\x20\x24XDG_CONFIG_HOME/sxhkd/sxhkdrc

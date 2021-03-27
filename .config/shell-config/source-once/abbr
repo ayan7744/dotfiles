@@ -2,14 +2,15 @@
 # abbreviations
 #########################################################
 # configs
+#
 abbr xinitrcconf '$EDITOR $HOME/.xinitrc'
 abbr i3conf '$EDITOR $XDG_CONFIG_HOME/i3/config'
 abbr fishconf '$EDITOR $XDG_CONFIG_HOME/fish/config.fish'
 abbr shellconf 'c $XDG_CONFIG_HOME/shell-config'
 abbr polyconf 'c $XDG_CONFIG_HOME/polybar'
 abbr alacrittyconf '$EDITOR $XDG_CONFIG_HOME/alacritty/alacritty.yml'
-abbr nvimconf '$EDITOR $XDG_CONFIG_HOME/$EDITOR/init.vim'
-abbr quicktexconf '$EDITOR $XDG_CONFIG_HOME/$EDITOR/plugged/quicktex/ftplugin/tex.vim'
+abbr nvimconf '$EDITOR $XDG_CONFIG_HOME/nvim/init.vim'
+abbr quicktexconf '$EDITOR $XDG_CONFIG_HOME/nvim/quicktex.vim'
 abbr picomconf '$EDITOR $XDG_CONFIG_HOME/picom/picom.conf'
 abbr zathuraconf '$EDITOR $XDG_CONFIG_HOME/zathura/zathurarc'
 # abbr xbindkeysconf '$EDITOR $HOME/.xbindkeysrc'
@@ -22,7 +23,7 @@ abbr aliasconf '$EDITOR $XDG_CONFIG_HOME/shell-config/source-multiple/aliases'
 abbr envconf '$EDITOR $XDG_CONFIG_HOME/shell-config/source-once/env'
 abbr texconf '$EDITOR $XDG_CONFIG_HOME/shell-config/source-multiple/tex'
 abbr myfunctionconf '$EDITOR $XDG_CONFIG_HOME/shell-config/source-multiple/myfunctions'
-abbr neofetchdumpconf '$EDITOR $XDG_CONFIG_HOME/fish/neofetch.dump'
+abbr greetingconf '$EDITOR $XDG_CONFIG_HOME/fish/greeting'
 
 abbr bspconf '$EDITOR $XDG_CONFIG_HOME/bspwm/bspwmrc'
 abbr sxhkdconf '$EDITOR $XDG_CONFIG_HOME/sxhkd/sxhkdrc'
@@ -30,6 +31,7 @@ abbr bsplayoutconf '$EDITOR $XDG_CONFIG_HOME/bsp-layout/layoutrc'
 abbr polybspconf '$EDITOR $XDG_CONFIG_HOME/polybar/config-bsp'
 abbr tlpconf 'sudo -e /etc/tlp.conf'
 abbr cmdlineconf 'sudo -e /boot/loader/entries/arch.conf'
+abbr gitignoreconf '$EDITOR $XDG_CONFIG_HOME/git/ignore'
 
 # NetworkManager
 abbr nmwifi 'nmcli device wifi'

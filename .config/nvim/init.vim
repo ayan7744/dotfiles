@@ -74,9 +74,9 @@ set fileformats=unix,dos,mac
 set shell=$SHELL
 
 "" backups,swaps etc
-set undodir=~/.config/nvim/.undo//
-set backupdir=~/.config/nvim/.backup//
-set directory=~/.config/nvim/.swp//
+set undodir=$HOME/.cache/nvim/undo//
+set backupdir=$HOME/.cache/nvim/backup//
+set directory=$HOME/.cache/nvim/swap//
 
 " highlights the line number
 set cursorline
@@ -86,8 +86,8 @@ highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
 " # vim: ft=<filetype>
 set modeline
 
-" don't warn when editing a read-only file [DOESN'T WORK FOR SOME REASON]
-set noro
+" don't warn when editing a read-only file 
+au BufEnter * set noro
 "*****************************************************************************
 "" Abbreviations
 "*****************************************************************************
@@ -213,7 +213,8 @@ let g:vimtex_compiler_progname='nvr'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " quicktex
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-so $HOME/.config/nvim/quicktex.vim
+" $XDG_CONFIG_HOME/nvim/quicktex.vim is begin sourced from tex.vim in ftplugin
+" dir of quicktex
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vimwiki

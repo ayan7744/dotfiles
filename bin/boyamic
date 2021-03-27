@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 pactl set-source-port 1 analog-input-headset-mic
 if [ $# -eq 0 ]; then 
     pacmd set-source-volume 1 20000

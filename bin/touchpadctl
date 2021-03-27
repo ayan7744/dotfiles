@@ -12,7 +12,7 @@ accel() {
 }
 
 toggle() {
-    if [[ $(xinput list $id | grep -Ec "disabled") -eq 1 ]]; then
+    if [ $(xinput list $id | grep -Ec "disabled") -eq 1 ]; then
         xinput enable $id
     #    DISPLAY=:0 notify-send --urgency=critical --icon=/usr/share/icons/gnome/256x256/status/user-available.png "Touchpad enabled"
     else

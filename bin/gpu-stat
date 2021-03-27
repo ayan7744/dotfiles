@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 gpu_hwmon="$(echo /sys/class/drm/card0/device/hwmon/hwmon?)"
 usage=$(< /sys/class/drm/card0/device/gpu_busy_percent)

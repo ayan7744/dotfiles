@@ -20,17 +20,15 @@ set -x CONFIGS_SOURCED_ONCE true
 # appearence and themes 
 ####################################################################
 
-# run when fish is started depending on whether it is a tty or a terminal emulator
 function fish_greeting
     if tty | grep tty &> /dev/null
     	echo ""
 	    systemd-analyze
         echo ""
-    else if ! xprop -id (printf 0x00%X (xdotool getactivewindow)) WM_CLASS | grep "Alacritty" > /dev/null
-        # do nothing if classname is not Alacritty
-        :   
-    else
-        /bin/cat $HOME/.config/fish/neofetch.dump
+        systemd-analyze blame | head -5
+        echo ""
+    else if xprop -id (printf 0x00%X (xdotool getactivewindow 2> /dev/null)) WM_CLASS 2> /dev/null | grep "Alacritty" &> /dev/null
+        /usr/bin/cat $HOME/.config/fish/greeting
     end 	
 end
 

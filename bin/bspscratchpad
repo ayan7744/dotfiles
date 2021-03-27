@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Written by ayan7744
 
@@ -8,19 +8,19 @@ counterFile=/tmp/bspscratchpad.counter
 # for drop down terminal
 termStatus="/tmp/dropdownterm.status"
 termIdFile="/tmp/dropdownterm.id"
-termId="$(< $termIdFile)"
+termId="$(/usr/bin/cat $termIdFile)"
 
 toggle_scratchpad_flag() {
 idFocusedWin="$(bspc query -N -n "focused")"
 # check if the focused window is in scratchpad
-if grep "$idFocusedWin" "$cacheFile" &>/dev/null; then
+if grep "$idFocusedWin" "$cacheFile" >/dev/null 2>&1; then
     # remove occurences of $idFocusedWin from $cacheFile ( -v switch is for inverse searching)
     bspc node "$idFocusedWin" -g sticky=off
     bspc node "$idFocusedWin" -t tiled
     grep -v "$idFocusedWin" "$cacheFile" > /tmp/bspscratchpad.id.tmp
     mv /tmp/bspscratchpad.id.tmp "$cacheFile"
     wc -l < "$cacheFile" > "$counterFile"
-    [ "$(< "counterFile")" -eq "0" ] && echo 1 > "$counterFile"
+    [ "$(/usr/bin/cat "$counterFile")" -eq "0" ] && echo 1 > "$counterFile"
 else 
     # enable floating
     bspc node "$idFocusedWin" -g hidden
@@ -37,23 +37,23 @@ cycle_scratchpad() {
     # first check if there is a window, this makes it work for empty desktops
     if [ "$idFocusedWin" = "" ]; then
         winCount=$(wc -l < "$cacheFile")
-        counter="$(< "$counterFile")"
+        counter="$(/usr/bin/cat "$counterFile")"
         nodeId=$(sed "${counter}q;d" "$cacheFile")
         bspc node $nodeId -g hidden=off  
         bspc node $nodeId -f
         echo $(($counter + 1)) > "$counterFile"
-        [ $(($(< "$counterFile"))) -gt $winCount ] && echo 1 > "$counterFile"
+        [ $(($(/usr/bin/cat "$counterFile"))) -gt $winCount ] && echo 1 > "$counterFile"
     # check if the focused window is in scratchpad
-    elif grep "$idFocusedWin" "$cacheFile" &>/dev/null; then
+    elif grep "$idFocusedWin" "$cacheFile" >/dev/null 2>&1; then
         bspc node "$idFocusedWin" -g hidden
     else
         winCount=$(wc -l < "$cacheFile")
-        counter="$(< "$counterFile")"
+        counter="$(/usr/bin/cat "$counterFile")"
         nodeId=$(sed "${counter}q;d" "$cacheFile")
         bspc node $nodeId -g hidden=off  
         bspc node $nodeId -f
         echo $(($counter + 1)) > "$counterFile"
-        [ $(($(< "$counterFile"))) -gt $winCount ] && echo 1 > "$counterFile"
+        [ $(($(/usr/bin/cat "$counterFile"))) -gt $winCount ] && echo 1 > "$counterFile"
     fi
 }
 
@@ -64,13 +64,15 @@ remove_from_scratchpad() {
 }
 
 term_toggle() {
-    currentStatus="$(< $termStatus)"
+    currentStatus="$(/usr/bin/cat $termStatus)"
     if [ "$currentStatus" = "1" ]; then
         bspc node "$termId" -g hidden=on
         echo "0" > $termStatus
     else 
         bspc node "$termId" -g hidden=off
         echo "1" > $termStatus
+        # focus on the window 
+        bspc node "$termId" -f
     fi
 }
 

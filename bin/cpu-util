@@ -9,9 +9,14 @@ SUBSYSTEM=="power_supply", ATTR{online}=="0", RUN+="/home/ayan/bin/cpu-util --se
 # set scaling governor to schedutil when running on AC.
 SUBSYSTEM=="power_supply", ATTR{online}=="1", RUN+="/home/ayan/bin/cpu-util --set-governor schedutil"
 '
+number_of_cores() {
+    echo "$(nproc)-1" | bc
+}
 
 set_governor() {
-   echo "$1" | tee /sys/devices/system/cpu/cpu{0,1,2,3,4,5}/cpufreq/scaling_governor
+    for $((i=0;i<=$(number_of_cores);i++)); do
+        echo "$1" | tee /sys/devices/system/cpu/cpu${i}/cpufreq/scaling_governor
+    done
 }
 
 set_turbo_boost() {
@@ -62,8 +67,7 @@ case "$1" in
         ;;
     "--info")
         echo "CPU Temperature : $(cpu_temp) °C"
-        numberOfCores=$(echo "$(nproc)-1" | bc)
-        for ((i=0;i<=$numberOfCores;i++)); do
+        for $((i=0;i<=$(number_of_cores);i++)); do
             echo "CPU $i governor: $(current_governor $i)"
         done
         echo "Turbo Boost: $(turbo_boost_state)"

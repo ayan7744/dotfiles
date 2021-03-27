@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Written by ayan7744
 # Battery sysfs dir
@@ -47,17 +47,17 @@ WantedBy=multi-user.target"
 }
 
 time_remaining_discharge() {
-    echo "$(< ${_bat}/energy_now)/$(< ${_bat}/power_now)"| bc -l| head -c 4
+    echo "$(/usr/bin/cat ${_bat}/energy_now)/$(/usr/bin/cat ${_bat}/power_now)"| bc -l| head -c 4
 }
 
 show_stat() {
-    echo "Charge = "$(< ${_bat}/capacity)"%"
-    [ -f ${_bat}/charge_control_end_threshold ] && echo "Charge end threshold = "$(< ${_bat}/charge_control_end_threshold)"%"
-    echo "Status = "$(< ${_bat}/status)"" 
-    [ "$(< ${_bat}/status)" = "Discharging" ] && echo "Remaining time to discharge = $(time_remaining_discharge) hour(s)"
-    echo "Battery health = "$(echo 100\*$(< ${_bat}/energy_full)/$(< ${_bat}/energy_full_design)| bc -l| head -c 5)"%"
-    echo "Technology = "$(< ${_bat}/technology)""
-    echo "Manufacterer = "$(< ${_bat}/manufacturer)""
+    echo "Charge = "$(/usr/bin/cat ${_bat}/capacity)"%"
+    [ -f ${_bat}/charge_control_end_threshold ] && echo "Charge end threshold = "$(/usr/bin/cat ${_bat}/charge_control_end_threshold)"%"
+    echo "Status = "$(/usr/bin/cat ${_bat}/status)"" 
+    [ "$(/usr/bin/cat ${_bat}/status)" = "Discharging" ] && echo "Remaining time to discharge = $(time_remaining_discharge) hour(s)"
+    echo "Battery health = "$(echo 100\*$(/usr/bin/cat ${_bat}/energy_full)/$(/usr/bin/cat ${_bat}/energy_full_design)| bc -l| head -c 5)"%"
+    echo "Technology = "$(/usr/bin/cat ${_bat}/technology)""
+    echo "Manufacterer = "$(/usr/bin/cat ${_bat}/manufacturer)""
 }
 
 case $1 in 
