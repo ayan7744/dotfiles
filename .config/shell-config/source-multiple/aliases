@@ -55,6 +55,5 @@ alias trash='trash-put'
 
 # fun
 alias fml='echo HAHAHAHAHA!'
-alias fuck='echo "fu"'
 alias thnx="echo 'You\'re welcome.'"
 alias asdf='echo lmao noob qwerty user'
