@@ -4,10 +4,10 @@
 # Accompanying udev rule: 
 udev_rule_txt='
 # set scaling governor to powersave when running on battery.
-SUBSYSTEM=="power_supply", ATTR{online}=="0", RUN+="/home/ayan/bin/cpu-util --set-governor powersave"
+SUBSYSTEM=="power_supply", ATTR{online}=="0", RUN+="/home/ayan/bin/scripts/cpu-util --set-governor powersave"
 
 # set scaling governor to schedutil when running on AC.
-SUBSYSTEM=="power_supply", ATTR{online}=="1", RUN+="/home/ayan/bin/cpu-util --set-governor schedutil"
+SUBSYSTEM=="power_supply", ATTR{online}=="1", RUN+="/home/ayan/bin/scripts/cpu-util --set-governor schedutil"
 '
 number_of_cores() {
     echo "$(nproc)-1" | bc
