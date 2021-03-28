@@ -36,10 +36,11 @@ fi
 # execute on startup
 
 feh --bg-scale --no-fehbg $WALLPAPER &
-touchpadctl --default & 		            # fix sensitivity and accel
-setxkbmap -option caps:swapescape & 	# swap Escape and CapsLock
-xsetroot -cursor_name left_ptr &        # fix ugly cursor
-xset r rate 280 35 &					# sets key repeat rate = 35 /s and key repeat delay = 280ms
-# clipmenud &                             # clipmenu daemon
-# picom -b --config $HOME/.config/picom/picom.conf
+touchpadctl --default & 		                                            # fix sensitivity and accel
+setxkbmap -option caps:swapescape & 	                                    # swap Escape and CapsLock
+xsetroot -cursor_name left_ptr &                                            # fix ugly cursor
+xset r rate 280 35 &					                                    # sets key repeat rate = 35 /s and key repeat delay = 280ms
+cat /sys/class/backlight/amdgpu_bl0/brightness > /tmp/current_brightness &  # for /etc/udev/rules.d/00-freeze-backlight.rule
+
+# picom -b --config $XDG_CONFIG_HOME/picom/picom.conf
 exec bspwm

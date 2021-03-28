@@ -2,12 +2,12 @@
 
 # Written by ayan7744
 
-cacheFile=/tmp/bspscratchpad.id
-counterFile=/tmp/bspscratchpad.counter
+cacheFile=/tmp/bspscratchpad_ids
+counterFile=/tmp/bspscratchpad_counter
 
 # for drop down terminal
-termStatus="/tmp/dropdownterm.status"
-termIdFile="/tmp/dropdownterm.id"
+termStatus="/tmp/dropdownterm_status"
+termIdFile="/tmp/dropdownterm_id"
 termId="$(/usr/bin/cat $termIdFile)"
 
 toggle_scratchpad_flag() {
@@ -17,8 +17,8 @@ if grep "$idFocusedWin" "$cacheFile" >/dev/null 2>&1; then
     # remove occurences of $idFocusedWin from $cacheFile ( -v switch is for inverse searching)
     bspc node "$idFocusedWin" -g sticky=off
     bspc node "$idFocusedWin" -t tiled
-    grep -v "$idFocusedWin" "$cacheFile" > /tmp/bspscratchpad.id.tmp
-    mv /tmp/bspscratchpad.id.tmp "$cacheFile"
+    grep -v "$idFocusedWin" "$cacheFile" > /tmp/bspscratchpad_id.tmp
+    mv /tmp/bspscratchpad_ids.tmp "$cacheFile"
     wc -l < "$cacheFile" > "$counterFile"
     [ "$(/usr/bin/cat "$counterFile")" -eq "0" ] && echo 1 > "$counterFile"
 else 
@@ -59,8 +59,8 @@ cycle_scratchpad() {
 
 remove_from_scratchpad() {
     id="$(bspc query -N -n "focused")"
-    grep -v "$id" "$cacheFile" > /tmp/bspscratchpad.id.remove_from_scratchpad.tmp
-    mv /tmp/bspscratchpad.id.remove_from_scratchpad.tmp "$cacheFile"
+    grep -v "$id" "$cacheFile" > /tmp/bspscratchpad_ids.remove_from_scratchpad.tmp
+    mv /tmp/bspscratchpad_ids.remove_from_scratchpad.tmp "$cacheFile"
 }
 
 term_toggle() {

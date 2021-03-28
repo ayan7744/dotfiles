@@ -65,7 +65,7 @@ bspc rule -a Pulseaudio-equalizer-gtk state=floating
 bspc rule -a Zathura state=tiled split_ratio=0.6
 
 # Initialise drop-down terminal and ~/bin/bspscratchpad
-nohup $TERMINAL --class drop-down-term,drop-down-term &
+$TERMINAL --class drop-down-term,drop-down-term > /dev/null 2>&1 &
 sleep 0.2
-echo "$(printf 0x00%X "$(xdotool search --classname drop-down-term)")" > /tmp/dropdownterm.id &
-echo "0" > /tmp/dropdownterm.status &
+echo "$(printf 0x00%X "$(xdotool search --classname drop-down-term)")" > /tmp/dropdownterm_id &
+echo "0" > /tmp/dropdownterm_status &

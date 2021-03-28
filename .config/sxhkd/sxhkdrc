@@ -54,10 +54,10 @@ XF86AudioMute
     pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 
 XF86MonBrightnessUp
-    light -A 1
+    light -A 1 && /usr/bin/cat /sys/class/backlight/amdgpu_bl0/brightness > /tmp/current_brightness
 
 XF86MonBrightnessDown
-    light -U 1
+    light -U 1 && /usr/bin/cat /sys/class/backlight/amdgpu_bl0/brightness > /tmp/current_brightness
 
 XF86TouchpadToggle
     touchpadctl --toggle
@@ -99,11 +99,11 @@ mod1 + {_,shift + ,shift + ctrl + }q
 
 # cycle between tall, tiled (bsp default) layout using bsp-layout
 mod1 + m
-	bsp-layout cycle --layouts tall,tiled; polybar-msg hook bsp-layout 1 &>/dev/null
+	bsp-layout cycle --layouts tall,tiled; polybar-msg hook bsp-layout 1 >/dev/null 2>&1
 
 # one shot grid layout
 mod1 + n
-    bsp-layout once grid; bsp-layout set tiled; polybar-msg hook bsp-layout 1 &>/dev/null
+    bsp-layout once grid; bsp-layout set tiled; polybar-msg hook bsp-layout 1 >/dev/null 2>&1
 
 # Move focused window to a pre-selected space
 mod1 + shift + m
@@ -151,7 +151,7 @@ mod1 + {_,shift + }{h,j,k,l}
 
 # focus the next/previous desktop in the current monitor
 mod1 + bracket{left,right}
-	bspc desktop -f {prev,next}.local; polybar-msg hook bsp-layout 1 &>/dev/null
+	bspc desktop -f {prev,next}.local; polybar-msg hook bsp-layout 1 > /dev/null 2>&1
 
 # focus the last node/desktop
 mod1 + {grave,Tab}
@@ -165,7 +165,7 @@ mod1 + {i,o}
 
 # focus given desktop
 mod1 + {1-9,0}
-	bspc desktop -f '^{1-9,10}'; polybar-msg hook bsp-layout 1 &>/dev/null
+	bspc desktop -f '^{1-9,10}'; polybar-msg hook bsp-layout 1 > /dev/null 2>&1
 
 # send node to given desktop
 mod1 + shift + {1-9,0}

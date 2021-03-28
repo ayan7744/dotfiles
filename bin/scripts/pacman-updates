@@ -3,8 +3,8 @@
 tmpfile=/tmp/checkupdates.$USER
 
 checkupdates_dump() {
-    isonline && echo "[$(date)]" > $tmpfile
-    checkupdates 1>> $tmpfile 2> /dev/null
+    echo "[$(date)]" > $tmpfile
+    isonline && checkupdates 1>> $tmpfile 2> /dev/null
     return 0
 }
 
