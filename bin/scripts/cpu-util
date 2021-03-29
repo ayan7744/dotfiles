@@ -2,6 +2,7 @@
 
 # Written by ayan7744
 # Accompanying udev rule: 
+# Not sure if powersave saves power.
 udev_rule_txt='
 # set scaling governor to powersave when running on battery.
 SUBSYSTEM=="power_supply", ATTR{online}=="0", RUN+="/home/ayan/bin/scripts/cpu-util --set-governor powersave"
@@ -9,13 +10,11 @@ SUBSYSTEM=="power_supply", ATTR{online}=="0", RUN+="/home/ayan/bin/scripts/cpu-u
 # set scaling governor to schedutil when running on AC.
 SUBSYSTEM=="power_supply", ATTR{online}=="1", RUN+="/home/ayan/bin/scripts/cpu-util --set-governor schedutil"
 '
-number_of_cores() {
-    echo "$(nproc)-1" | bc
-}
-
 set_governor() {
-    for $((i=0;i<=$(number_of_cores);i++)); do
+    i=0
+    while [ "$i" -ne "$(nproc)" ]; do
         echo "$1" | tee /sys/devices/system/cpu/cpu${i}/cpufreq/scaling_governor
+        i=$((i+1))
     done
 }
 
@@ -67,8 +66,10 @@ case "$1" in
         ;;
     "--info")
         echo "CPU Temperature : $(cpu_temp) °C"
-        for $((i=0;i<=$(number_of_cores);i++)); do
+        i=0
+        while [ "$i" -ne "$(nproc)" ]; do
             echo "CPU $i governor: $(current_governor $i)"
+            i=$((i+1))
         done
         echo "Turbo Boost: $(turbo_boost_state)"
         ;;       
