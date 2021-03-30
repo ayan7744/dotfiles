@@ -1,0 +1,42 @@
+#!/bin/sh 
+
+# toggle iwlwifi and iwlmvm powersaving 
+# the commented out lines don't work
+
+enable_power_saving() {
+#    echo "3" | tee /sys/module/iwlmvm/parameters/power_scheme
+#    echo "Y" | tee /sys/module/iwlwifi/parameters/power_save
+    echo "0" | tee /sys/module/iwlwifi/parameters/uapsd_disable
+}
+
+disable_power_saving() {
+#    echo "2" | tee /sys/module/iwlmvm/parameters/power_scheme
+#    echo "N" | tee /sys/module/iwlwifi/parameters/power_save
+    echo "3" | tee /sys/module/iwlwifi/parameters/uapsd_disable
+}
+
+module_params() {
+    # https://serverfault.com/questions/62316/how-do-i-list-loaded-linux-module-parameter-values
+    # an alternative is systool (also modinfo iwlwifi)
+    grep [[:alnum:]] /sys/module/iwl*/parameters/*
+}
+
+_help() {
+    echo "Intel wifi powersaving using iwlwifi and iwlmvm module parameters."
+}
+
+case "$1" in 
+    "--enable")
+        enable_power_saving
+        ;;
+    "--disable")
+        disable_power_saving
+        ;;
+    "--params")
+        module_params
+        ;;
+    *)
+        _help
+        exit 0
+        ;;
+esac
