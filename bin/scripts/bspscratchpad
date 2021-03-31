@@ -6,6 +6,7 @@ cacheFile=/tmp/bspscratchpad_ids
 counterFile=/tmp/bspscratchpad_counter
 
 # for drop down terminal
+term="$TERMINAL"
 termStatus="/tmp/dropdownterm_status"
 termIdFile="/tmp/dropdownterm_id"
 termId="$(/usr/bin/cat $termIdFile)"
@@ -63,6 +64,15 @@ remove_from_scratchpad() {
     mv /tmp/bspscratchpad_ids.remove_from_scratchpad.tmp "$cacheFile"
 }
 
+init_drop_down_term() {
+    bspc rule -a drop-down-term state=floating rectangle=1912x350+2+23 hidden=on sticky=on locked=on
+    $term --class drop-down-term,drop-down-term > /dev/null 2>&1 &
+    sleep 0.5
+    echo "$(printf 0x00%X "$(xdotool search --classname drop-down-term)")" > /tmp/dropdownterm_id &
+    echo "0" > /tmp/dropdownterm_status &
+
+}
+
 term_toggle() {
     currentStatus="$(/usr/bin/cat $termStatus)"
     if [ "$currentStatus" = "1" ]; then
@@ -86,6 +96,9 @@ case "$1" in
     "--remove")
         remove_from_scratchpad
         ;;
+    "--init-term")
+        init_drop_down_term
+        ;;
     "--toggle-term")
         term_toggle
         ;;
@@ -101,6 +114,9 @@ Usage: bspscratchpad [--toggle|--cycle|--remove|--toggle-term]
 
     --remove
         Remove focused window from scratchpad
+
+    --init-term
+        Open an instance of $TERMINAL and initialise drop down terminal.
 
     --toggle-term
         Toggle visibility of drop down terminal
