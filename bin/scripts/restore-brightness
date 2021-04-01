@@ -1,0 +1,43 @@
+#!/bin/sh
+
+initialise() {
+    if [ -f /sys/class/backlight/amdgpu_bl0/brightness ]; then
+        cat /sys/class/backlight/amdgpu_bl0/brightness > /tmp/current_brightness
+    else
+        echo "Backlight subsystem hasn't initialised yet."
+    fi
+}
+
+restore(){
+    if [ -f /sys/class/backlight/amdgpu_bl0/brightness ]; then
+        if [ -f /tmp/current_brightness ]; then
+            cat /tmp/current_brightness > /sys/class/backlight/amdgpu_bl0/brightness
+        fi
+    else
+        echo "Backlight subsystem hasn't initialised yet."
+    fi
+}
+
+restore_and_init(){
+    if [ -f /sys/class/backlight/amdgpu_bl0/brightness ]; then
+        if [ -f /tmp/current_brightness ]; then
+            cat /tmp/current_brightness > /sys/class/backlight/amdgpu_bl0/brightness
+        else 
+            cat /sys/class/backlight/amdgpu_bl0/brightness > /tmp/current_brightness
+        fi
+    else
+        echo "Backlight subsystem hasn't initialised yet."
+    fi
+}
+
+case $1 in 
+    "--init")
+        initialise
+        ;;
+    "--restore")
+        restore
+        ;;
+    *)
+        restore_and_init
+        ;;
+esac
