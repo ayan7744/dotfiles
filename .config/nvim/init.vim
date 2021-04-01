@@ -88,6 +88,10 @@ set modeline
 
 " don't warn when editing a read-only file 
 au BufEnter * set noro
+
+" syntax highlighting for specific filetypes
+au BufRead,BufNewFile *.rules set ft=sh
+au BufRead,BufNewFile *.fish set ft=sh
 "*****************************************************************************
 "" Abbreviations
 "*****************************************************************************
