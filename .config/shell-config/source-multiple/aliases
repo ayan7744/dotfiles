@@ -16,12 +16,13 @@ alias cp='cp -ir'
 alias mv='mv -i'
 
 # Change "ls" to "exa"
-alias ls='exa --color=always --group-directories-first' 
-alias sl='exa --color=always --group-directories-first' # when you type sl instead of ls
-alias la='exa -lah --color=always --group-directories-first'  # all files and dirs
-alias laa='exa -ah --color=always --group-directories-first'  # long format
-alias ll='exa -lh --color=always --group-directories-first'  # long format
-alias lll='exa -lh --color=always --group-directories-first'  # long format
+alias ls='exa --color=always --group-directories-first --colour-scale --icons' 
+alias sl='exa --color=always --group-directories-first --colour-scale --icons' # when you type sl instead of ls
+alias la='exa -lah --color=always --group-directories-first --colour-scale --icons'  # all files and dirs
+alias al='exa -ah --color=always --group-directories-first --colour-scale --icons'  # long format
+alias ll='exa -lh --color=always --group-directories-first --colour-scale --icons'  # long format
+alias lll='exa -lh --color=always --group-directories-first --colour-scale --icons'  # long format
+alias tree='exa -lah -T --colour=always --group-directories-first --colour-scale --icons'
 
 # Improvements
 alias ip='ip --color=auto'
