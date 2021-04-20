@@ -8,7 +8,7 @@ rofi.padding:               0
 rofi.separator-style:       none
 rofi.hide-scrollbar:        true
 rofi.line-margin:           0
-rofi.font:                  sans-serif 10
-rofi.theme: /usr/share/rofi/themes/custom-nord.rasi
+rofi.font:                  hack 10
+rofi.theme: /home/ayan/.config/rofi/themes/custom-nord.rasi
 
 rofi.disable-history: false

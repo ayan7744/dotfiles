@@ -1,7 +1,7 @@
 configuration {
 	modi: "drun,run,window,ssh";
 	lines: 7;
-	font: "sans-serif 10";
+	font: "hack 10";
 	bw: 0;
 	padding: 0;
 	show-icons: false;
@@ -10,5 +10,5 @@ configuration {
 	line-padding: 10;
 	separator-style: "none";
 	hide-scrollbar: true;
-	theme: "/usr/share/rofi/themes/custom-nord.rasi";
+	theme: "/home/ayan/.config/rofi/themes/custom-nord.rasi";
 }
