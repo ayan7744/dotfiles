@@ -2,6 +2,7 @@
 
 rofi_dmenu="rofi -dmenu -width 100% -i -location 1 -yoffset 23 -matching fuzzy"
 
+nmcli device wifi rescan
 bssid=$(nmcli device wifi list | sed -n '1!p' | cut -b 9- | $rofi_dmenu -no-fixed-num-lines -p "Wifi" | cut -d' ' -f1)
 
 [ "$bssid" = "" ] && exit 0
