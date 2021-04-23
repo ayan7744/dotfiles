@@ -8,5 +8,6 @@ My setup consists of
   - [Alacritty](https://github.com/alacritty/alacritty)
   - [Fish](https://fishshell.com/) + [dash](http://gondor.apana.org.au/~herbert/dash/)
   - [Neovim](https://neovim.io/)
+  - [Zathura](https://git.pwmt.org/pwmt/zathura)
  
 Maybe you will find something useful :)
