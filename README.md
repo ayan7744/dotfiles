@@ -1,3 +1,5 @@
+![dotfiles](https://user-images.githubusercontent.com/81346965/115837829-a2b6a480-a436-11eb-992c-776e5e1a490f.png)
+
 # Dotfiles
 My setup consists of 
   - [Arch Linux](https://archlinux.org/)
