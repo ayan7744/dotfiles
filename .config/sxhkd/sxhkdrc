@@ -7,8 +7,12 @@ mod1 + Return
 	$TERMINAL
 
 # rofi drun
+# mod1 + d
+#	rofi -show drun
+
+# rofi drun
 mod1 + d
-	rofi -show drun
+    rofi -show drun -width 100% -location 1 -yoffset 23
 
 # rofi wifi menu
 super + w
