@@ -3,7 +3,7 @@
 rofi_dmenu="rofi -dmenu -width 100% -i -location 1 -matching fuzzy"
 
 failed() {
-    echo "" | $rofi_dmenu -lines 0 -p "Operation failed"
+    echo "" | $rofi_dmenu -lines 0 -p "Operation failed!"
 }
 
 nmcli device wifi rescan
