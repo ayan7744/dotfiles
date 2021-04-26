@@ -17,6 +17,8 @@ failed() {
 
 choice=$(menu_options | $rofi_dmenu -p "rofi utils"| cut -d. -f1)
 
+[ "$choice" = "" ] && exit 0
+
 case "$choice" in
     "$o1")
         rofi-wifi
