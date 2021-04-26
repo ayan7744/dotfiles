@@ -8,6 +8,9 @@ configuration {
 	matching: "fuzzy";
 	line-margin: 0;
 	line-padding: 10;
+    location: 1;
+    yoffset: 23;
+    width: 100;
 	separator-style: "none";
 	hide-scrollbar: true;
 	theme: "/home/ayan/.config/rofi/themes/custom-nord.rasi";

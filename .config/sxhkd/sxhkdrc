@@ -7,16 +7,12 @@ mod1 + Return
 	$TERMINAL
 
 # rofi drun
-# mod1 + d
-#	rofi -show drun
-
-# rofi drun
 mod1 + d
-    rofi -show drun -width 100% -location 1 -yoffset 23
+     rofi -show drun
 
 # rofi wifi menu
-super + w
-    rofi-wifi
+mod1 + semicolon
+    rofi-utils
 
 # firefox
 mod1 + b
