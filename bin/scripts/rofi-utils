@@ -1,0 +1,34 @@
+#!/bin/sh
+
+rofi_dmenu="rofi -dmenu -width 100% -i -location 1 -matching fuzzy -no-custom -no-fixed-num-lines"
+o1="Wifi"
+o2="Shorten copied URL"
+o3="Save image from clipboard"
+
+menu_options() {
+    printf "$o1\n"
+    printf "$o2\n"
+    printf "$o3\n"
+}
+
+failed() {
+    echo "" | $rofi_dmenu -lines 0 -p "Operation failed!"
+}
+
+choice=$(menu_options | $rofi_dmenu -p "rofi utils"| cut -d. -f1)
+
+case "$choice" in
+    "$o1")
+        rofi-wifi
+        ;;
+    "$o2")
+        0x0
+        ;;
+    "$o3") 
+	    file=$(date +"%Y_%m_%d_%I_%M_%p")
+	    xclip -selection clipboard -t image/png -o > $HOME/Pictures/Saved/$file.png || failed
+	    ;;
+    *) 
+        failed
+        ;;
+esac
