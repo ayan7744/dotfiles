@@ -10,7 +10,7 @@ test -z $CONFIGS_SOURCED_ONCE ;and for script in $HOME/.config/shell-config/sour
 end
 
 # configs to be sourced everytime
-for script in $XDG_CONFIG_HOME/shell-config/source-multiple/*
+for script in $XDG_CONFIG_HOME/shell-config/source-everytime/*
     source "$script"
 end
 
