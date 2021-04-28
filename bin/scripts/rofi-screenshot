@@ -3,7 +3,7 @@
 currentTime=$(date '+%H%M%S-%d-%m-%Y')
 flameshot full -c -p "/tmp"
 
-filename=$(echo "" | rofi -dmenu -width 100% -lines 0 -location 1 -p "Enter filename:")
+filename=$(echo "" | rofi -dmenu -width 100% -lines 0 -location 1 -p "Save As:")
 
 if [ "$filename" = "" ]; then
     [ -d /tmp/screenshot-temp ] || mkdir /tmp/screenshot-temp
