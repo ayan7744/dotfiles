@@ -1,11 +1,11 @@
 #!/bin/fish
 # vim: ft=sh
 
-set username "kdebajit"
+set username ""
 # Use %40 for @ 
-set password "dkkukurmara"
-set host 192.168.3.10
-set port 3128
+set password ""
+set host ""
+set port ""
 
 function set_proxy 
     [ "$IS_PROXY_ON" = "1" ] && [ "$http_proxy" = "$argv[1]" ] && return 0
