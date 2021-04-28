@@ -83,7 +83,8 @@ super+p
 
 # full screenshot, saves in ~/Pictures/Screenshots and copies to clipboard
 Print
-    flameshot full -c -p $HOME/Pictures/Screenshots
+    rofi-screenshot
+    #flameshot full -c -p $HOME/Pictures/Screenshots
 
 # full screenshot, only copy to clipboard
 shift + Print 

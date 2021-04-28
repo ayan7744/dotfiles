@@ -12,10 +12,21 @@ function cs
 end
 
 function opensh --argument name
-	/usr/bin/nvim $HOME/bin/scripts/$name
+	$EDITOR $HOME/bin/scripts/$name
 end
 
 function dfupdate --argument msg
     dfpub add -u && dfpub commit -m "$msg" && dfpub push
     dfpri add -u && dfpri commit -m "$msg" && dfpri push
+end
+
+function bak --argument filename
+    cp -ir "$filename" "$filename.bak"
+end
+
+function unbak --argument filename
+    if echo $filename | grep ".bak"
+        set filename2 (echo "$filename" | rev | cut -c5- | rev)
+        mv -i "$filename" "$filename2"
+    end
 end
