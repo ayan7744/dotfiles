@@ -1,0 +1,17 @@
+#!/bin/sh
+
+currentTime=$(date '+%H%M%S-%d-%m-%Y')
+flameshot full -c -p "/tmp"
+
+filename=$(echo "" | rofi -dmenu -width 100% -lines 0 -location 1 -p "Enter filename:")
+
+if [ "$filename" = "" ]; then
+    [ -d /tmp/screenshot-temp ] || mkdir /tmp/screenshot-temp
+    cp /tmp/*.png /tmp/screenshot-temp/${filename}_${currentTime}.png
+    mv /tmp/*.png $HOME/Pictures/Screenshots/${currentTime}.png
+else
+    [ -d /tmp/screenshot-temp ] || mkdir /tmp/screenshot-temp
+    cp /tmp/*.png /tmp/screenshot-temp/${filename}_${currentTime}.png
+    mv /tmp/*.png $HOME/Pictures/Screenshots/${filename}_${currentTime}.png
+fi
+
