@@ -1,0 +1,69 @@
+#!/bin/fish
+# vim: ft=sh
+
+set username ""
+# Use %40 for @ 
+set password ""
+set host ""
+set port ""
+
+function set_proxy 
+    [ "$IS_PROXY_ON" = "1" ] && [ "$http_proxy" = "$argv[1]" ] && return 0
+    if count $argv > /dev/null
+        [ "$IS_PROXY_ON" = "1" ] && unset_proxy
+        set -Ux http_proxy $argv[1]
+    else 
+        # set -Ux http_proxy http://$username:$password@$host:$port/
+    end
+    set -Ux HTTP_PROXY $http_proxy
+    set -Ux https_proxy $http_proxy
+    set -Ux HTTPS_PROXY $http_proxy
+    set -Ux ftp_proxy $http_proxy
+    set -Ux FTP_PROXY $http_proxy
+    set -Ux rsync_proxy $http_proxy
+    set -Ux RSYNC_PROXY $http_proxy
+    set -Ux all_proxy $http_proxy
+    set -Ux IS_PROXY_ON 1
+    # set -Ux no_proxy "localhost,127.0.0.1,localaddress,.localdomain.com"
+end
+
+function unset_proxy
+    [ "$IS_PROXY_ON" = "0" ] && return 0
+    set -e http_proxy
+    set -e HTTP_PROXY 
+    set -e https_proxy 
+    set -e HTTPS_PROXY
+    set -e ftp_proxy 
+    set -e FTP_PROXY
+    set -e rsync_proxy
+    set -e RSYNC_PROXY 
+    set -e all_proxy
+    set -Ux IS_PROXY_ON 0
+    # set -e no_proxy 
+end
+    
+function toggle
+    if [ "$IS_PROXY_ON" = "0" ]
+        set_proxy
+    else if [ "$IS_PROXY_ON" = "1" ] 
+        unset_proxy
+    else 
+        echo "Proxy indicator environment variable absent."
+        set_proxy
+    end
+end
+
+# toggle 
+
+switch $argv[1]
+    case "--set"
+        if not set -q argv[2] 
+            set_proxy
+        else
+            set_proxy $argv[2]
+        end
+    case "--unset"
+        unset_proxy
+    case "--toggle"
+       toggle
+end
