@@ -4,11 +4,15 @@ rofi_dmenu="rofi -dmenu -width 100% -i -location 1 -matching fuzzy -no-custom -n
 o1="Wifi"
 o2="Shorten copied URL"
 o3="Save image from clipboard"
+o4="Open TeX file"
+o5="Open script"
 
 menu_options() {
     printf "$o1\n"
     printf "$o2\n"
     printf "$o3\n"
+    printf "$o4\n"
+    printf "$o5\n"
 }
 
 failed() {
@@ -30,6 +34,16 @@ case "$choice" in
 	    file=$(date +"%Y_%m_%d_%I_%M_%p")
 	    xclip -selection clipboard -t image/png -o > $HOME/Pictures/Saved/$file.png || failed
 	    ;;
+    "$o4")
+        texfile="$(/bin/ls -1 $HOME/tex/*/main.tex | cut -c16- | rev | cut -c10- | rev | $rofi_dmenu -p "TeX files")"
+        [ "$texfile" = "" ] && exit 0
+        $TERMINAL -e $EDITOR $HOME/tex/$texfile/main.tex &
+        $READER $HOME/tex/$texfile/main.pdf
+        ;;
+    "$o5")
+        shfile="$(/bin/ls -1 $HOME/bin/scripts/ | $rofi_dmenu -p "Scripts")"
+        $TERMINAL -e $EDITOR $HOME/bin/scripts/$shfile
+        ;;
     *) 
         failed
         ;;
