@@ -81,3 +81,5 @@ SETUVAR fish_pager_color_completion:\x1d
 SETUVAR fish_pager_color_description:B3A06D\x1eyellow
 SETUVAR fish_pager_color_prefix:white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
+SETUVAR --export http_proxy:http\x3a//milan\x3amilan\x2540123\x40192\x2e168\x2e3\x2e10\x3a3128/
+SETUVAR --export https_proxy:http\x3a//milan\x3amilan\x2540123\x40192\x2e168\x2e3\x2e10\x3a3128/

@@ -19,6 +19,12 @@ set -Ux BROWSER firefox
 set -Ux IMAGE feh
 set -Ux READER zathura
 
+# proxy
+set -gx http_proxy http://milan:milan%40123@192.168.3.10:3128/
+set -gx https_proxy $http_proxy
+set -gx ftp_proxy $http_proxy
+set -gx all_proxy $http_proxy
+
 # App Specific
 # https://github.com/skywind3000/z.lua
 set -x _ZL_MATCH_MODE 1

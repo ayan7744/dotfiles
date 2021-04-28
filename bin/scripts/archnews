@@ -36,10 +36,6 @@ show_news() {
     echo -e $OUTPUT | sed 1,2d
 }
 
-isonline() {
-    ping -q -w2 -c 1 8.8.8.8  >/dev/null 2>&1
-}
-
 _help() {
         /usr/bin/cat << 'EOF'
 Script to view latest Arch Linux news.
