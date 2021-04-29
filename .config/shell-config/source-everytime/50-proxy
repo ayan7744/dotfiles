@@ -14,8 +14,8 @@ function proxyctl
         set -Ux rsync_proxy $http_proxy
         set -Ux RSYNC_PROXY $http_proxy
         set -Ux all_proxy $http_proxy
+        set -Ux no_proxy "localhost,127.0.0.1,localaddress,.localdomain.com"
         set -Ux IS_PROXY_ON 1
-        # set -Ux no_proxy "localhost,127.0.0.1,localaddress,.localdomain.com"
     end
 
     function unset_proxy
@@ -30,8 +30,8 @@ function proxyctl
         set -e RSYNC_PROXY 
         set -e all_proxy
         set -e IS_PROXY_ON
+        set -e no_proxy 
         set -Ux IS_PROXY_ON 0
-        # set -e no_proxy 
     end
 
     function proxy_status
