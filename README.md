@@ -7,7 +7,7 @@ My setup consists of
   - [Polybar](https://github.com/alacritty/alacritty)
   - [Alacritty](https://github.com/alacritty/alacritty)
   - [Fish](https://fishshell.com/) + [dash](http://gondor.apana.org.au/~herbert/dash/)
-  - [Neovim](https://neovim.io/)
+  - [Neovim](https://neovim.io/) + [vim-plug](https://github.com/junegunn/vim-plug)
   - [Zathura](https://git.pwmt.org/pwmt/zathura)
  
 Maybe you will find something useful :)
