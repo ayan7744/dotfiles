@@ -95,13 +95,17 @@ function droppdf --argument name
 	end
 end
 
-## Git
+####################################
+# Git
+####################################
 function sysbak --argument msg
+    ! isonline && echo "No internet connection" && return 0
     dotfiles add -u && dotfiles commit -m "$msg" && dotfiles push
     gittex add -u && gittex commit -m "$msg" && gittex push
     gitbak add -u && gitbak commit -m "$msg" && gitbak push
 end
 
 function baktex --argument msg
+    ! isonline && echo "No internet connection" && return 0
     gittex add -u && gittex commit -m "$msg" && gittex push 
 end
