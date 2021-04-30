@@ -3,6 +3,7 @@
 
 function proxyctl
     function set_proxy 
+        [ "$IS_PROXY_ON" = "1" ] && return 0
         unset_proxy
         set -Ux http_proxy $argv[1]
         set -Ux HTTP_PROXY $http_proxy
@@ -18,6 +19,7 @@ function proxyctl
     end
 
     function unset_proxy
+        [ "$IS_PROXY_ON" = "0" ] && return 0
         set -e http_proxy
         set -e HTTP_PROXY 
         set -e https_proxy 
@@ -94,8 +96,6 @@ function proxyctl
             unset_proxy
         case "--status"
             proxy_status
-        case "--toggle"
-            toggle
         case "--auto"
             auto_proxy
         case "--reset"
