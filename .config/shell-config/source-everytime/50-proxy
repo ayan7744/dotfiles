@@ -19,7 +19,6 @@ function proxyctl
     end
 
     function unset_proxy
-        [ "$IS_PROXY_ON" = "0" ] && return 0
         set -e http_proxy
         set -e HTTP_PROXY 
         set -e https_proxy 
