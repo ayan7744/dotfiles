@@ -18,11 +18,11 @@ alias mv='mv -i'
 # Change "ls" to "exa"
 alias ls='exa --color=always --group-directories-first --colour-scale --icons' 
 alias sl='exa --color=always --group-directories-first --colour-scale --icons' # when you type sl instead of ls
-alias la='exa -lah --color=always --group-directories-first --colour-scale --icons'  # all files and dirs
-alias al='exa -ah --color=always --group-directories-first --colour-scale --icons'  # long format
-alias ll='exa -lh --color=always --group-directories-first --colour-scale --icons'  # long format
-alias lll='exa -lh --color=always --group-directories-first --colour-scale --icons'  # long format
-alias tree='exa -lah -T --colour=always --group-directories-first --colour-scale --icons'
+alias la='exa -lah --color=always --group-directories-first --colour-scale --icons | /bin/less -RXF'  # all files and dirs
+alias al='exa -ah --color=always --group-directories-first --colour-scale --icons | /bin/less -RXF'  # long format
+alias ll='exa -lh --color=always --group-directories-first --colour-scale --icons | /bin/less -RXF'  # long format
+alias lll='exa -lh --color=always --group-directories-first --colour-scale --icons | /bin/less -RXF'  # long format
+alias tree='exa -lah -T --colour=always --group-directories-first --colour-scale --icons | /bin/less -RXF'
 
 # Improvements
 alias ip='ip --color=auto'
@@ -36,6 +36,7 @@ alias dmenu='rofi -dmenu -no-fixed-num-lines -i -width 100% -location 1 -yoffset
 alias df='df -h'
 alias du='du -ch'
 alias free='free -m'
+alias qr='qrencode --output=-'
 
 # size of directories
 alias dirsize='sudo du -sh * 2>/dev/null; sudo du -sh .* 2>/dev/null'

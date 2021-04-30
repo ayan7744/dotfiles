@@ -3,8 +3,7 @@
 
 function proxyctl
     function set_proxy 
-        [ "$IS_PROXY_ON" = "1" ] && [ "$http_proxy" = "$argv[1]" ] && return 0
-        [ "$IS_PROXY_ON" = "1" ] && unset_proxy
+        unset_proxy
         set -Ux http_proxy $argv[1]
         set -Ux HTTP_PROXY $http_proxy
         set -Ux https_proxy $http_proxy
@@ -19,7 +18,6 @@ function proxyctl
     end
 
     function unset_proxy
-        [ "$IS_PROXY_ON" = "0" ] && [ -z $http_proxy ] && return 0
         set -e http_proxy
         set -e HTTP_PROXY 
         set -e https_proxy 
@@ -31,6 +29,17 @@ function proxyctl
         set -e all_proxy
         set -e IS_PROXY_ON
         set -e no_proxy 
+        set -eg http_proxy
+        set -eg HTTP_PROXY 
+        set -eg https_proxy 
+        set -eg HTTPS_PROXY
+        set -eg ftp_proxy 
+        set -eg FTP_PROXY
+        set -eg rsync_proxy
+        set -eg RSYNC_PROXY 
+        set -eg all_proxy
+        set -eg IS_PROXY_ON
+        set -eg no_proxy 
         set -Ux IS_PROXY_ON 0
     end
 

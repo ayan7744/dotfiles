@@ -17,7 +17,7 @@ function nvim
   end
 
   if test -w "$argv"    
-    /bin/nvim $argv
+    /bin/$EDITOR $argv
   else
     echo "Editing $argv requires root permission"
     sudo -e $argv
