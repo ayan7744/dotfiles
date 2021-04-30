@@ -10,16 +10,20 @@ function cs
     end
 end
 
-function nvim
-  if not test -e "$argv"
-    touch "$argv" 2>/dev/null
-  end
+function $EDITOR
+    if count $argv > /dev/null
+        if not test -e "$argv"
+        touch "$argv" 2>/dev/null
+        end
 
-  if test -w "$argv"    
-    /bin/$EDITOR $argv
-  else
-    sudo -e $argv
-  end
+        if test -w "$argv"    
+        /bin/$EDITOR $argv
+        else
+        sudo -e $argv
+        end
+    else
+        /bin/$EDITOR
+    end
 end
 
 function run --description "Make file executable, then run it"
