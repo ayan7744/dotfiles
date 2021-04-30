@@ -92,4 +92,5 @@ SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR --export ftp_proxy:http\x3a//milan\x3amilan\x2540123\x40192\x2e168\x2e3\x2e10\x3a3128/
 SETUVAR --export http_proxy:http\x3a//milan\x3amilan\x2540123\x40192\x2e168\x2e3\x2e10\x3a3128/
 SETUVAR --export https_proxy:http\x3a//milan\x3amilan\x2540123\x40192\x2e168\x2e3\x2e10\x3a3128/
+SETUVAR --export no_proxy:localhost\x2c127\x2e0\x2e0\x2e1\x2clocaladdress\x2c\x2elocaldomain\x2ecom
 SETUVAR --export rsync_proxy:http\x3a//milan\x3amilan\x2540123\x40192\x2e168\x2e3\x2e10\x3a3128/

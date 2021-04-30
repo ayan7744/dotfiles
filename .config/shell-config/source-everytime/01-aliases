@@ -44,12 +44,7 @@ alias vim='nvim'
 alias za='zathura'
 alias jctlvacuum='sudo journalctl --vacuum-time=5d'
 alias clip='xclip -selection clipboard'
-alias pat='/usr/bin/cat $XDG_CONFIG_HOME/git/PAT | /usr/bin/xclip -selection clipboard'
 alias a=$TERMINAL
-
-# dotfiles
-alias dfpri='/usr/bin/git --git-dir=$HOME/.gitbare/dotfiles-private/ --work-tree=/'
-alias dfpub='/usr/bin/git --git-dir=$HOME/.gitbare/dotfiles-public/ --work-tree=$HOME'
 
 # trash-cli 
 alias trash='trash-put'

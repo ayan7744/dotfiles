@@ -100,7 +100,7 @@ function droppdf --argument name
 	end
 end
 
-# backup all the tex files to ~/Dropbox
-function baktex 
-	cp -r $HOME/tex $HOME/Dropbox/backups/
+# backup all the tex files to github
+function baktex --argument msg
+    gittex add -u && gittex commit -m "$msg" && gittex push 
 end
