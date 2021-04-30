@@ -33,6 +33,9 @@ alias fd='fd -H'
 alias grep='rg'
 alias ttx='$HOME/bin/tt -showwpm -noskip'
 alias dmenu='rofi -dmenu -no-fixed-num-lines -i -width 100% -location 1 -yoffset 23 -matching fuzzy'
+alias df='df -h'
+alias du='du -ch'
+alias free='free -m'
 
 # size of directories
 alias dirsize='sudo du -sh * 2>/dev/null; sudo du -sh .* 2>/dev/null'

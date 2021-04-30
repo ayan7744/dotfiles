@@ -10,6 +10,25 @@ function cs
     end
 end
 
+function nvim
+  if not test -e "$argv"
+    read -p "echo 'File $argv does not exist. Ctrl+C to cancel'" -l confirm
+    touch "$argv" 2>/dev/null
+  end
+
+  if test -w "$argv"    
+    /bin/nvim $argv
+  else
+    echo "Editing $argv requires root permission"
+    sudo -e $argv
+  end
+end
+
+function run --description "Make file executable, then run it"
+  chmod +x "$argv"
+  eval "./$argv"
+end
+
 function opensh --argument name
 	$EDITOR $HOME/bin/scripts/$name
 end
