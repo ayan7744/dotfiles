@@ -14,11 +14,6 @@ function opensh --argument name
 	$EDITOR $HOME/bin/scripts/$name
 end
 
-function dfupdate --argument msg
-    dfpub add -u && dfpub commit -m "$msg" && dfpub push
-    dfpri add -u && dfpri commit -m "$msg" && dfpri push
-end
-
 function bak --argument filename
     cp -ir "$filename" "$filename.bak"
 end
@@ -100,7 +95,13 @@ function droppdf --argument name
 	end
 end
 
-# backup all the tex files to github
+## Git
+function sysbak --argument msg
+    dotfiles add -u && dotfiles commit -m "$msg" && dotfiles push
+    gittex add -u && gittex commit -m "$msg" && gittex push
+    gitbak add -u && gitbak commit -m "$msg" && gitbak push
+end
+
 function baktex --argument msg
     gittex add -u && gittex commit -m "$msg" && gittex push 
 end

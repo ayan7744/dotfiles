@@ -19,7 +19,7 @@ function proxyctl
     end
 
     function unset_proxy
-        [ "$IS_PROXY_ON" = "0" ] && return 0
+        [ "$IS_PROXY_ON" = "0" ] && [ -z $http_proxy ] && return 0
         set -e http_proxy
         set -e HTTP_PROXY 
         set -e https_proxy 
@@ -34,31 +34,50 @@ function proxyctl
         set -Ux IS_PROXY_ON 0
     end
 
-    function proxy_status
-        env | /bin/grep -i "proxy"
-    end
-
     function auto_proxy
+        set configFile $XDG_CONFIG_HOME/proxy.cfg
+        set configFileHead (/bin/cat $configFile | head -1)
         set connectedWifi (nmcli -t -f NAME connection show --active)
-        set proxyDomain (/bin/cat $XDG_CONFIG_HOME/proxy.cfg | head -1)
-        if [ "$connectedWifi" = "TUFi" ]
-            set_proxy "$proxyDomain"
+        set ssid (echo "$configFileHead" | cut -d' ' -f1)
+        set proxyServer (echo "$configFileHead" | head -1 | cut -d' ' -f2)
+
+        if [ "$connectedWifi" = "$ssid" ]
+            set_proxy "$proxyServer"
         else
             unset_proxy
         end
     end
-        
-    function toggle
-        if [ "$IS_PROXY_ON" = "0" ]
-            set_proxy
-        else if [ "$IS_PROXY_ON" = "1" ] 
-            unset_proxy
-        else 
-            echo "Proxy indicator environment variable absent."
-            set_proxy
-        end
+
+    function proxy_status
+        env | /bin/grep -i "proxy"
     end
 
+    function reset_proxy
+        set -e http_proxy
+        set -e HTTP_PROXY 
+        set -e https_proxy 
+        set -e HTTPS_PROXY
+        set -e ftp_proxy 
+        set -e FTP_PROXY
+        set -e rsync_proxy
+        set -e RSYNC_PROXY 
+        set -e all_proxy
+        set -e IS_PROXY_ON
+        set -e no_proxy 
+        set -eg http_proxy
+        set -eg HTTP_PROXY 
+        set -eg https_proxy 
+        set -eg HTTPS_PROXY
+        set -eg ftp_proxy 
+        set -eg FTP_PROXY
+        set -eg rsync_proxy
+        set -eg RSYNC_PROXY 
+        set -eg all_proxy
+        set -eg IS_PROXY_ON
+        set -eg no_proxy 
+        auto_proxy
+    end 
+        
     switch $argv[1]
         case "--set"
             set_proxy
@@ -70,6 +89,8 @@ function proxyctl
             toggle
         case "--auto"
             auto_proxy
+        case "--reset"
+            reset_proxy
         case '*'
             exit 0
     end
