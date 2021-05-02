@@ -6,6 +6,7 @@ o2="Shorten copied URL"
 o3="Save image from clipboard"
 o4="Open TeX file"
 o5="Open script"
+o6="Update packages"
 
 menu_options() {
     printf "$o1\n"
@@ -13,6 +14,7 @@ menu_options() {
     printf "$o3\n"
     printf "$o4\n"
     printf "$o5\n"
+    printf "$o6\n"
 }
 
 failed() {
@@ -43,6 +45,9 @@ case "$choice" in
     "$o5")
         shfile="$(/bin/ls -1 $HOME/bin/scripts/ | $rofi_dmenu -p "Scripts")"
         $TERMINAL -e $EDITOR $HOME/bin/scripts/$shfile
+        ;;
+    "$o6")
+        $TERMINAL --class floating-term,floating-term -e updateall
         ;;
     *) 
         failed
