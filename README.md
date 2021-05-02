@@ -5,7 +5,7 @@ My setup consists of
   - [Arch Linux](https://archlinux.org/)
   - [bspwm](https://github.com/baskerville/bspwm) + [sxhkd](https://github.com/baskerville/sxhkd)
   - [Polybar](https://github.com/alacritty/alacritty)
-  - [Rofi](https://github.com/davatorium/rofi
+  - [Rofi](https://github.com/davatorium/rofi)
   - [Alacritty](https://github.com/alacritty/alacritty)
   - [Fish](https://fishshell.com/) + [dash](http://gondor.apana.org.au/~herbert/dash/)
   - [Neovim](https://neovim.io/) + [vim-plug](https://github.com/junegunn/vim-plug)
