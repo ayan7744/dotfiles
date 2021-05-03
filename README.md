@@ -1,4 +1,4 @@
-![dotfiles](https://user-images.githubusercontent.com/81346965/115837829-a2b6a480-a436-11eb-992c-776e5e1a490f.png)
+![dotfiles](https://user-images.githubusercontent.com/81346965/116915752-142df880-ac6a-11eb-8cec-f48a0290d44c.png)
 
 # Dotfiles
 My setup consists of 
