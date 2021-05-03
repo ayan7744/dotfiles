@@ -28,7 +28,8 @@ function fish_greeting
         systemd-analyze blame | head -5
         echo ""
     else if xprop -id (printf 0x00%X (xdotool getactivewindow 2> /dev/null)) WM_CLASS 2> /dev/null | grep "Alacritty" &> /dev/null
-        /usr/bin/cat $HOME/.config/fish/greeting
+#         /bin/cat $XDG_CONFIG_HOME/fish/greeting2
+          fm
     end 	
 end
 

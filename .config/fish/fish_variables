@@ -2,16 +2,20 @@
 # VERSION: 3.0
 SETUVAR --export BROWSER:firefox
 SETUVAR --export EDITOR:nvim
+SETUVAR --export FTP_PROXY:http\x3a//kdebajit\x3adkkukurmara\x40192\x2e168\x2e3\x2e10\x3a3128/
 SETUVAR FZF_DEFAULT_OPTS:\x2d\x2dheight\x2040\x25
 SETUVAR FZF_DISABLE_KEYBINDINGS:0
 SETUVAR FZF_LEGACY_KEYBINDINGS:1
 SETUVAR FZF_PREVIEW_DIR_CMD:ls
 SETUVAR FZF_PREVIEW_FILE_CMD:head\x20\x2dn\x2010
 SETUVAR FZF_TMUX_HEIGHT:40\x25
+SETUVAR --export HTTPS_PROXY:http\x3a//kdebajit\x3adkkukurmara\x40192\x2e168\x2e3\x2e10\x3a3128/
+SETUVAR --export HTTP_PROXY:http\x3a//kdebajit\x3adkkukurmara\x40192\x2e168\x2e3\x2e10\x3a3128/
 SETUVAR --export IMAGE:feh
-SETUVAR --export IS_PROXY_ON:0
+SETUVAR --export IS_PROXY_ON:1
 SETUVAR --export MOD:mod1
 SETUVAR --export READER:zathura
+SETUVAR --export RSYNC_PROXY:http\x3a//kdebajit\x3adkkukurmara\x40192\x2e168\x2e3\x2e10\x3a3128/
 SETUVAR --export TERM:linux
 SETUVAR --export TERMINAL:alacritty
 SETUVAR --export VISUAL:nvim
@@ -55,6 +59,7 @@ SETUVAR _fish_abbr_tlpconf:sudo\x20\x2de\x20/etc/tlp\x2econf
 SETUVAR _fish_abbr_xbindkeysconf:nvim\x20\x7e/\x2exbindkeysrc
 SETUVAR _fish_abbr_xinitrcconf:\x24EDITOR\x20\x24HOME/\x2exinitrc
 SETUVAR _fish_abbr_zathuraconf:\x24EDITOR\x20\x24XDG_CONFIG_HOME/zathura/zathurarc
+SETUVAR --export all_proxy:http\x3a//kdebajit\x3adkkukurmara\x40192\x2e168\x2e3\x2e10\x3a3128/
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:005fd7
@@ -84,3 +89,8 @@ SETUVAR fish_pager_color_completion:\x1d
 SETUVAR fish_pager_color_description:B3A06D\x1eyellow
 SETUVAR fish_pager_color_prefix:white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
+SETUVAR --export ftp_proxy:http\x3a//kdebajit\x3adkkukurmara\x40192\x2e168\x2e3\x2e10\x3a3128/
+SETUVAR --export http_proxy:http\x3a//kdebajit\x3adkkukurmara\x40192\x2e168\x2e3\x2e10\x3a3128/
+SETUVAR --export https_proxy:http\x3a//kdebajit\x3adkkukurmara\x40192\x2e168\x2e3\x2e10\x3a3128/
+SETUVAR --export no_proxy:localhost\x2c127\x2e0\x2e0\x2e1\x2clocaladdress\x2c\x2elocaldomain\x2ecom
+SETUVAR --export rsync_proxy:http\x3a//kdebajit\x3adkkukurmara\x40192\x2e168\x2e3\x2e10\x3a3128/
