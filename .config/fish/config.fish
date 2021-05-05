@@ -1,6 +1,6 @@
-###############################################################
-# Source shell config scripts
-##############################################################
+###########################################
+# Source primary shell config scripts
+###########################################
 
 # check if configs are sourced once, if yes, don't source it again
 test -z $CONFIGS_SOURCED_ONCE ;and for script in $HOME/.config/shell-config/source-once/*
@@ -14,9 +14,9 @@ end
 
 set -x CONFIGS_SOURCED_ONCE true
 
-#####################################################################
+#############################################
 # appearence and themes 
-####################################################################
+#############################################
 
 function fish_greeting
     if tty | grep tty &> /dev/null
@@ -37,9 +37,18 @@ set -g theme_color_scheme dracula
 #display username in prompt
 set -g theme_display_user yes
 
+###########################################
+# Source secondary shell config scripts
+###########################################
+# not so important scripts to be sourced everytime
+for script in $XDG_CONFIG_HOME/shell-config/secondary/*
+    source "$script"
+end
+
 ######################################################################
 # Startup
 #####################################################################
+
 #################################################################
 # vi mode
 #################################################################
