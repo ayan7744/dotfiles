@@ -42,7 +42,7 @@ set -g theme_display_user yes
 ###########################################
 # not so important scripts to be sourced everytime
 for script in $XDG_CONFIG_HOME/shell-config/secondary/*
-    source "$script"
+  source "$script"
 end
 
 ######################################################################
