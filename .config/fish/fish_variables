@@ -12,7 +12,7 @@ SETUVAR FZF_TMUX_HEIGHT:40\x25
 SETUVAR --export HTTPS_PROXY:http\x3a//kdebajit\x3adkkukurmara\x40192\x2e168\x2e3\x2e10\x3a3128/
 SETUVAR --export HTTP_PROXY:http\x3a//kdebajit\x3adkkukurmara\x40192\x2e168\x2e3\x2e10\x3a3128/
 SETUVAR --export IMAGE:feh
-SETUVAR --export IS_PROXY_ON:1
+SETUVAR --export IS_PROXY_SET:true
 SETUVAR --export MOD:mod1
 SETUVAR --export READER:zathura
 SETUVAR --export RSYNC_PROXY:http\x3a//kdebajit\x3adkkukurmara\x40192\x2e168\x2e3\x2e10\x3a3128/
@@ -92,5 +92,6 @@ SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR --export ftp_proxy:http\x3a//kdebajit\x3adkkukurmara\x40192\x2e168\x2e3\x2e10\x3a3128/
 SETUVAR --export http_proxy:http\x3a//kdebajit\x3adkkukurmara\x40192\x2e168\x2e3\x2e10\x3a3128/
 SETUVAR --export https_proxy:http\x3a//kdebajit\x3adkkukurmara\x40192\x2e168\x2e3\x2e10\x3a3128/
-SETUVAR --export no_proxy:localhost\x2c127\x2e0\x2e0\x2e1\x2clocaladdress\x2c\x2elocaldomain\x2ecom
+SETUVAR --export no_proxy:localhost\x2c127\x2e0\x2e0\x2e1\x2clocaladdress\x2c\x2elocaldomain\x2ecom\x2c\x3a\x3a1\x2c10\x2e\x2a\x2e\x2a\x2e\x2a
 SETUVAR --export rsync_proxy:http\x3a//kdebajit\x3adkkukurmara\x40192\x2e168\x2e3\x2e10\x3a3128/
+SETUVAR --export somevar:VALUE

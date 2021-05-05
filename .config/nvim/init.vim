@@ -20,6 +20,7 @@ Plug 'lervag/vimtex'		" vimtex plugin
 Plug 'brennier/quicktex'    " dynamic latex abbreviations
 Plug 'vimwiki/vimwiki'
 Plug 'lambdalisue/suda.vim' " workaround for `:w !sudo tee %`
+Plug 'dag/vim-fish'         " fish support
 
 " Initialize plugin system
 call plug#end()
@@ -29,8 +30,9 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " needed for vimwiki
 set nocompatible
-filetype plugin on
 syntax on
+filetype plugin on
+filetype plugin indent on
 
 " Copy/paste. 
 " There are reasons why I am not doing set clipboard=unnamedplus, using the
@@ -223,3 +225,17 @@ let g:vimtex_compiler_progname='nvr'
 " vimwiki
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:vimwiki_list = [{'path':'$HOME/Dropbox/vimwiki', 'path_html':'$HOME/Dropbox/vimwiki/html/', 'template_path': '$HOME/Dropbox/vimwiki/templates', 'template_default': 'default', 'template_ext': '.html'}]
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-fish
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd BufNewFile,BufRead *.fish set ft=fish
+
+" Set up :make to use fish for syntax checking.
+autocmd FileType fish compiler fish
+
+" Set this to have long lines wrap inside comments.
+" autocmd FileType fish setlocal textwidth=79
+
+" Enable folding of block structures in fish.
+" autocmd FileType fish setlocal foldmethod=expr
