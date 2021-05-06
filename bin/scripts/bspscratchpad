@@ -1,6 +1,9 @@
 #!/bin/sh
 
-# Written by ayan7744
+# MIT License
+# Copyright (c) 2021 Ayan Nath
+
+# bspscratchpad - i3-like scratchpad functionality for bspwm
 
 cacheFile=/tmp/bspscratchpad_ids
 counterFile=/tmp/bspscratchpad_counter
