@@ -1,6 +1,10 @@
 #!/bin/sh
 
-# Written by ayan7744
+# MIT License
+# Copyright (c) 2021 Ayan Nath
+
+# batctl - battery control
+
 # Battery sysfs dir
 _bat=$(echo /sys/class/power_supply/BAT?)
 
