@@ -1,6 +1,10 @@
 #!/bin/sh
 
-# Written by ayan7744
+# MIT License
+# Copyright (c) 2021 Ayan Nath
+
+# touchpadctl - easily change touchpad sensitivity and acceleration 
+
 id="$(xinput list | grep -Eo 'Touchpad.*id=[0-9]*' | grep -Eo '[0-9]*')"
 
 sensitivity() {
