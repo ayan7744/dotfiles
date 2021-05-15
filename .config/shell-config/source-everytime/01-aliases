@@ -24,6 +24,9 @@ alias ll='exa -lh --color=always --group-directories-first --colour-scale --icon
 alias lll='exa -lh --color=always --group-directories-first --colour-scale --icons | /bin/less -RXF'  # long format
 alias tree='exa -lah -T --colour=always --group-directories-first --colour-scale --icons | /bin/less -RXF'
 
+# pip upgrade
+alias pipupdate='pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 sudo pip install -U'
+
 # Improvements
 alias ip='ip --color=auto'
 alias less='bat --pager="less -R"'

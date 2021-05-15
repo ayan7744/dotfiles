@@ -35,7 +35,7 @@ fi
 
 # execute on startup
 
-feh --bg-scale --no-fehbg $WALLPAPER & 
+feh --bg-scale --no-fehbg "$WALLPAPER" & 
 # fix sensitivity and accel
 touchpadctl --default &
 # swap Escape and CapsLock
@@ -45,7 +45,7 @@ xsetroot -cursor_name left_ptr &
 # sets key repeat rate = 35 /s and key repeat delay = 280ms
 xset r rate 280 35 &
 # for /etc/udev/rules.d/00-freeze-backlight.rule
-restore-brightness --init
+restore-brightness --init &
 
 # picom -b --config $XDG_CONFIG_HOME/picom/picom.conf
 exec bspwm

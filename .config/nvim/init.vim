@@ -212,7 +212,20 @@ let g:vimtex_view_method='zathura'
 let g:vimtex_syntax_enabled=1
 let g:vimtex_compiler_progname='nvr'
 
+" typesetting engine
+" let g:vimtex_compiler_latexmk = { 
+"         \ 'executable' : 'latexmk',
+"         \ 'options' : [ 
+"         \   '-xelatex',
+"         \   '-file-line-error',
+"         \   '-synctex=1',
+"         \   '-interaction=nonstopmode',
+"         \ ],
+"         \}
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "colorizer
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " let g:colorizer_auto_color=1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
