@@ -94,9 +94,13 @@ shift + Print
 # bspwm hotkeys
 #################################################################################
 
-# quit/restart bspwm
-mod1 + shift + {ctrl + e,r}
-	bspc {quit,wm -r}
+# quit bspwm
+mod1 + shift + ctrl + e
+	close-all-windows; bspc quit
+
+# restart bspwm
+mod1 + shift + r
+	bspc wm -r
 
 # remove from scratchpad and close/kill 
 mod1 + {_,shift + ,shift + ctrl + }q
