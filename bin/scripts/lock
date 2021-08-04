@@ -21,40 +21,40 @@ blurlock() {
             --screen 1            \
             --blur 5              \
             --ignore-empty-password \
-            --timepos='x+960:h-540' \
-            --datepos='x+760:h-470' \
-            --timestr="%I:%M:%S %p"  \
-            --clock --date-align 1 --datestr="%A, %b %d, %Y" \
-            --insidecolor=$insidecolor --ringcolor=$ringcolor --line-uses-inside \
-            --keyhlcolor=$keyhlcolor --bshlcolor=$bshlcolor --separatorcolor=$separatorcolor \
-            --insidevercolor=$insidevercolor --insidewrongcolor=$insidewrongcolor \
-            --ringvercolor=$ringvercolor --ringwrongcolor=$ringwrongcolor --indpos='x+1875:h-45' \
-            --radius=25 --ring-width=4 --veriftext='' --wrongtext='' \
-            --verifcolor="$verifcolor" --timecolor="$timecolor" --datecolor="$datecolor" \
-            --time-font="$font" --timesize=100 \
-            --date-font="$font" --datesize=34 \
+            --time-pos='x+960:h-540' \
+            --date-pos='x+760:h-470' \
+            --time-str="%I:%M:%S %p"  \
+            --clock --date-align 1 --date-str="%A, %b %d, %Y" \
+            --inside-color=$insidecolor --ring-color=$ringcolor --line-uses-inside \
+            --keyhl-color=$keyhlcolor --bshl-color=$bshlcolor --separator-color=$separatorcolor \
+            --insidever-color=$insidevercolor --insidewrong-color=$insidewrongcolor \
+            --ringver-color=$ringvercolor --ringwrong-color=$ringwrongcolor --ind-pos='x+1875:h-45' \
+            --radius=25 --ring-width=4 --verif-text='' --wrong-text='' \
+            --verif-color="$verifcolor" --time-color="$timecolor" --date-color="$datecolor" \
+            --time-font="$font" --time-size=100 \
+            --date-font="$font" --date-size=34 \
             --layout-font="$font" --verif-font="$font" --wrong-font="$font" \
-            --noinputtext='' --force-clock --pass-media-keys $lockargs \ 
+            --noinput-text='' --force-clock --pass-media-keys $lockargs \ 
 }
 
 barelock() {
     i3lock \
             -t -i "$1" \
             --ignore-empty-password \
-            --timepos='x+960:h-540' \
-            --datepos='x+760:h-470' \
-            --timestr="%I:%M:%S %p"  \
-            --clock --date-align 1 --datestr="%A, %b %d, %Y" \
-            --insidecolor=$insidecolor --ringcolor=$ringcolor --line-uses-inside \
-            --keyhlcolor=$keyhlcolor --bshlcolor=$bshlcolor --separatorcolor=$separatorcolor \
-            --insidevercolor=$insidevercolor --insidewrongcolor=$insidewrongcolor \
-            --ringvercolor=$ringvercolor --ringwrongcolor=$ringwrongcolor --indpos='x+1875:h-45' \
-            --radius=25 --ring-width=4 --veriftext='' --wrongtext='' \
-            --verifcolor="$verifcolor" --timecolor="$timecolor" --datecolor="$datecolor" \
-            --time-font="$font" --timesize=100 \
-            --date-font="$font" --datesize=34 \
+            --time-pos='x+960:h-540' \
+            --date-pos='x+760:h-470' \
+            --time-str="%I:%M:%S %p"  \
+            --clock --date-align 1 --date-str="%A, %b %d, %Y" \
+            --inside-color=$insidecolor --ring-color=$ringcolor --line-uses-inside \
+            --keyhl-color=$keyhlcolor --bshl-color=$bshlcolor --separator-color=$separatorcolor \
+            --insidever-color=$insidevercolor --insidewrong-color=$insidewrongcolor \
+            --ringver-color=$ringvercolor --ringwrong-color=$ringwrongcolor --ind-pos='x+1875:h-45' \
+            --radius=25 --ring-width=4 --verif-text='' --wrong-text='' \
+            --verif-color="$verifcolor" --time-color="$timecolor" --date-color="$datecolor" \
+            --time-font="$font" --time-size=100 \
+            --date-font="$font" --date-size=34 \
             --layout-font="$font" --verif-font="$font" --wrong-font="$font" \
-            --noinputtext='' --force-clock --pass-media-keys $lockargs \ 
+            --noinput-text='' --force-clock --pass-media-keys $lockargs \ 
 }
 
 dark_rectangle() {

@@ -21,9 +21,15 @@ Plug 'brennier/quicktex'    " dynamic latex abbreviations
 Plug 'vimwiki/vimwiki'
 Plug 'lambdalisue/suda.vim' " workaround for `:w !sudo tee %`
 Plug 'dag/vim-fish'         " fish support
+Plug 'b3nj5m1n/kommentary'
 
 " Initialize plugin system
 call plug#end()
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Source lua config
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+lua require("init")
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General Settings
@@ -207,6 +213,7 @@ highlight Comment          ctermfg=244    ctermbg=none    cterm=italic
 " vimtex
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:vimtex_view_method='zathura'
+" let g:vimtex_quickfix_enabled = 0
 
 " synctex
 let g:vimtex_syntax_enabled=1
@@ -222,11 +229,6 @@ let g:vimtex_compiler_progname='nvr'
 "         \   '-interaction=nonstopmode',
 "         \ ],
 "         \}
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"colorizer
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" let g:colorizer_auto_color=1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " quicktex
@@ -252,3 +254,10 @@ autocmd FileType fish compiler fish
 
 " Enable folding of block structures in fish.
 " autocmd FileType fish setlocal foldmethod=expr
+"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" qf_helper
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" use <C-N> and <C-P> for next/prev.
+nnoremap <silent> <C-N> <cmd>cn<CR>
+nnoremap <silent> <C-P> <cmd>cp<CR>

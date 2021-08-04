@@ -226,4 +226,4 @@ mod1 + w
 
 # Drop-down terminal
 mod1 + e
-    bspscratchpad --toggle-term
+    bspdropterm --toggle
