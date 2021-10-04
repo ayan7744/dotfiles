@@ -22,6 +22,7 @@ Plug 'vimwiki/vimwiki'
 Plug 'lambdalisue/suda.vim' " workaround for `:w !sudo tee %`
 Plug 'dag/vim-fish'         " fish support
 Plug 'b3nj5m1n/kommentary'
+Plug 'neovimhaskell/haskell-vim'
 
 " Initialize plugin system
 call plug#end()
@@ -261,3 +262,14 @@ autocmd FileType fish compiler fish
 " use <C-N> and <C-P> for next/prev.
 nnoremap <silent> <C-N> <cmd>cn<CR>
 nnoremap <silent> <C-P> <cmd>cp<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" haskell-vim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
+let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
+let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
+let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
+let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
+let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
+let g:haskell_backpack = 1                " to enable highlighting of backpack keywords

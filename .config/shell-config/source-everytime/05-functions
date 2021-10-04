@@ -97,13 +97,27 @@ function newtex --argument name
 	mkdir $HOME/tex/$name
 	cp $HOME/tex/dummy/main.tex $HOME/tex/$name
 	cd $HOME/tex/$name
-	nvim $HOME/tex/$name/main.tex
+	$EDITOR $HOME/tex/$name/main.tex
 end
 
 # open existing tex file
 function opentex --argument name
 	cd $HOME/tex/$name
-	nvim $HOME/tex/$name/main.tex
+	$EDITOR $HOME/tex/$name/main.tex
+end
+
+# new tex file [cmi]
+function newtexcmi --argument name
+	mkdir $HOME/tex/cmi/$name
+	cp $HOME/tex/cmi/dummy/main.tex $HOME/tex/cmi/$name
+	cd $HOME/tex/cmi/$name
+	$EDITOR $HOME/tex/cmi/$name/main.tex
+end
+
+# open existing tex file [cmi]
+function opentexcmi --argument name
+	cd $HOME/tex/cmi/$name
+	$EDITOR $HOME/tex/cmi/$name/main.tex
 end
 
 # copy main.pdf to ~/Dropbox
