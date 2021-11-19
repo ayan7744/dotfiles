@@ -1,17 +1,23 @@
 configuration {
 	modi: "drun,run,window,ssh";
-	lines: 7;
 	font: "hack 10";
-	bw: 0;
-	padding: 0;
 	show-icons: false;
 	matching: "fuzzy";
-	line-margin: 0;
-	line-padding: 10;
-    location: 1;
-    yoffset: 23;
-    width: 100;
-	separator-style: "none";
-	hide-scrollbar: true;
+    xoffset:                       0;
+    yoffset:                       23;
+    display-drun: 					"Search";
+    location:                       1;
 	theme: "/home/ayan/.config/rofi/themes/custom-nord.rasi";
+}
+
+
+window {
+	width:							100;
+    location:                       1;
+}
+
+listview {
+    padding:                        0;
+    lines:                          7;
+    spacing:                        0%;
 }
