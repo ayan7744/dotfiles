@@ -17,7 +17,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'itchyny/lightline.vim'	" Lightline statusbar
 Plug 'vim-python/python-syntax'	" Python syntax highlighting
 Plug 'lervag/vimtex'		" vimtex plugin
-Plug 'brennier/quicktex'    " dynamic latex abbreviations
+" Plug 'brennier/quicktex'    " dynamic latex abbreviations
 Plug 'vimwiki/vimwiki'
 Plug 'lambdalisue/suda.vim' " workaround for `:w !sudo tee %`
 Plug 'dag/vim-fish'         " fish support
