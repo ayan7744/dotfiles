@@ -593,7 +593,7 @@ use-ui-max = true
 
 ; Interval for volume increase/decrease (in percent points)
 ; Default: 5
-interval = 5
+interval = 2
 
 ; Available tags:
 ;   <label-volume> (default)
@@ -624,7 +624,7 @@ label-muted-foreground = #666
 #ramp-volume-2 = %{T4}c%{T-}
 
 ; Right and Middle click (unreleased)
-click-right = pavucontrol &
+; click-right = pavucontrol &
 ; click-middle =
 
 ;[settings]
