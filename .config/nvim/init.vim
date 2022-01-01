@@ -91,6 +91,10 @@ set directory=$HOME/.cache/nvim/swap//
 set cursorline
 highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
 
+" scrolloff
+set scrolloff=8
+set sidescrolloff=8
+
 " used (?)  for setting filetypes for specific files by prepending
 " # vim: ft=<filetype>
 set modeline
