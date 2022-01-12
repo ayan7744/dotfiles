@@ -5,14 +5,14 @@
 
 # touchpadctl - easily change touchpad sensitivity and acceleration 
 
-id="$(xinput list | grep -Eo 'Touchpad.*id=[0-9]*' | grep -Eo '[0-9]*')"
+id="$(xinput list | /bin/grep -Eo 'Touchpad.*id=[0-9]*' | /bin/grep -Eo '[0-9]*')"
 
 sensitivity() {
-    xinput set-prop "$id" 157 "$1", 0, 0, 0, "$1", 0, 0, 0, 1
+    xinput set-prop "$id" 158 "$1", 0, 0, 0, "$1", 0, 0, 0, 1
 }
 
 accel() {
-    xinput set-prop "$id" 299 "$1"
+    xinput set-prop "$id" 301 "$1"
 }
 
 toggle() {
