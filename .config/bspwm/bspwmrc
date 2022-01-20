@@ -6,7 +6,7 @@ bspc rule -r "*"
 ### AUTOSTART ###
 pgrep -x sxhkd > /dev/null 2>&1 || sxhkd &
 pgrep -x flameshot > /dev/null 2>&1 || flameshot &
-pgrep -x spotify-listene > /dev/null 2>&1 ||spotify-listener &                      # polybar spotify module dbus event listener
+# pgrep -x spotify-listene > /dev/null 2>&1 ||spotify-listener &                      # polybar spotify module dbus event listener
 pgrep bspswallow > /dev/null 2>&1 || bspswallow &
 launchpolybar &
 
