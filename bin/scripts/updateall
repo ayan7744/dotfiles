@@ -26,3 +26,6 @@ echo ""
 printf "${lightYellow}Starting flatpak updates...${noColor}"
 echo ""
 flatpak update
+# printf "${lightYellow}Starting oh my fish updates...${noColor}"
+# echo ""
+# omf update
