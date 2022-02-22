@@ -51,9 +51,9 @@ padding-left = 0
 ;   module-margin-{left,right}
 module-margin = 1
 
-font-0 = Font Awesome 5 Brands,Font Awesome 5 Brands Regular:style=Regular:antialias=true:size=8;1
-font-1 = Font Awesome 5 Free,Font Awesome 5 Free Solid:style=Solid:antialias=true:size=8;1
-font-2 = Font Awesome 5 Free,Font Awesome 5 Free Regular:style=Regular:antialias=ttue:size=8;1
+font-0 = Font Awesome 6 Brands,Font Awesome 6 Brands Regular:style=Regular:antialias=true:size=8;1
+font-1 = Font Awesome 6 Free,Font Awesome 6 Free Solid:style=Solid:antialias=true:size=8;1
+font-2 = Font Awesome 6 Free,Font Awesome 6 Free Regular:style=Regular:antialias=ttue:size=8;1
 font-3 = DejaVu Sans:style=Book:size=6.7;1
 font-4 = DejaVu Sans:style=Book:size=7.9;2
 #######################################################################################
@@ -194,13 +194,13 @@ adapter = AC0
 full-at = 100
 
 format-charging = %{A1:$TERMINAL --class floating-term,floating-term -e fish -c "cd /sys/class/power_supply/BAT0 && fish -i":}<animation-charging> <label-charging> %{A}
-label-charging = %percentage%%
+label-charging = %{T4} %percentage%% %{T-}
 format-charging-foreground = ${colors.white}
 ;format-charging-background = ${colors.background}
 format-charging-underline = #a3c725
 
 format-discharging = %{A1:$TERMINAL --class floating-term,floating-term -e fish -c "cd /sys/class/power_supply/BAT0 && fish -i":}<ramp-capacity> <label-discharging> %{A}
-label-discharging = %percentage%%
+label-discharging = %{T4} %percentage%% %{T-}
 ;format-discharging-underline = #c7ae25
 format-discharging-foreground = ${colors.fg}
 ;format-discharging-background = ${colors.background}
@@ -244,7 +244,7 @@ card = amdgpu_bl0
 
 ; if you want ramps (animations)
 ; format = <ramp>  <label>
-format = %{A1:$TERMINAL --class floating-term,floating-term -e fish -c "cd /sys/class/backlight/amdgpu_bl0 && fish -i":}  <label> %{A}
+format = %{T4} %{A1:$TERMINAL --class floating-term,floating-term -e fish -c "cd /sys/class/backlight/amdgpu_bl0 && fish -i":}  <label> %{A} %{T-}
 format-foreground = ${colors.white}
 ;format-background = ${colors.background}
 
@@ -396,19 +396,18 @@ format-prefix = " "
 #format-prefix-foreground = #fefefe
 #format-foreground = #fefefe
 #format-background = #668bd7
-label = "%date% %time% "
+label = " %{T4} %date% %time% %{T-}"
 ###############################################################################
 
 [module/pacman-updates]
 type = custom/ipc
 hook-0 = pacman-updates --count
 hook-1 = echo "0"
-; label = %output%
 click-left = $TERMINAL --class floating-term,floating-term -e fish -c "updateall && fish -i"
 click-right = pacman-updates --dump &> /dev/null && polybar-msg hook pacman-updates 1 &> /dev/null
 ; format-foreground = ${colors.foreground}
 ; format-background = ${colors.background}
-format-prefix = "  "
+format-prefix = "  %{T4}"
 format-prefix-foreground = ${colors.white}
 initial = 2
 
@@ -515,7 +514,7 @@ label = %output:0:150%
 type = internal/network
 interface = wlp1s0
 interval = 3.0
-label-connected = %essid% %signal%%
+label-connected = %{T4} %essid% %signal%% %{T-}
 
 format-connected = %{A1:$TERMINAL --class floating-term,floating-term -e fish -c "nmtui":}<label-connected> %{A}
 ;format-connected = <ramp-signal> <label-connected>
@@ -561,7 +560,7 @@ content-padding = 0
 type = internal/xwindow
 ; Available tags:
 ;   <label> (default)
-format = <label>
+format = %{T4} <label> %{T-}
 format-background = ${colors.bg}
 format-foreground = ${colors.green}
 format-padding = 4
