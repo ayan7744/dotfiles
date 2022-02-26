@@ -598,7 +598,7 @@ interval = 2
 ;   <label-volume> (default)
 ;   <ramp-volume>
 ;   <bar-volume>
-format-volume =  "  <label-volume>"
+format-volume =  "  %{T4} <label-volume> %{T-}"
 
 ; Available tags:
 ;   <label-muted> (default)
