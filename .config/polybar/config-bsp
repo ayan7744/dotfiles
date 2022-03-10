@@ -404,7 +404,7 @@ type = custom/ipc
 hook-0 = pacman-updates --count
 hook-1 = echo "0"
 click-left = $TERMINAL --class floating-term,floating-term -e fish -c "updateall && fish -i"
-click-right = pacman-updates --dump &> /dev/null && polybar-msg hook pacman-updates 1 &> /dev/null
+click-right = pacman-updates --dump &> /dev/null && polybar-msg action "#pacman-updates.hook.0" &> /dev/null
 ; format-foreground = ${colors.foreground}
 ; format-background = ${colors.background}
 format-prefix = "  %{T4}"
@@ -415,8 +415,8 @@ initial = 2
 ; hack to update hook-0 of pacman-updates module. (Also update /tmp/archnews.$USER)
 type = custom/script
 ; sleep for 1 minute so that laptop can nconnect to internet
-exec = sleep 60 && pacman-updates --dump && polybar-msg hook pacman-updates 1  &> /dev/null
-interval = 3540
+exec = sleep 60 && pacman-updates --dump && polybar-msg action "#pacman-updates.hook.0"  &> /dev/null
+interval = 7200
 ################################################################################
 
 [module/weather]
