@@ -46,6 +46,8 @@ xsetroot -cursor_name left_ptr &
 xset r rate 280 35 &
 # for /etc/udev/rules.d/00-freeze-backlight.rule
 restore-brightness --init &
+# fix slow firefox startup
+dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 
 # picom -b --config $XDG_CONFIG_HOME/picom/picom.conf
 exec bspwm
