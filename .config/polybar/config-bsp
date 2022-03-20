@@ -127,8 +127,10 @@ ws-icon-4 = 5;%{T5}5%{T-}
 ws-icon-5 = 6;%{T5}6%{T-}
 ws-icon-6 = 7;%{T5}7%{T-}
 ws-icon-7 = 8;%{T5}8%{T-}
-ws-icon-8 = 9;
-ws-icon-9 = 10;
+; ws-icon-8 = 9;
+ws-icon-8 = 9;%{T5}9%{T-}
+; ws-icon-9 = 10;
+ws-icon-9 = 10;%{T5}10%{T-}
 ws-icon-default =
 
 format = <label-state>    <label-mode>
@@ -525,7 +527,7 @@ format-connected-prefix-foreground = ${colors.white}
 ;format-connected-prefix-background = ${colors.bg}
 format-connected-underline = #7e52c6
 
-label-disconnected = %ifname% disconnected
+label-disconnected = %{T4} %ifname% disconnected %{T-}
 label-disconnected-foreground = ${colors.red}
 ; label-disconnected-background = ${colors.background}
 
