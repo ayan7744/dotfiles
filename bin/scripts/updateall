@@ -29,3 +29,4 @@ flatpak update
 # printf "${lightYellow}Starting oh my fish updates...${noColor}"
 # echo ""
 # omf update
+polybar-msg action "#pacman-updates.hook.1"
