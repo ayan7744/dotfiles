@@ -5,7 +5,7 @@ SETUVAR --export HTTPS_PROXY:http\x3a//kdebajit\x3adkkukurmara\x40192\x2e168\x2e
 SETUVAR --export HTTP_PROXY:http\x3a//kdebajit\x3adkkukurmara\x40192\x2e168\x2e3\x2e10\x3a3128/
 SETUVAR --export IS_PROXY_SET:true
 SETUVAR --export RSYNC_PROXY:http\x3a//kdebajit\x3adkkukurmara\x40192\x2e168\x2e3\x2e10\x3a3128/
-SETUVAR __fish_initialized:3100
+SETUVAR __fish_initialized:3400
 SETUVAR _fish_abbr_abbrconf:\x24EDITOR\x20\x24XDG_CONFIG_HOME/shell\x2dconfig/source\x2donce/02\x2dabbr
 SETUVAR _fish_abbr_alacrittyconf:\x24EDITOR\x20\x24XDG_CONFIG_HOME/alacritty/alacritty\x2eyml
 SETUVAR _fish_abbr_aliasconf:\x24EDITOR\x20\x24XDG_CONFIG_HOME/shell\x2dconfig/source\x2deverytime/01\x2daliases
@@ -68,6 +68,7 @@ SETUVAR fish_pager_color_completion:\x1d
 SETUVAR fish_pager_color_description:B3A06D\x1eyellow
 SETUVAR fish_pager_color_prefix:white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
+SETUVAR fish_pager_color_selected_background:\x2dr
 SETUVAR --export ftp_proxy:http\x3a//kdebajit\x3adkkukurmara\x40192\x2e168\x2e3\x2e10\x3a3128/
 SETUVAR --export http_proxy:http\x3a//kdebajit\x3adkkukurmara\x40192\x2e168\x2e3\x2e10\x3a3128/
 SETUVAR --export https_proxy:http\x3a//kdebajit\x3adkkukurmara\x40192\x2e168\x2e3\x2e10\x3a3128/

@@ -18,11 +18,11 @@ Plug 'itchyny/lightline.vim'	" Lightline statusbar
 Plug 'vim-python/python-syntax'	" Python syntax highlighting
 Plug 'lervag/vimtex'		" vimtex plugin
 " Plug 'brennier/quicktex'    " dynamic latex abbreviations
-Plug 'vimwiki/vimwiki'
+" Plug 'vimwiki/vimwiki'
 Plug 'lambdalisue/suda.vim' " workaround for `:w !sudo tee %`
 Plug 'dag/vim-fish'         " fish support
 Plug 'b3nj5m1n/kommentary'
-Plug 'neovimhaskell/haskell-vim'
+" Plug 'neovimhaskell/haskell-vim'
 
 " Initialize plugin system
 call plug#end()

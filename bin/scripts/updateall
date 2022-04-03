@@ -29,4 +29,6 @@ flatpak update
 # printf "${lightYellow}Starting oh my fish updates...${noColor}"
 # echo ""
 # omf update
-polybar-msg action "#pacman-updates.hook.1"
+polybar-msg action "#pacman-updates.hook.1" &> /dev/null
+[ -f /tmp/checkupdates.ayan ] && rm /tmp/checkupdates.ayan
+fish -i
