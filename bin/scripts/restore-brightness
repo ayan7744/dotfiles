@@ -14,7 +14,7 @@ restore(){
             cat /tmp/current_brightness > /sys/class/backlight/amdgpu_bl0/brightness
         fi
     else
-        echo "Backlight subsystem hasn't initialised yet."
+        echo "Backlight subsystem hasn't been initialised yet."
     fi
 }
 
@@ -26,7 +26,7 @@ restore_and_init(){
             cat /sys/class/backlight/amdgpu_bl0/brightness > /tmp/current_brightness
         fi
     else
-        echo "Backlight subsystem hasn't initialised yet."
+        echo "Backlight subsystem hasn't been initialised yet."
     fi
 }
 

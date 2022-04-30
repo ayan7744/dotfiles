@@ -80,6 +80,8 @@ function extract --argument-names file
           unzip $file
         case *.Z
           uncompress $file
+        case *.rar
+          unrar e $file
         case '*'
           echo "'$file' cannot be extracted/mounted via extract"
       end

@@ -17,7 +17,7 @@ printf "${lightYellow}Press enter to proceed...${noColor}"
 read -p ""
 printf "${lightYellow}Starting pacman updates...${noColor}"
 echo ""
-sudo pacman -Syu # --ignore linux-lts,linux-lts-headers
+sudo pacman -Syu --ignore texlive-core
 echo ""
 printf "${lightYellow}Starting AUR updates...${noColor}"
 echo ""
