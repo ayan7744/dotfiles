@@ -12,3 +12,4 @@ v4l2-ctl --set-ctrl=brightness=150 --device=/dev/video2
 v4l2-ctl --set-ctrl=contrast=35 --device=/dev/video2
 
 pacmd "set-default-source alsa_input.pci-0000_03_00.6.analog-stereo"
+pactl set-source-port 1 analog-input-headset-mic

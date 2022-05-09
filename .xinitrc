@@ -35,7 +35,7 @@ fi
 
 # execute on startup
 
-feh --bg-scale --no-fehbg "$WALLPAPER" & 
+feh --bg-scale --randomize --no-fehbg "$WALLPAPER_DIR" & 
 # fix sensitivity and accel
 touchpadctl --default &
 # swap Escape and CapsLock
