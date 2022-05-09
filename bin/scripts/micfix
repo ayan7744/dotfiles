@@ -8,8 +8,11 @@
 #     pacmd set-source-volume 1 "$1"
 #     echo "Source 1 volume set to $1"
 # fi
-v4l2-ctl --set-ctrl=brightness=150 --device=/dev/video2
-v4l2-ctl --set-ctrl=contrast=35 --device=/dev/video2
 
-pacmd "set-default-source alsa_input.pci-0000_03_00.6.analog-stereo"
+# echo cancellation-- https://wiki.archlinux.org/title/PulseAudio#Microphone_echo/noise_cancellation
+pactl load-module module-echo-cancel use_master_format=1 aec_method=webrtc aec_args="analog_gain_control=0\ digital_gain_control=1"
+
+# set source to echo-cancel; may not be necessary; use "pactl list sources" to see sources; check pacmd list-sources to see current source
+pacmd "set-default-source alsa_input.pci-0000_03_00.6.analog-stereo.echo-cancel"
+# switch port to headset; read /proc/asound/card1/codec#0 to detect headset.
 pactl set-source-port 1 analog-input-headset-mic
