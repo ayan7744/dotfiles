@@ -41,7 +41,7 @@ _help() {
 Script to view latest Arch Linux news.
 
 Usage: 
-    archnews [ -n NUMBER_OF_ITEMS | --min | --help ]
+    archnews [ -n NUMBER_OF_ITEMS | --help ]
 EOF
 }
 
