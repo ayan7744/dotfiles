@@ -46,7 +46,7 @@ echo $1 | tee ${_bat}/charge_control_end_threshold"
     echo "$script" > /usr/lib/systemd/system-sleep/battery-charge-threshold
 
     # enable and start the services
-    # systemctl daemon-reload
+    systemctl daemon-reload
     systemctl restart battery-charge-threshold.service
 }
 
