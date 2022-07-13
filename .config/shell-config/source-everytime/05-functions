@@ -97,7 +97,7 @@ end
 # new tex file
 function newtex --argument name
 	mkdir $HOME/tex/$name
-	cp $HOME/tex/dummy/main.tex $HOME/tex/$name
+	cp $HOME/tex/milne-template-custom/main.tex $HOME/tex/$name
 	cd $HOME/tex/$name
 	$EDITOR $HOME/tex/$name/main.tex
 end
