@@ -39,6 +39,7 @@ alias df='df -h'
 alias du='du -ch'
 alias free='free -m'
 alias qr='qrencode --output=-'
+alias pacman-db-unlock='sudo rm /var/lib/pacman/db.lck'
 
 # size of directories
 alias dirsize='sudo du -sh * 2>/dev/null; sudo du -sh .* 2>/dev/null'
