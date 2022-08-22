@@ -49,5 +49,8 @@ restore-brightness --init &
 # fix slow firefox startup
 dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 
+# start night light
+redshift &
+
 # picom -b --config $XDG_CONFIG_HOME/picom/picom.conf
 exec bspwm
