@@ -118,8 +118,8 @@ end
 
 # open existing tex file [cmi]
 function opentexcmi --argument name
-	cd $HOME/tex/cmi/sem2/$name
-	$EDITOR $HOME/tex/cmi/sem2/$name/main.tex
+	cd $HOME/tex/cmi/sem3/$name
+	$EDITOR $HOME/tex/cmi/sem3/$name/main.tex
 end
 
 # copy main.pdf to ~/Dropbox
