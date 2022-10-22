@@ -41,7 +41,8 @@ set render-loading-fg           "#ebdbb2" # fg
 
 # Recolor book content's color
 set recolor-lightcolor          "#282828" # bg
-set recolor-darkcolor           "#bcaf8e" # fg
+set recolor-darkcolor           "#c2b799" # fg
+# set recolor-darkcolor           "#bcaf8e" # fg
 # set recolor-keephue             true      # keep original color
 
 # start in colour invert mode
