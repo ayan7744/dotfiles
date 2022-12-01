@@ -59,8 +59,11 @@ font-4 = DejaVu Sans:style=Book:size=7.9;2
 #######################################################################################
 
 ; Add module mpd for artist - title info
-modules-left = bspwm bsp-layout sps spotify 
-modules-center = title
+# modules-left = bspwm bsp-layout sps spotify 
+# modules-center = title
+# modules-right = pulseaudio sps backlight sps pacman-updates pacman-updates-refresh sps wireless-networks sps date sps battery
+modules-left = bspwm
+modules-center =
 modules-right = pulseaudio sps backlight sps pacman-updates pacman-updates-refresh sps wireless-networks sps date sps battery
 
 ; pulseaudio = 2 process 
