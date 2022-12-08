@@ -49,6 +49,7 @@ alias goo='cd /home/"$USER"; startx'
 # alias sniff='plocate'
 alias vim='nvim'
 alias za='zathura'
+alias sk='sioyek'
 alias jctlvacuum='sudo journalctl --vacuum-time=5d'
 alias clip='xclip -selection clipboard'
 alias a=$TERMINAL
