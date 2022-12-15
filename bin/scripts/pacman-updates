@@ -9,7 +9,7 @@ checkupdates_dump() {
 }
 
 show_updates() {
-    [ -f $tmpfile] && /usr/bin/cat "$tmpfile"
+    [ -f $tmpfile ] && /usr/bin/cat "$tmpfile"
 }
 
 update_count() {
