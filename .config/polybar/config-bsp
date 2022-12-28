@@ -63,7 +63,7 @@ font-4 = DejaVu Sans:style=Book:size=7.9;2
 # modules-center = title
 # modules-right = pulseaudio sps backlight sps pacman-updates pacman-updates-refresh sps wireless-networks sps date sps battery
 modules-left = bspwm
-modules-center =
+modules-center = 
 modules-right = pulseaudio sps backlight sps pacman-updates pacman-updates-refresh sps wireless-networks sps date sps battery
 
 ; pulseaudio = 2 process 
@@ -583,56 +583,138 @@ label-maxlen = 65
 ; label-empty-foreground = #707880
 ###############################################################################
 
+[module/pipewire]
+type = custom/ipc
+
+label = "%output%"
+label-font = 1
+
+hook-0 = ~/bin/sound.sh
+# hook-1 = ~/.config/polybar/scripts/sound.sh up
+# hook-2 = ~/.config/polybar/scripts/sound.sh down
+# hook-3 = ~/.config/polybar/scripts/sound.sh mute
+hook-1 = sleep 1 && ~/bin/sound.sh
+initial = 2
+
+# scroll-up = exec polybar-msg action "#pipewire.hook.1"
+# scroll-down = exec polybar-msg action "#pipewire.hook.2"
+# click-left = exec polybar-msg action "#pipewire.hook.3"
+# click-right = exec pavucontrol &
+
+###############################################
+
 [module/pulseaudio]
 type = internal/pulseaudio
-
-; Sink to be used, if it exists (find using `pacmd list-sinks`, name field)
-; If not, uses default sink
-; sink = alsa_output.pci-0000_12_00.3.analog-stereo
-sink = alsa_output.pci-0000_00_1b.0.analog-stereo
-
-; Use PA_VOLUME_UI_MAX (~153%) if true, or PA_VOLUME_NORM (100%) if false
-; Default: true
-use-ui-max = true
-
-; Interval for volume increase/decrease (in percent points)
-; Default: 5
-interval = 2
-
-; Available tags:
-;   <label-volume> (default)
-;   <ramp-volume>
-;   <bar-volume>
-format-volume =  "  %{T4} <label-volume> %{T-}"
-
-; Available tags:
-;   <label-muted> (default)
-;   <ramp-volume>
-;   <bar-volume>
-format-muted = <label-muted>
-
-; Available tokens:
-;   %percentage% (default)
-;   %decibels% (unreleased)
+format-volume-prefix = " "
+# format-volume-prefix-foreground = ${colors.primary}
+format-volume = "%{T4} <label-volume> %{T-}"
 label-volume = %percentage%%
-
-; Available tokens:
-;   %percentage% (default)
-;   %decibels% (unreleased)
-label-muted =  
+label-muted = ""
 label-muted-foreground = #666
+# label-muted-foreground = ${colors.disabled}
 
-; Only applies if <ramp-volume> is used
-#ramp-volume-0 = %{T4}a%{T-}
-#ramp-volume-1 = %{T4}b%{T-}
-#ramp-volume-2 = %{T4}c%{T-}
 
-; Right and Middle click (unreleased)
-; click-right = pavucontrol &
-; click-middle =
+# [module/pulseaudio]
+# type = internal/pulseaudio
 
-;[settings]
-;pseudo-transparency = true
+# ; Sink to be used, if it exists (find using `pacmd list-sinks`, name field)
+# ; If not, uses default sink
+# ; sink = alsa_output.pci-0000_12_00.3.analog-stereo
+# sink = alsa_output.pci-0000_00_1b.0.analog-stereo
+
+# ; Use PA_VOLUME_UI_MAX (~153%) if true, or PA_VOLUME_NORM (100%) if false
+# ; Default: true
+# use-ui-max = true
+
+# ; Interval for volume increase/decrease (in percent points)
+# ; Default: 5
+# interval = 2
+
+# ; Available tags:
+# ;   <label-volume> (default)
+# ;   <ramp-volume>
+# ;   <bar-volume>
+# format-volume =  "  %{T4} <label-volume> %{T-}"
+
+# ; Available tags:
+# ;   <label-muted> (default)
+# ;   <ramp-volume>
+# ;   <bar-volume>
+# format-muted = <label-muted>
+
+# ; Available tokens:
+# ;   %percentage% (default)
+# ;   %decibels% (unreleased)
+# label-volume = %percentage%%
+
+# ; Available tokens:
+# ;   %percentage% (default)
+# ;   %decibels% (unreleased)
+# label-muted =  
+# label-muted-foreground = #666
+
+# ; Only applies if <ramp-volume> is used
+# #ramp-volume-0 = %{T4}a%{T-}
+# #ramp-volume-1 = %{T4}b%{T-}
+# #ramp-volume-2 = %{T4}c%{T-}
+
+# ; Right and Middle click (unreleased)
+# ; click-right = pavucontrol &
+# ; click-middle =
+
+# ;[settings]
+# ;pseudo-transparency = true
+
+# [module/pulseaudio]
+# type = internal/pulseaudio
+
+# ; Sink to be used, if it exists (find using `pacmd list-sinks`, name field)
+# ; If not, uses default sink
+# ; sink = alsa_output.pci-0000_12_00.3.analog-stereo
+# sink = alsa_output.pci-0000_00_1b.0.analog-stereo
+
+# ; Use PA_VOLUME_UI_MAX (~153%) if true, or PA_VOLUME_NORM (100%) if false
+# ; Default: true
+# use-ui-max = true
+
+# ; Interval for volume increase/decrease (in percent points)
+# ; Default: 5
+# interval = 2
+
+# ; Available tags:
+# ;   <label-volume> (default)
+# ;   <ramp-volume>
+# ;   <bar-volume>
+# format-volume =  "  %{T4} <label-volume> %{T-}"
+
+# ; Available tags:
+# ;   <label-muted> (default)
+# ;   <ramp-volume>
+# ;   <bar-volume>
+# format-muted = <label-muted>
+
+# ; Available tokens:
+# ;   %percentage% (default)
+# ;   %decibels% (unreleased)
+# label-volume = %percentage%%
+
+# ; Available tokens:
+# ;   %percentage% (default)
+# ;   %decibels% (unreleased)
+# label-muted =  
+# label-muted-foreground = #666
+
+# ; Only applies if <ramp-volume> is used
+# #ramp-volume-0 = %{T4}a%{T-}
+# #ramp-volume-1 = %{T4}b%{T-}
+# #ramp-volume-2 = %{T4}c%{T-}
+
+# ; Right and Middle click (unreleased)
+# ; click-right = pavucontrol &
+# ; click-middle =
+
+# ;[settings]
+# ;pseudo-transparency = true
 
 ############################################################################
 [module/menu-apps]

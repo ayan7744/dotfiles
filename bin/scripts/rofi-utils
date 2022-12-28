@@ -2,7 +2,8 @@
 
 rofi_dmenu="rofi -dmenu -width 100% -i -location 1 -matching fuzzy -no-custom -no-fixed-num-lines"
 o1="Wifi"
-o2="Shorten copied URL"
+o2="Bluetooth"
+# o2="Shorten copied URL"
 o3="Save image from clipboard"
 o4="Open TeX file"
 o5="Open script"
@@ -30,8 +31,11 @@ case "$choice" in
         rofi-wifi
         ;;
     "$o2")
-        0x0
+        rofi-bluetooth
         ;;
+    # "$o2")
+    #     0x0
+        # ;;
     "$o3") 
 	    file=$(date +"%Y_%m_%d_%I_%M_%p")
 	    xclip -selection clipboard -t image/png -o > $HOME/Pictures/Saved/$file.png || failed
