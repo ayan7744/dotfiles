@@ -66,6 +66,9 @@ set softtabstop=0
 set shiftwidth=4
 set expandtab
 
+"" textwidth
+set textwidth=79
+
 "" leader key
 let mapleader='\'
 
@@ -166,6 +169,10 @@ vmap > >gv
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
+"" improved navigation
+nnoremap <expr> j v:count ? 'j' : 'gj'
+nnoremap <expr> k v:count ? 'k' : 'gk'
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Status Line
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -223,6 +230,8 @@ let g:vimtex_view_method='zathura'
 " synctex
 let g:vimtex_syntax_enabled=1
 let g:vimtex_compiler_progname='nvr'
+
+" let g:vimtex_fold_enabled=1
 
 " typesetting engine
 " let g:vimtex_compiler_latexmk = { 
