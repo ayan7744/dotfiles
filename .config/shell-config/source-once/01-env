@@ -47,6 +47,8 @@ set -x DOT_SAGE $XDG_CONFIG_HOME/sage
 set -x TEXMFHOME $HOME/tex/source_files
 
 # Others
-set -x WALLPAPER_DIR "$HOME/Pictures/Wallpapers/active-wallpapers"
+# set -x WALLPAPER_DIR "$HOME/Pictures/Wallpapers/active-wallpapers"
+set -x WALLPAPER_DIR "$HOME/Pictures/Wallpapers/dt-wallpapers"
+
 # manpage colourizer
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"

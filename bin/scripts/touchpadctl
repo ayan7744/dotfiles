@@ -12,7 +12,7 @@ sensitivity() {
 }
 
 accel() {
-    xinput set-prop "$id" 292 "$1"
+    xinput set-prop "$id" 291 "$1"
 }
 
 toggle() {
