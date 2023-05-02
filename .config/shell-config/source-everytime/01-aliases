@@ -40,7 +40,6 @@ alias du='du -ch'
 alias free='free -m'
 alias qr='qrencode --output=-'
 alias pacman-db-unlock='sudo rm /var/lib/pacman/db.lck'
-alias change-wallpaper='feh --bg-scale --randomize --no-fehbg "$WALLPAPER_DIR"'
 
 # size of directories
 alias dirsize='sudo du -sh * 2>/dev/null; sudo du -sh .* 2>/dev/null'

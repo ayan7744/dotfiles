@@ -12,7 +12,7 @@ sensitivity() {
 }
 
 accel() {
-    xinput set-prop "$id" 291 "$1"
+    xinput set-prop "$id" 295 "$1"
 }
 
 toggle() {
@@ -31,7 +31,7 @@ Script to configure touchpad sensitivity and acceleration.
 
 Usage:  touchpadctl [ --sensitivity S_PARAMETER | --accel A_PARAMETER | --toggle | --default ]
 
-Here, S_PARAMETER and A_PARAMETER are positive real numbers. The "--default" option sets sensitivity to 2.1 and acceleration to 0.07.
+Here, S_PARAMETER and A_PARAMETER are positive real numbers. The "--default" option sets sensitivity to 2.4 and acceleration to 0.07.
 EOF
 }
 
@@ -46,7 +46,7 @@ case "$1" in
         toggle
         ;;
     "--default")
-        sensitivity 2.1
+        sensitivity 2.4
         accel 0.07
         ;;
     *)
