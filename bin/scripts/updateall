@@ -31,4 +31,5 @@ flatpak update
 # omf update
 polybar-msg action "#pacman-updates.hook.1" &> /dev/null
 [ -f /tmp/checkupdates.ayan ] && rm /tmp/checkupdates.ayan
+/usr/lib/systemd/system-sleep/general-settings post
 fish -i

@@ -16,13 +16,13 @@ alias cp='cp -ir'
 alias mv='mv -i'
 
 # Change "ls" to "exa"
-alias ls='exa --color=always --group-directories-first --colour-scale --icons' 
-alias sl='exa --color=always --group-directories-first --colour-scale --icons' # when you type sl instead of ls
-alias la='exa -lah --color=always --group-directories-first --colour-scale --icons | /bin/less -RXF'  # all files and dirs
-alias al='exa -ah --color=always --group-directories-first --colour-scale --icons'  # long format
-alias ll='exa -lh --color=always --group-directories-first --colour-scale --icons | /bin/less -RXF'  # long format
-alias lll='exa -lh --color=always --group-directories-first --colour-scale --icons | /bin/less -RXF'  # long format
-alias tree='exa -lah -T --colour=always --group-directories-first --colour-scale --icons | /bin/less -RXF'
+alias ls='exa --color=always --group-directories-first --colour-scale=all' 
+alias sl='exa --color=always --group-directories-first --colour-scale=all' # when you type sl instead of ls
+alias la='exa -lah --color=always --group-directories-first --colour-scale=all | /bin/less -RXF'  # all files and dirs
+alias al='exa -ah --color=always --group-directories-first --colour-scale=all'  # long format
+alias ll='exa -lh --color=always --group-directories-first --colour-scale=all | /bin/less -RXF'  # long format
+alias lll='exa -lh --color=always --group-directories-first --colour-scale=all | /bin/less -RXF'  # long format
+alias tree='exa -lah -T --colour=always --group-directories-first --colour-scale=all | /bin/less -RXF'
 
 # pip upgrade
 alias pipupdate='pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 sudo pip install -U'
@@ -64,6 +64,3 @@ alias thnx="echo 'You\'re welcome.'"
 alias asdf='echo lmao noob qwerty user'
 
 # alias gp='/bin/gp ~/research/phi.gp | tee -a $HOME/research/output.txt'
-
-# temporary
-alias ag2='$EDITOR $HOME/tex/cmi/sem4/ag2/main.tex'
