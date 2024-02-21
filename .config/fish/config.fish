@@ -41,9 +41,9 @@ set -g theme_display_user yes
 # Source secondary shell config scripts
 ###########################################
 # not so important scripts to be sourced everytime
-for script in $XDG_CONFIG_HOME/shell-config/secondary/*
-  source "$script"
-end
+# for script in $XDG_CONFIG_HOME/shell-config/secondary/*
+#  source "$script"
+# end
 
 ######################################################################
 # Startup
