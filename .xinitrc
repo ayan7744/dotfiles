@@ -50,7 +50,7 @@ restore-brightness --init &
 dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 
 # start night light
-redshift &
+redshift -o
 
 # picom -b --config $XDG_CONFIG_HOME/picom/picom.conf
 exec bspwm

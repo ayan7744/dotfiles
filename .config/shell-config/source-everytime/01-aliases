@@ -16,13 +16,13 @@ alias cp='cp -ir'
 alias mv='mv -i'
 
 # Change "ls" to "exa"
-alias ls='exa --color=always --group-directories-first --colour-scale=all' 
-alias sl='exa --color=always --group-directories-first --colour-scale=all' # when you type sl instead of ls
-alias la='exa -lah --color=always --group-directories-first --colour-scale=all | /bin/less -RXF'  # all files and dirs
-alias al='exa -ah --color=always --group-directories-first --colour-scale=all'  # long format
-alias ll='exa -lh --color=always --group-directories-first --colour-scale=all | /bin/less -RXF'  # long format
-alias lll='exa -lh --color=always --group-directories-first --colour-scale=all | /bin/less -RXF'  # long format
-alias tree='exa -lah -T --colour=always --group-directories-first --colour-scale=all | /bin/less -RXF'
+alias ls='exa --color=always --group-directories-first --colour-scale=all --icons' 
+alias sl='exa --color=always --group-directories-first --colour-scale=all --icons' # when you type sl instead of ls
+alias la='exa -lah --color=always --group-directories-first --colour-scale=all --icons | /bin/less -RXF'  # all files and dirs
+alias al='exa -ah --color=always --group-directories-first --colour-scale=all --icons'  # long format
+alias ll='exa -lh --color=always --group-directories-first --colour-scale=all --icons | /bin/less -RXF'  # long format
+alias lll='exa -lh --color=always --group-directories-first --colour-scale=all --icons | /bin/less -RXF'  # long format
+alias tree='exa -lah -T --colour=always --group-directories-first --colour-scale=all --icons | /bin/less -RXF'
 
 # pip upgrade
 alias pipupdate='pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 sudo pip install -U'

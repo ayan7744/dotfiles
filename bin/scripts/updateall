@@ -18,6 +18,7 @@ read -p ""
 printf "${lightYellow}Starting pacman updates...${noColor}"
 echo ""
 sudo pacman -Syu #  --ignore texlive-core
+/usr/lib/systemd/system-sleep/general-settings post
 echo ""
 printf "${lightYellow}Starting AUR updates...${noColor}"
 echo ""
@@ -31,5 +32,4 @@ flatpak update
 # omf update
 polybar-msg action "#pacman-updates.hook.1" &> /dev/null
 [ -f /tmp/checkupdates.ayan ] && rm /tmp/checkupdates.ayan
-/usr/lib/systemd/system-sleep/general-settings post
 fish -i
