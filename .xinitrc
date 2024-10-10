@@ -48,6 +48,9 @@ xset r rate 280 35 &
 restore-brightness --init &
 # fix slow firefox startup
 dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
+# fix screen blanking
+xset -dpms
+xset s 0
 
 # start night light
 redshift -o

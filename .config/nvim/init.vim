@@ -44,6 +44,7 @@ set notermguicolors
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " needed for vimwiki
 set nocompatible
+set ttyfast
 syntax on
 filetype plugin on
 filetype plugin indent on

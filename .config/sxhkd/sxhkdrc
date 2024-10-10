@@ -26,21 +26,21 @@ mod1 + shift + c
 mod1 + shift + grave
     toggle-compositor
 
-# i3lock-color + spotify pause (blur current current)
+# i3lock-color + spotify pause (blur + choose random wallpaper)
 mod1 + Escape
-    spotifyctl pause & lock
+    lock --bg $(find $HOME/Pictures/Wallpapers/dt-wallpapers -type f | shuf -n 1)
 
-# i3lock+color + spotify pause (show blurred wallpaper)
+# i3lock+color + spotify pause (blur current screen)
 mod1 + shift+ Escape
-    spotifyctl pause & lock --bg $HOME/Pictures/Wallpapers/arch-win-blur.png
+    lock
 
 # spotify controls 
-mod1 + shift + {backslash,bracketleft,bracketright}
-    spotifyctl {playpause,previous,next}
+# mod1 + shift + {backslash,bracketleft,bracketright}
+#    spotifyctl {playpause,previous,next}
 
 # start work environment
-mod1 + shift + semicolon 
-    startworkenv
+# mod1 + shift + semicolon 
+#     startworkenv
 
 # show help 
 mod1 + slash
@@ -79,7 +79,7 @@ super+l
 
 # F8 turn off display (originally for multi monitors)
 super+p
-    xset dpms force off
+    $HOME/bin/scripts/toggle-monitors
 
 # full screenshot, saves in ~/Pictures/Screenshots and copies to clipboard
 Print
