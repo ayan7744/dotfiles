@@ -19,10 +19,11 @@ Plug 'vim-python/python-syntax'	" Python syntax highlighting
 Plug 'lervag/vimtex'		" vimtex plugin
 " Plug 'brennier/quicktex'    " dynamic latex abbreviations
 " Plug 'vimwiki/vimwiki'
-Plug 'lambdalisue/suda.vim' " workaround for `:w !sudo tee %`
+" Plug 'lambdalisue/suda.vim' " workaround for `:w !sudo tee %`
 Plug 'dag/vim-fish'         " fish support
 Plug 'b3nj5m1n/kommentary'
 " Plug 'neovimhaskell/haskell-vim'
+" Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
 " Initialize plugin system
 call plug#end()
@@ -37,6 +38,7 @@ lua require("init")
 " https://www.reddit.com/r/neovim/comments/1d66jlw/color_scheme_problems_in_0100/
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 colorscheme vim
+" colorscheme catppuccin-macchiato
 set notermguicolors
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

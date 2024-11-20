@@ -33,6 +33,7 @@ abbr polybspconf '$EDITOR $XDG_CONFIG_HOME/polybar/config-bsp'
 abbr tlpconf 'sudo -e /etc/tlp.conf'
 abbr cmdlineconf 'sudo -e /boot/loader/entries/arch.conf'
 abbr gitignoreconf '$EDITOR $XDG_CONFIG_HOME/git/ignore'
+abbr starshipconf '$EDITOR $XDG_CONFIG_HOME/starship.toml'
 
 # NetworkManager
 abbr nmwifi 'nmcli device wifi'

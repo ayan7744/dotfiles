@@ -28,14 +28,15 @@ function fish_greeting
     else if xprop -id (printf 0x00%X (xdotool getactivewindow 2> /dev/null)) WM_CLASS 2> /dev/null | grep "Alacritty" &> /dev/null
 #         /bin/cat $XDG_CONFIG_HOME/fish/greeting2
           fm
+          echo -n (tput cuu1)
     end 	
 end
 
 #set bobthefish theme_color_scheme as dracula, default is dark
-set -g theme_color_scheme dracula
+# set -g theme_color_scheme dracula
 
 #display username in prompt
-set -g theme_display_user yes
+# set -g theme_display_user yes
 
 ###########################################
 # Source secondary shell config scripts
@@ -105,3 +106,6 @@ else
   bind ! __history_previous_command
   bind '$' __history_previous_command_arguments
 end
+
+# adjust_font_size
+starship init fish | source
