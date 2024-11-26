@@ -27,8 +27,8 @@ function fish_greeting
         echo ""
     else if xprop -id (printf 0x00%X (xdotool getactivewindow 2> /dev/null)) WM_CLASS 2> /dev/null | grep "Alacritty" &> /dev/null
 #         /bin/cat $XDG_CONFIG_HOME/fish/greeting2
-          fm
-          echo -n (tput cuu1)
+        fm
+        echo -n (tput cuu1)
     end 	
 end
 
@@ -107,5 +107,6 @@ else
   bind '$' __history_previous_command_arguments
 end
 
-# adjust_font_size
 starship init fish | source
+
+thefuck --alias | source

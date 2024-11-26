@@ -56,11 +56,3 @@ alias a=$TERMINAL
 
 # trash-cli 
 alias trash='trash-put'
-# alias rm='echo "This is not the command you are looking for."; false'
-
-# fun
-alias fml='echo HAHAHAHAHA!'
-alias thnx="echo 'You\'re welcome.'"
-alias asdf='echo lmao noob qwerty user'
-
-# alias gp='/bin/gp ~/research/phi.gp | tee -a $HOME/research/output.txt'
