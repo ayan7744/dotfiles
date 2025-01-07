@@ -8,7 +8,6 @@ alias ..='c ..'
 alias ...='c ../..'
 alias .3='c ../../..'
 alias .4='c ../../../..'
-alias .5='c ../../../../..'
 alias c='cs'    #cs defined in $HOME/.config/shell-config/source-multiple/my-functions
 
 # interactive 
@@ -16,22 +15,20 @@ alias cp='cp -ir'
 alias mv='mv -i'
 
 # Change "ls" to "exa"
-alias ls='eza --color=always --group-directories-first --colour-scale=all --icons' 
-alias sl='eza --color=always --group-directories-first --colour-scale=all --icons' # when you type sl instead of ls
-alias la='eza -lah --color=always --group-directories-first --colour-scale=all --icons | /bin/less -RXF'  # all files and dirs
-alias al='eza -ah --color=always --group-directories-first --colour-scale=all --icons'  # long format
-alias ll='eza -lh --color=always --group-directories-first --colour-scale=all --icons | /bin/less -RXF'  # long format
-alias lll='eza -lh --color=always --group-directories-first --colour-scale=all --icons | /bin/less -RXF'  # long format
-alias tree='eza -lah -T --colour=always --group-directories-first --colour-scale=all --icons | /bin/less -RXF'
+alias ls='eza --color=always --group-directories-first --colour-scale=all --icons=always' 
+alias sl='eza --color=always --group-directories-first --colour-scale=all --icons=always' # when you type sl instead of ls
+alias la='eza -lah --color=always --group-directories-first --colour-scale=all --icons=always | /bin/moar -no-clear-on-exit -no-linenumbers -no-statusbar -quit-if-one-screen'  # all files and dirs
+alias ll='eza -lh --color=always --group-directories-first --colour-scale=all --icons=always | /bin/moar -no-clear-on-exit -no-linenumbers -no-statusbar -quit-if-one-screen'  # long format
+alias tree='eza -lah -T --colour=always --group-directories-first --colour-scale=all --icons=always | /bin/moar -no-clear-on-exit -no-linenumbers -no-statusbar -quit-if-one-screen'
 
 # pip upgrade
 alias pipupdate='pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 sudo pip install -U'
 
 # Improvements
 alias ip='ip --color=auto'
-alias less='bat --pager="less -R"'
-alias cat='bat'
-alias dog='/bin/cat'
+# alias less='bat --pager="less -R"'
+# alias cat='bat'
+# alias dog='/bin/cat'
 alias fd='fd -H'
 alias grep='rg'
 alias dmenu='rofi -dmenu -no-fixed-num-lines -i -width 100% -location 1 -yoffset 23 -matching fuzzy'

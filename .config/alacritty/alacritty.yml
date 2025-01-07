@@ -112,7 +112,7 @@ font:
     # family: SauceCodePro Nerd Font
     # family: CodeNewRoman Nerd Font
     # family: RobotoMono Nerd Font
-    family: Hack
+    family: "Hack Nerd Font"
     # family: JetBrains Mono
     # family: UbuntuMono Nerd Font
     # family: Monofur Nerd Font
@@ -131,7 +131,7 @@ font:
     # family: SauceCodePro Nerd Font
     # family: CodeNewRoman Nerd Font
     # family: RobotoMono Nerd Font
-    family: Hack
+    family: "Hack Nerd Font"
     # family: JetBrains Mono
     # family: UbuntuMono Nerd Font
     # family: Monofur Nerd Font
@@ -150,7 +150,7 @@ font:
     # family: SauceCodePro Nerd Font Mono
     # family: CodeNewRoman Nerd Font
     # family: RobotoMono Nerd Font
-    family: Hack
+    family: "Hack Nerd Font"
     # family: JetBrains Mono
     # family: UbuntuMono Nerd Font
     # family: Monofuritalic Nerd Font Mono
@@ -169,7 +169,7 @@ font:
     # family: SauceCodePro Nerd Font Mono
     # family: CodeNewRoman Nerd Font
     # family: RobotoMono Nerd Font
-    family: Hack
+    family: "Hack Nerd Font"
     # family: JetBrains Mono
     # family: UbuntuMono Nerd Font
     # family: Monofuritalic Nerd Font Mono
