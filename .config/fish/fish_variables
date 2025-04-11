@@ -1,7 +1,7 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR --export IS_PROXY_SET:false
-SETUVAR __fish_initialized:3400
+SETUVAR __fish_initialized:3800
 SETUVAR _fish_abbr_abbrconf:\x24EDITOR\x20\x24XDG_CONFIG_HOME/shell\x2dconfig/source\x2donce/02\x2dabbr
 SETUVAR _fish_abbr_alacrittyconf:\x24EDITOR\x20\x24XDG_CONFIG_HOME/alacritty/alacritty\x2eyml
 SETUVAR _fish_abbr_aliasconf:\x24EDITOR\x20\x24XDG_CONFIG_HOME/shell\x2dconfig/source\x2deverytime/01\x2daliases
@@ -54,7 +54,7 @@ SETUVAR fish_color_operator:00a6b2
 SETUVAR fish_color_param:00afff
 SETUVAR fish_color_quote:999900
 SETUVAR fish_color_redirection:00afff
-SETUVAR fish_color_search_match:bryellow\x1e\x2d\x2dbackground\x3dbrblack
+SETUVAR fish_color_search_match:white\x1e\x2d\x2dbackground\x3dbrblack
 SETUVAR fish_color_selection:white\x1e\x2d\x2dbold\x1e\x2d\x2dbackground\x3dbrblack
 SETUVAR fish_color_status:red
 SETUVAR fish_color_user:brgreen
