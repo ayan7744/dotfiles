@@ -1,62 +1,164 @@
-#!/bin/sh 
+#!/bin/sh
 
-# Written by ayan7744
-# Accompanying udev rule: 
-# Not sure if powersave saves power.
-udev_rule_txt='
-# set scaling governor to powersave when running on battery.
-SUBSYSTEM=="power_supply", ATTR{online}=="0", RUN+="/home/ayan/bin/scripts/cpu-util --set-governor powersave"
+# Updated for amd-pstate-epp
+# Now with automatic sudo prompt for privileged operations at script start
 
-# set scaling governor to schedutil when running on AC.
-SUBSYSTEM=="power_supply", ATTR{online}=="1", RUN+="/home/ayan/bin/scripts/cpu-util --set-governor schedutil"
-'
-set_governor() {
-    i=0
-    while [ "$i" -ne "$(nproc)" ]; do
-        echo "$1" | tee /sys/devices/system/cpu/cpu${i}/cpufreq/scaling_governor
+# Check for root privileges at the start if a privileged command is issued
+if [ "$(id -u)" -ne 0 ]; then
+    NEEDS_ROOT=0
+    # Check if the first argument indicates a command that needs root
+    case "$1" in
+        "--set-epp" | "--turbo-boost")
+            NEEDS_ROOT=1
+            ;;
+    esac
+
+    if [ "$NEEDS_ROOT" -eq 1 ]; then
+        echo "Root privileges are required for '$1'. Attempting to re-run with sudo..."
+
+        # Determine the absolute path to this script for sudo
+        SUDO_SCRIPT_CMD="$0" # Start with what the script was called as
+
+        # If $0 doesn't contain a slash, it was likely found via PATH. Try 'which' to get its full path.
+        if ! echo "$SUDO_SCRIPT_CMD" | grep -q / ; then
+            if command -v which >/dev/null 2>&1; then
+                WHICH_PATH=$(which -- "$SUDO_SCRIPT_CMD" 2>/dev/null) # Suppress which error if not found
+                if [ -n "$WHICH_PATH" ] && [ -x "$WHICH_PATH" ]; then
+                    SUDO_SCRIPT_CMD="$WHICH_PATH"
+                else
+                    echo "Warning: 'which $SUDO_SCRIPT_CMD' failed or result not executable. Sudo will try '$SUDO_SCRIPT_CMD'." >&2
+                fi
+            else
+                echo "Warning: 'which' command not found. Sudo will try '$SUDO_SCRIPT_CMD'." >&2
+            fi
+        fi
+
+        # Now, $SUDO_SCRIPT_CMD is either the original $0 (if it contained /) or a path from 'which' (or $0 if which failed).
+        # Resolve symlinks and make it absolute using readlink -f, if available.
+        if command -v readlink >/dev/null 2>&1; then
+            ABS_SCRIPT_PATH=$(readlink -f -- "$SUDO_SCRIPT_CMD")
+            if [ -n "$ABS_SCRIPT_PATH" ] && [ -x "$ABS_SCRIPT_PATH" ]; then
+                SUDO_SCRIPT_CMD="$ABS_SCRIPT_PATH"
+            else
+                 # If readlink fails, SUDO_SCRIPT_CMD might be a relative path like "./script" or just "script"
+                 # We'll use it as is, hoping it's correct or sudo can resolve it.
+                echo "Warning: readlink for '$SUDO_SCRIPT_CMD' failed or result not executable." >&2
+            fi
+        fi
+        
+        # Final check if the determined path appears to be an executable file (if it's not just a name)
+        if echo "$SUDO_SCRIPT_CMD" | grep -q / && [ ! -x "$SUDO_SCRIPT_CMD" ]; then
+            echo "Error: Determined script path '$SUDO_SCRIPT_CMD' is not executable or not found." >&2
+            exit 126 # Command invoked cannot execute
+        fi
+
+        # "$@" here refers to the original script arguments
+        exec sudo "$SUDO_SCRIPT_CMD" "$@"
+        exit 126 # Should only be reached if exec fails
+    fi
+fi
+
+# --- Main script logic begins here ---
+# If we are here and needed root, the script has been re-executed with sudo and is now root.
+
+set_epp() {
+    # No longer needs to call ensure_root
+    if [ -z "$1" ]; then
+        echo "Error: No EPP value provided." >&2
+        echo "Usage: --set-epp [performance|balance_performance|balance_power|power]" >&2
+        return 1
+    fi
+    if [ ! -f "/sys/devices/system/cpu/cpu0/cpufreq/energy_performance_preference" ]; then
+        echo "Error: /sys/devices/system/cpu/cpu0/cpufreq/energy_performance_preference not found." >&2
+        echo "Ensure amd-pstate driver is active in EPP mode (e.g., kernel parameter amd_pstate=active)." >&2
+        return 1
+    fi
+
+    local i=0
+    local num_cpus
+    num_cpus=$(nproc)
+
+    while [ "$i" -lt "$num_cpus" ]; do
+        if ! echo "$1" > "/sys/devices/system/cpu/cpu${i}/cpufreq/energy_performance_preference"; then
+            echo "Error: Failed to set EPP for CPU $i." >&2
+        fi
         i=$((i+1))
     done
+    echo "Energy Performance Preference set to '$1' for all cores."
 }
 
 set_turbo_boost() {
-    echo "$1" | tee /sys/devices/system/cpu/cpufreq/boost
+    # No longer needs to call ensure_root
+    if [ -z "$1" ] || { [ "$1" -ne 0 ] && [ "$1" -ne 1 ]; }; then
+        echo "Error: Invalid turbo boost value. Use 0 (disable) or 1 (enable)." >&2
+        return 1
+    fi
+    if ! echo "$1" > "/sys/devices/system/cpu/cpufreq/boost"; then
+         echo "Error: Failed to set turbo boost." >&2
+         return 1
+    fi
+    echo "Turbo Boost set to '$1'."
 }
 
-current_governor() { 
-    /usr/bin/cat /sys/devices/system/cpu/cpu${1}/cpufreq/scaling_governor
+current_epp() {
+    local epp_file="/sys/devices/system/cpu/cpu${1}/cpufreq/energy_performance_preference"
+    if [ -f "$epp_file" ]; then
+        /usr/bin/cat "$epp_file"
+    else
+        echo "N/A"
+    fi
 }
 
-turbo_boost_state() { 
-    /usr/bin/cat /sys/devices/system/cpu/cpufreq/boost
+turbo_boost_state() {
+    if [ -f "/sys/devices/system/cpu/cpufreq/boost" ]; then
+        /usr/bin/cat "/sys/devices/system/cpu/cpufreq/boost"
+    else
+        echo "N/A"
+    fi
 }
 
 cpu_temp() {
-    temp_raw=$(/usr/bin/cat /sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon4/temp2_input)
-    echo "$temp_raw/1000" | bc -l | head -c 4
-} 
+    # This path is system-specific. Please verify it for your hardware.
+    local temp_path="/sys/class/hwmon/hwmon5/temp1_input"
+
+    if [ -f "$temp_path" ]; then
+        local temp_raw
+        temp_raw=$(/usr/bin/cat "$temp_path")
+        awk -v temp="$temp_raw" 'BEGIN { printf "%.1f\n", temp / 1000 }'
+    else
+        echo "N/A"
+    fi
+}
 
 _help() {
-    /usr/bin/cat << 'EOF'
-Script to set/view scaling governors and toggling turbo boost and more. Root privileges needed. Only for acpu-cpufreq drivers. 
+    /usr/bin/cat << EOF
+Script to set/view Energy Performance Preference (EPP) and toggle turbo boost with amd-pstate-epp.
+For operations that change settings (e.g., --set-epp, --turbo-boost),
+the script will automatically attempt to use sudo if not already run as root.
 
-Usage: cpu-util [ --set-governor GOVERNOR_NAME | --turbo-boost [0|1] | --temp | --info ]
+Usage: cpu-util [ --set-epp EPP_PROFILE | --turbo-boost [0|1] | --temp | --info | --help ]
 
-Available governors:
+Available EPP Profiles (for --set-epp):
+    performance         - Prioritize performance.
+    balance_performance - Balance performance and power, favoring performance.
+    balance_power       - Balance performance and power, favoring power saving.
+    power               - Prioritize power saving.
+    (Check your system for specific supported values if needed)
 
-    performance - Run the CPU at the maximum frequency.
-    powersave - Run the CPU at the minimum frequency.
-    userspace - Run the CPU at user specified frequencies.
-    ondemand - Scales the frequency dynamically according to current load. Jumps to the highest frequency and then possibly back off as the idle time increases.
-    conservative - Scales the frequency dynamically according to current load. Scales the frequency more gradually than ondemand.
-    schedutil - Scheduler-driven CPU frequency selection.
+Options:
+    --set-epp PROFILE   Set the EPP for all CPU cores.
+    --turbo-boost 0|1   Disable (0) or Enable (1) Turbo Boost.
+    --temp              Show current CPU temperature.
+    --info              Show current CPU temperature, EPP for each core, and Turbo Boost state.
+    --help              Show this help message.
 
-Docs: https://wiki.archlinux.org/index.php/CPU_frequency_scaling
+Supported driver: amd-pstate in 'active' (EPP) mode.
 EOF
 }
 
-case "$1" in 
-    "--set-governor")
-        set_governor "$2"
+case "$1" in
+    "--set-epp")
+        set_epp "$2"
         ;;
     "--turbo-boost")
         set_turbo_boost "$2"
@@ -67,14 +169,24 @@ case "$1" in
     "--info")
         echo "CPU Temperature : $(cpu_temp) °C"
         i=0
-        while [ "$i" -ne "$(nproc)" ]; do
-            echo "CPU $i governor: $(current_governor $i)"
+        num_cpus=$(nproc)
+        while [ "$i" -lt "$num_cpus" ]; do
+            echo "CPU $i EPP     : $(current_epp "$i")"
             i=$((i+1))
         done
-        echo "Turbo Boost: $(turbo_boost_state)"
-        ;;       
-    *)
+        echo "Turbo Boost   : $(turbo_boost_state)"
+        ;;
+    "--help")
         _help
         exit 0
+        ;;
+    *)
+        if [ -z "$1" ]; then
+            echo "No option provided." >&2
+        else
+            echo "Error: Unknown option '$1'" >&2
+        fi
+        _help
+        exit 1
         ;;
 esac
