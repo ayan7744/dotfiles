@@ -6,13 +6,15 @@
 # touchpadctl - easily change touchpad sensitivity and acceleration 
 
 id="$(xinput list | /bin/grep -Eo 'Touchpad.*id=[0-9]*' | /bin/grep -Eo '[0-9]*')"
+sens_prop_id="$(xinput list-props "$id" | grep 'Coordinate Transformation Matrix' | grep -o '([0-9]*)' | tr -d '()')"
+accel_prop_id="$(xinput list-props "$id" | grep 'libinput Accel Speed (' | grep -o '([0-9]*)' | tr -d '()')"
 
 sensitivity() {
-    xinput set-prop "$id" 168 "$1", 0, 0, 0, "$1", 0, 0, 0, 1
+    xinput set-prop "$id" "$sens_prop_id" "$1", 0, 0, 0, "$1", 0, 0, 0, 1
 }
 
 accel() {
-    xinput set-prop "$id" 307 "$1"
+    xinput set-prop "$id" "$accel_prop_id" "$1"
 }
 
 toggle() {

@@ -108,5 +108,3 @@ else
 end
 
 starship init fish | source
-
-thefuck --alias | source

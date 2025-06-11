@@ -24,8 +24,8 @@ Plug 'dag/vim-fish'         " fish support
 Plug 'b3nj5m1n/kommentary'
 " Plug 'neovimhaskell/haskell-vim'
 " Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+" Plug 'kaarmu/typst.vim'
 
-" Initialize plugin system
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -260,11 +260,6 @@ let g:vimtex_compiler_progname='nvr'
 " $XDG_CONFIG_HOME/nvim/quicktex.vim is begin sourced from tex.vim in ftplugin
 " dir of quicktex
 "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vimwiki
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:vimwiki_list = [{'path':'$HOME/Dropbox/vimwiki', 'path_html':'$HOME/Dropbox/vimwiki/html/', 'template_path': '$HOME/Dropbox/vimwiki/templates', 'template_default': 'default', 'template_ext': '.html'}]
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-fish
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
