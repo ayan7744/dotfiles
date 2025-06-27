@@ -8,14 +8,13 @@ o3="Save image from clipboard"
 o4="Open TeX file"
 o5="Open script"
 o6="Update packages"
+o7="Firefox open pdf"
 
 menu_options() {
     printf "$o1\n"
+    printf "$o7\n"
     printf "$o2\n"
     printf "$o3\n"
-    printf "$o4\n"
-    printf "$o5\n"
-    printf "$o6\n"
 }
 
 failed() {
@@ -52,6 +51,9 @@ case "$choice" in
         ;;
     "$o6")
         $TERMINAL --class floating-term,floating-term -e updateall
+        ;;
+    "$o7")
+        firefox-pdf-open
         ;;
     *) 
         failed

@@ -53,7 +53,7 @@ xset -dpms
 xset s 0
 
 # start night light
-redshift -o
+redshift &
 
 # picom -b --config $XDG_CONFIG_HOME/picom/picom.conf
 exec bspwm

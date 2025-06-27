@@ -4,7 +4,7 @@
 
 # spwan a terminal
 mod1 + Return
-	$TERMINAL
+	$HOME/bin/scripts/alacritty-smart
 
 # rofi drun
 mod1 + d
@@ -100,7 +100,7 @@ mod1 + shift + ctrl + e
 
 # restart bspwm
 mod1 + shift + r
-	bspc wm -r
+	pkill -USR1 '^redshift$'
 
 # remove from scratchpad and close/kill 
 mod1 + {_,shift + ,shift + ctrl + }q
