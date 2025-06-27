@@ -25,7 +25,7 @@ url_from_firefox=$(xclip -o -selection clipboard)
 
 # 3. IMMEDIATELY restore the original clipboard content.
 #    From this point on, the live clipboard is back to its original state.
-echo "$original_clipboard" | xclip -i -selection clipboard
+echo -n "$original_clipboard" | xclip -i -selection clipboard
 
 
 # --- URL Processing and Download ---
