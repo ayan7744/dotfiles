@@ -1,20 +1,13 @@
 #!/bin/bash
 
-# --- Clipboard Restoration and Cleanup ---
+# --- Clipboard Handling ---
 
 # 1. Save the original clipboard content at the very beginning.
-#    The 2>/dev/null suppresses errors if the clipboard is empty.
 original_clipboard=$(xclip -o -selection clipboard 2>/dev/null)
 
-# 2. Set up a trap to restore the clipboard when the script exits.
-#    This ensures that even if the script fails early, the clipboard is restored.
-#    We will update this trap later to also include file cleanup.
-trap 'echo "$original_clipboard" | xclip -i -selection clipboard' EXIT
 
+# --- Firefox URL Extraction ---
 
-# --- Main Logic ---
-
-# Find the Firefox window ID
 window_id=$(xdotool search --onlyvisible --class "firefox" | head -1)
 
 if [[ -z "$window_id" ]]; then
@@ -25,20 +18,29 @@ fi
 xdotool windowactivate "$window_id"
 xdotool key --clearmodifiers "ctrl+l"
 xdotool key --clearmodifiers "ctrl+c"
-# Give a tiny moment for the clipboard to be updated by the OS
-sleep 0.1
+sleep 0.1 # Give a moment for the clipboard to update
 
-clipboard_content=$(xclip -o -selection clipboard)
+# 2. Read the new URL from the clipboard into a variable.
+url_from_firefox=$(xclip -o -selection clipboard)
 
-if [[ -z "$clipboard_content" ]]; then
+# 3. IMMEDIATELY restore the original clipboard content.
+#    From this point on, the live clipboard is back to its original state.
+echo "$original_clipboard" | xclip -i -selection clipboard
+
+
+# --- URL Processing and Download ---
+#    The rest of the script now uses the 'url_from_firefox' variable,
+#    not the live clipboard.
+
+if [[ -z "$url_from_firefox" ]]; then
     exit 1
 fi
 
 # First, handle the moz-extension wrapper to get the real URL.
-if [[ "$clipboard_content" == *"moz-extension://"* && "$clipboard_content" == *"?target="* ]]; then
-    url=$(echo "$clipboard_content" | sed -n 's/.*target=\(.*\)/\1/p')
+if [[ "$url_from_firefox" == *"moz-extension://"* && "$url_from_firefox" == *"?target="* ]]; then
+    url=$(echo "$url_from_firefox" | sed -n 's/.*target=\(.*\)/\1/p')
 else
-    url="$clipboard_content"
+    url="$url_from_firefox"
 fi
 
 # Next, check if the URL is an arXiv abstract page and transform it to the PDF link.
@@ -50,9 +52,8 @@ fi
 
 tmp_file=$(mktemp /tmp/clipboard_pdf_XXXXXX.pdf)
 
-# 3. Update the trap to perform BOTH file cleanup AND clipboard restoration.
-#    This single trap now handles all exit cleanup tasks.
-trap 'rm -f "$tmp_file"; echo "$original_clipboard" | xclip -i -selection clipboard' EXIT
+# 4. The trap now ONLY handles file cleanup. Clipboard is already restored.
+trap 'rm -f "$tmp_file"' EXIT
 
 if ! curl -L -sS -o "$tmp_file" "$download_url"; then
     exit 1
@@ -62,4 +63,5 @@ if ! file --mime-type -b "$tmp_file" | grep -q "application/pdf"; then
     exit 1
 fi
 
+# 5. Open Zathura. The original clipboard is available for use.
 zathura "$tmp_file"
