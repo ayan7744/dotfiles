@@ -1,0 +1,65 @@
+#!/bin/bash
+
+# --- Clipboard Restoration and Cleanup ---
+
+# 1. Save the original clipboard content at the very beginning.
+#    The 2>/dev/null suppresses errors if the clipboard is empty.
+original_clipboard=$(xclip -o -selection clipboard 2>/dev/null)
+
+# 2. Set up a trap to restore the clipboard when the script exits.
+#    This ensures that even if the script fails early, the clipboard is restored.
+#    We will update this trap later to also include file cleanup.
+trap 'echo "$original_clipboard" | xclip -i -selection clipboard' EXIT
+
+
+# --- Main Logic ---
+
+# Find the Firefox window ID
+window_id=$(xdotool search --onlyvisible --class "firefox" | head -1)
+
+if [[ -z "$window_id" ]]; then
+    exit 1
+fi
+
+# Activate the window, simulate keystrokes to copy the URL
+xdotool windowactivate "$window_id"
+xdotool key --clearmodifiers "ctrl+l"
+xdotool key --clearmodifiers "ctrl+c"
+# Give a tiny moment for the clipboard to be updated by the OS
+sleep 0.1
+
+clipboard_content=$(xclip -o -selection clipboard)
+
+if [[ -z "$clipboard_content" ]]; then
+    exit 1
+fi
+
+# First, handle the moz-extension wrapper to get the real URL.
+if [[ "$clipboard_content" == *"moz-extension://"* && "$clipboard_content" == *"?target="* ]]; then
+    url=$(echo "$clipboard_content" | sed -n 's/.*target=\(.*\)/\1/p')
+else
+    url="$clipboard_content"
+fi
+
+# Next, check if the URL is an arXiv abstract page and transform it to the PDF link.
+if [[ "$url" == *"arxiv.org/abs/"* ]]; then
+    download_url=${url//\/abs\//\/pdf\/}
+else
+    download_url="$url"
+fi
+
+tmp_file=$(mktemp /tmp/clipboard_pdf_XXXXXX.pdf)
+
+# 3. Update the trap to perform BOTH file cleanup AND clipboard restoration.
+#    This single trap now handles all exit cleanup tasks.
+trap 'rm -f "$tmp_file"; echo "$original_clipboard" | xclip -i -selection clipboard' EXIT
+
+if ! curl -L -sS -o "$tmp_file" "$download_url"; then
+    exit 1
+fi
+
+if ! file --mime-type -b "$tmp_file" | grep -q "application/pdf"; then
+    exit 1
+fi
+
+zathura "$tmp_file"
