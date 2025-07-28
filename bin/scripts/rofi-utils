@@ -9,12 +9,14 @@ o4="Open TeX file"
 o5="Open script"
 o6="Update packages"
 o7="Firefox open pdf"
+o8="Touchpad sensitivity fix"
 
 menu_options() {
     printf "$o1\n"
     printf "$o7\n"
     printf "$o2\n"
     printf "$o3\n"
+    printf "$o8\n"
 }
 
 failed() {
@@ -54,6 +56,9 @@ case "$choice" in
         ;;
     "$o7")
         firefox-pdf-open
+        ;;
+    "$o8")
+        /usr/lib/systemd/system-sleep/general-settings post
         ;;
     *) 
         failed
