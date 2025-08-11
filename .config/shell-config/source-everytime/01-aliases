@@ -53,3 +53,6 @@ alias a=$TERMINAL
 
 # trash-cli 
 alias trash='trash-put'
+
+# change alacritty font size 
+alias font='mv -- $XDG_CONFIG_HOME/alacritty/alacritty.toml tmp_name_xyzabc && mv -- $XDG_CONFIG_HOME/alacritty/alacritty-1.toml $XDG_CONFIG_HOME/alacritty/alacritty.toml && mv -- tmp_name_xyzabc $XDG_CONFIG_HOME/alacritty/alacritty-1.toml'

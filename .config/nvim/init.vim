@@ -22,9 +22,10 @@ Plug 'lervag/vimtex'		" vimtex plugin
 " Plug 'lambdalisue/suda.vim' " workaround for `:w !sudo tee %`
 Plug 'dag/vim-fish'         " fish support
 Plug 'b3nj5m1n/kommentary'
-" Plug 'neovimhaskell/haskell-vim'
+Plug 'm4xshen/hardtime.nvim'
+" Dependencies for hardtime.nvim
+Plug 'MunifTanjim/nui.nvim'
 " Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
-" Plug 'kaarmu/typst.vim'
 
 call plug#end()
 
@@ -47,6 +48,8 @@ set notermguicolors
 " needed for vimwiki
 set nocompatible
 set ttyfast
+set number
+set relativenumber
 syntax on
 filetype plugin on
 filetype plugin indent on
@@ -234,6 +237,7 @@ highlight Comment          ctermfg=244    ctermbg=none    cterm=italic
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vimtex
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:vimtex_quickfix_open_on_warning = 0
 let g:vimtex_view_method='zathura'
 " let g:vimtex_quickfix_enabled = 0
 
@@ -291,3 +295,11 @@ let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
 let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
 let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
 let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" hardtime
+" """"""""""""""""""""""""""""""""""""""""""""""""""""""""
+" This is how you run lua code in vimscript
+lua << EOF
+require('hardtime').setup()
+EOF

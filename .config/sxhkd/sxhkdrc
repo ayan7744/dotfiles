@@ -4,7 +4,7 @@
 
 # spwan a terminal
 mod1 + Return
-	$HOME/bin/scripts/alacritty-smart
+    $TERMINAL
 
 # rofi drun
 mod1 + d
