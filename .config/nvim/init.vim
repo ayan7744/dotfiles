@@ -22,7 +22,7 @@ Plug 'lervag/vimtex'		" vimtex plugin
 " Plug 'lambdalisue/suda.vim' " workaround for `:w !sudo tee %`
 Plug 'dag/vim-fish'         " fish support
 Plug 'b3nj5m1n/kommentary'
-Plug 'm4xshen/hardtime.nvim'
+" Plug 'm4xshen/hardtime.nvim'
 " Dependencies for hardtime.nvim
 Plug 'MunifTanjim/nui.nvim'
 " Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
@@ -300,6 +300,6 @@ let g:haskell_backpack = 1                " to enable highlighting of backpack k
 " hardtime
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 " This is how you run lua code in vimscript
-lua << EOF
-require('hardtime').setup()
-EOF
+" lua << EOF
+" require('hardtime').setup()
+" EOF

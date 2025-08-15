@@ -18,7 +18,7 @@ set -gx EDITOR nvim
 set -gx VISUAL nvim
 set -gx BROWSER firefox
 set -gx IMAGE feh
-set -gx PAGER moar
+set -gx PAGER moor
 set -gx READER zathura
 
 # App Specific
@@ -51,4 +51,4 @@ set -x TEXMFHOME $HOME/tex/source_files
 # set -x WALLPAPER_DIR "$HOME/Pictures/Wallpapers/active-wallpapers"
 set -x WALLPAPER_DIR "$HOME/Pictures/Wallpapers/dt-wallpapers"
 # manpage colourizer
-set -x MANPAGER "moar"
+set -x MANPAGER "moor"
