@@ -1,6 +1,0 @@
-#!/bin/sh
-
-clipboard=$(xclip -o -selection clipboard)
-shortenedUrl=$(curl -s -F "shorten=$clipboard" 0x0.st)
-echo "$shortenedUrl"
-echo "$shortenedUrl" | xclip -selection clipboard

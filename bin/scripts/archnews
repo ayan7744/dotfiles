@@ -1,62 +1,47 @@
 #!/bin/bash
 
 show_news() {
-    NEWS=$(echo -e $(curl --silent https://archlinux.org/feeds/news/ | awk -v var="$number" ' NR == 1 {N = var ; while (N) {print;getline; if($0 ~ /<\/item>/) N=N-1} ; sub(/<\/item>.*/,"</item>") ;print}'))
-    # Remove some tags 
-    NEWS=$(echo -e $NEWS | \
-    awk '{
-    # uncomment to remove first line which is usually not a news item
-    sub(/<lastBuildDate[^>]*>([^>]*>)/,"");sub(/<language[^>]*>([^>]*>)/,"");sub(/<title[^>]*>([^>]*>)/,"");sub(/<link[^>]*>([^>]*>)/,""); 
-    while (sub(/<guid[^>]*>([^>]*>)/,"")); 
-    while (sub(/<dc:creator[^>]*>([^>]*>)/,""));
-    while (sub(/<description[^>]*>([^>]*>)/,"")); print }' | \
-    sed -e ':a;N;$!ba;s/\n/ /g')
-    #echo -e "$(echo -e $NEWS | \
-    OUTPUT="$(echo -e $NEWS | \
-    sed -e 's/&amp;/\&/g
-    s/&lt;\|&#60;/</g
-    s/&gt;\|&#62;/>/g
-    s/<\/a>/£/g
-    s/href\=\"/§/g
-    s/<title>/\\n\\n :: \\e[01;31m/g; s/<\/title>/\\e[00m ::/g
-    s/<link>/\\n [ \\e[01;36m/g; s/<\/link>/\\e[00m ]\\n/g
-    s/<p\( [^>]*\)\?>\|<br\s*\/\?>/\n/g
-    s/<b\( [^>]*\)\?>\|<strong\( [^>]*\)\?>/\\e[01;30m/g; s/<\/b>\|<\/strong>/\\e[00;37m/g
-    s/<i\( [^>]*\)\?>\|<em\( [^>]*\)\?>/\\e[41;37m/g; s/<\/i>\|<\/em>/\\e[00;37m/g
-    s/<u\( [^>]*\)\?>/\\e[4;37m/g; s/<\/u>/\\e[00;37m/g
-    s/<code\( [^>]*\)\?>/\\e[00m/g; s/<\/code>/\\e[00;37m/g
-    s/<a[^§|t]*§\([^\"]*\)\"[^>]*>\([^£]*\)[^£]*£/\\e[01;31m\2\\e[00;37m \\e[01;34m[\\e[00;37m \\e[04m\1\\e[00;37m\\e[01;34m ]\\e[00;37m/g
-    s/<li\( [^>]*\)\?>/\n \\e[01;34m*\\e[00;37m /g
-    s/<!\[CDATA\[\|\]\]>//g
-    s/\|>\s*<//g
-    s/ *<[^>]\+> */ /g
-    s/[<>£§]//g')"    
+    curl -sSL https://archlinux.org/feeds/news/ | \
+    awk '
+    function extract(text, tag) {
+      sub(".*<" tag ">", "", text);
+      sub("</" tag ">.*", "", text);
+      return text
+    }
+    BEGIN {
+      RS = "</item>";
+      
+      # Define ANSI escape codes for colors and styles
+      C_RESET = "\033[0m";
+      C_BOLD  = "\033[1m";
+      C_TITLE = "\033[36m"; # Cyan
+      C_DATE  = "\033[32m"; # Green
+      C_LINK  = "\033[34m"; # Blue
+      C_SEP   = "\033[2;37m";# Dim White
+    }
+    NR > 3 { exit }
+    {
+      # Extract the data first
+      title   = extract($0, "title");
+      pubDate = extract($0, "pubDate");
+      link    = extract($0, "link");
 
-    # delete first two lines
-    echo -e $OUTPUT | sed 1,2d
-}
+      # Print formatted and colorized output
+      printf "%s%s%-8s%s%s%s\n", C_BOLD, C_TITLE, "Title:", C_RESET, C_BOLD, title;
+      printf "%s%-8s%s%s\n", C_DATE, "Date:", C_RESET, pubDate;
+      printf "%s%-8s%s%s\n", C_LINK, "Link:", C_RESET, link;
 
-_help() {
-        /usr/bin/cat << 'EOF'
-Script to view latest Arch Linux news.
-
-Usage: 
-    archnews [ -n NUMBER_OF_ITEMS | --help ]
-EOF
+      # Print a separator between items, but not after the last one
+      if (NR < 3) {
+        print C_SEP "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" C_RESET;
+      }
+    }
+    '
 }
 
 
 case $1 in
-    "-n")
-        number="$2"
-        isonline && show_news
-        ;;
-    "--help")
-        _help
-        exit 0
-        ;;
     *)
-        number=3
         isonline && show_news
         ;;
 esac

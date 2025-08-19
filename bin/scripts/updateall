@@ -11,7 +11,7 @@ echo ""
 /usr/bin/cat "$tmpfile" 2> /dev/null
 echo ""
 printf "${lightYellow}Latest Arch Linux news:${noColor}\n"
-# archnews -n 3
+archnews
 echo ""
 printf "${lightYellow}Press enter to proceed...${noColor}"
 read -p ""

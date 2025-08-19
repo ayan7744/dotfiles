@@ -17,9 +17,9 @@ alias mv='mv -i'
 # Change "ls" to "exa"
 alias ls='eza --color=always --group-directories-first --colour-scale=all --icons=always' 
 alias sl='eza --color=always --group-directories-first --colour-scale=all --icons=always' # when you type sl instead of ls
-alias la='eza -lah --color=always --group-directories-first --colour-scale=all --icons=always | /bin/moar -no-clear-on-exit -no-linenumbers -no-statusbar -quit-if-one-screen'  # all files and dirs
-alias ll='eza -lh --color=always --group-directories-first --colour-scale=all --icons=always | /bin/moar -no-clear-on-exit -no-linenumbers -no-statusbar -quit-if-one-screen'  # long format
-alias tree='eza -lah -T --colour=always --group-directories-first --colour-scale=all --icons=always | /bin/moar -no-clear-on-exit -no-linenumbers -no-statusbar -quit-if-one-screen'
+alias la='eza -lah --color=always --group-directories-first --colour-scale=all --icons=always | /bin/moor -no-clear-on-exit -no-linenumbers -no-statusbar -quit-if-one-screen'  # all files and dirs
+alias ll='eza -lh --color=always --group-directories-first --colour-scale=all --icons=always | /bin/moor -no-clear-on-exit -no-linenumbers -no-statusbar -quit-if-one-screen'  # long format
+alias tree='eza -lah -T --colour=always --group-directories-first --colour-scale=all --icons=always | /bin/moor -no-clear-on-exit -no-linenumbers -no-statusbar -quit-if-one-screen'
 
 # pip upgrade
 alias pipupdate='pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 sudo pip install -U'
