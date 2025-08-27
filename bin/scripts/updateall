@@ -18,7 +18,7 @@ read -p ""
 printf "${lightYellow}Starting pacman updates...${noColor}"
 echo ""
 sudo pacman -Syu #  --ignore texlive-core
-/usr/lib/systemd/system-sleep/general-settings post
+$HOME/bin/scripts/xs post
 echo ""
 printf "${lightYellow}Starting AUR updates...${noColor}"
 echo ""

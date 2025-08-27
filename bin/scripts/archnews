@@ -39,9 +39,4 @@ show_news() {
     '
 }
 
-
-case $1 in
-    *)
-        isonline && show_news
-        ;;
-esac
+isonline && show_news
