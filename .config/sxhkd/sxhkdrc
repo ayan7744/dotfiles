@@ -75,7 +75,7 @@ shift+super+s
 
 # F9 lock
 super+l
-    lock & xset dpms force off 
+    systemctl suspend 
 
 # F8 toggle monitors
 super+p

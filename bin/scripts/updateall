@@ -17,7 +17,7 @@ printf "${lightYellow}Press enter to proceed...${noColor}"
 read -p ""
 printf "${lightYellow}Starting pacman updates...${noColor}"
 echo ""
-sudo pacman -Syu #  --ignore texlive-core
+sudo pacman -Syu --ignore flameshot
 $HOME/bin/scripts/xs post
 echo ""
 printf "${lightYellow}Starting AUR updates...${noColor}"
